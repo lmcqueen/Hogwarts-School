@@ -4,11 +4,51 @@
  * and open the template in the editor.
  */
 package byui.cit260.hogwartsschool.model;
+import java.io.Serializable;
 
 /**
  *
- * @author User
+ * @author User lmcqueen And jagiriga
  */
-public class Game {
+public class Game implements Serializable{
+    private double startTime;
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 43 * hash + (int) (Double.doubleToLongBits(this.startTime) ^ (Double.doubleToLongBits(this.startTime) >>> 32));
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Game other = (Game) obj;
+        if (Double.doubleToLongBits(this.startTime) != Double.doubleToLongBits(other.startTime)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" + "startTime=" + startTime + '}';
+    }
+
+    public Game() {
+    }
+
+    public double getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(double startTime) {
+        this.startTime = startTime;
+    }
     
 }

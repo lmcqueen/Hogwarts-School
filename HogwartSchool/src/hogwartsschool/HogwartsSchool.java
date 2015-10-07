@@ -5,6 +5,8 @@
  */
 package hogwartsschool;
 
+import byui.cit260.hogwartsschool.model.Game;
+
 /**
  *
  * @author User
@@ -16,6 +18,12 @@ public class HogwartsSchool {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Game gameOne = new Game();
+        
+        gameOne.setStartTime(9.43);
+        
+        String gameInfo = gameOne.toString();
+        System.out.println(gameInfo);
     }
     
 }

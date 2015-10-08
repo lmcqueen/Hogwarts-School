@@ -6,10 +6,11 @@
 package hogwartsschool;
 
 import byui.cit260.hogwartsschool.model.Game;
+import byui.cit260.hogwartsschool.model.Player;
 
 /**
  *
- * @author User
+ * @author lmcqueen and jagiriga
  */
 public class HogwartsSchool {
 
@@ -24,6 +25,14 @@ public class HogwartsSchool {
         
         String gameInfo = gameOne.toString();
         System.out.println(gameInfo);
+        
+        Player playerOne = new Player();
+        playerOne.setName("Bob");
+        playerOne.setCurrentRow(3);
+        playerOne.setCurrentCol(6);
+        
+        String playerInfo = playerOne.toString();
+        System.out.println(playerInfo);
     }
     
 }

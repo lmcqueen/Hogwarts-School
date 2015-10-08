@@ -7,7 +7,7 @@ package hogwartsschool;
 
 import byui.cit260.hogwartsschool.model.Game;
 import byui.cit260.hogwartsschool.model.Player;
-
+import byui.cit260.hogwartsschool.model.Character;
 /**
  *
  * @author lmcqueen and jagiriga
@@ -33,6 +33,15 @@ public class HogwartsSchool {
         
         String playerInfo = playerOne.toString();
         System.out.println(playerInfo);
+        
+        Character characterOne = new Character();
+        characterOne.setName("George");
+        characterOne.setDescription("A character named George");
+        characterOne.setCurrentRow(5);
+        characterOne.setCurrentCol(3);
+        
+        String characterInfo = characterOne.toString();
+        System.out.println(characterInfo);
     }
     
 }

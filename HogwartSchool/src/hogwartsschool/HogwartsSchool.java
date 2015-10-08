@@ -9,6 +9,7 @@ import byui.cit260.hogwartsschool.model.Game;
 import byui.cit260.hogwartsschool.model.Player;
 import byui.cit260.hogwartsschool.model.Character;
 import byui.cit260.hogwartsschool.model.House;
+import byui.cit260.hogwartsschool.model.InventoryItem;
 /**
  *
  * @author lmcqueen and jagiriga
@@ -53,6 +54,17 @@ public class HogwartsSchool {
         
         String houseInfo = houseOne.toString();
         System.out.println(houseInfo);
+        
+        //testing InventoryItem class
+        InventoryItem itemOne = new InventoryItem();
+        itemOne.setName("john");
+        itemOne.setDescription("john is a person");
+        itemOne.setItemType("humanbeing");
+        itemOne.setQuantity(2);
+        
+        String itemOneInfo = itemOne.toString();
+        System.out.println(itemOneInfo);
+        
     }
     
 }

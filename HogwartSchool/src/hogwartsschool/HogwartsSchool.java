@@ -8,8 +8,12 @@ package hogwartsschool;
 import byui.cit260.hogwartsschool.model.Game;
 import byui.cit260.hogwartsschool.model.Player;
 import byui.cit260.hogwartsschool.model.Character;
+import byui.cit260.hogwartsschool.model.Classroom;
+import byui.cit260.hogwartsschool.model.Course;
+import byui.cit260.hogwartsschool.model.Hallway;
 import byui.cit260.hogwartsschool.model.House;
 import byui.cit260.hogwartsschool.model.InventoryItem;
+import byui.cit260.hogwartsschool.model.Note;
 /**
  *
  * @author lmcqueen and jagiriga
@@ -65,6 +69,37 @@ public class HogwartsSchool {
         String itemOneInfo = itemOne.toString();
         System.out.println(itemOneInfo);
         
+        //test Course instance
+        Course courseOne = new Course();
+        courseOne.setName("Potions");
+        courseOne.setDescription("A course that teaches potions");
+        courseOne.setTeacher("Snape");
+        
+        String courseOneInfo = courseOne.toString();
+        System.out.println(courseOneInfo);
+        
+        //test note instance
+        Note noteOne = new Note();
+        noteOne.setNotes("This is a note");
+        
+        String noteOneInfo = noteOne.toString();
+        System.out.println(noteOneInfo);
+        
+        //test Hallway
+        Hallway hallwayOne = new Hallway();
+        hallwayOne.setDesctiption("This hallway has a ghost");
+        
+        String hallwayOneInfo = hallwayOne.toString();
+        System.out.println(hallwayOneInfo);
+        
+        //test classroom
+        Classroom classOne = new Classroom();
+        classOne.setBlocked(true);
+        classOne.setDescription("The potions classroom");
+        classOne.setVisited(false);
+        
+        String classOneInfo = classOne.toString();
+        System.out.println(classOneInfo);
+        
     }
-    
 }

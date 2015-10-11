@@ -13,7 +13,7 @@ import byui.cit260.hogwartsschool.model.Course;
 import byui.cit260.hogwartsschool.model.Hallway;
 import byui.cit260.hogwartsschool.model.House;
 import byui.cit260.hogwartsschool.model.InventoryItem;
-import byui.cit260.hogwartsschool.model.Note;
+import byui.cit260.hogwartsschool.model.Notebook;
 /**
  *
  * @author lmcqueen and jagiriga
@@ -31,7 +31,7 @@ public class HogwartsSchool {
         String gameInfo = gameOne.toString();
         System.out.println(gameInfo);
         
-        //implement Player instance
+        //test Player instance
         Player playerOne = new Player();
         playerOne.setName("Bob");
         playerOne.setCurrentRow(3);
@@ -40,7 +40,7 @@ public class HogwartsSchool {
         String playerInfo = playerOne.toString();
         System.out.println(playerInfo);
         
-        //implement Character instance
+        //test Character instance
         Character characterOne = new Character();
         characterOne.setName("George");
         characterOne.setDescription("A character named George");
@@ -50,7 +50,7 @@ public class HogwartsSchool {
         String characterInfo = characterOne.toString();
         System.out.println(characterInfo);
         
-        //implement House instance
+        //test House instance
         House houseOne = new House();
         houseOne.setName("Ravenclaw");
         houseOne.setDescription("The smart house");
@@ -79,7 +79,7 @@ public class HogwartsSchool {
         System.out.println(courseOneInfo);
         
         //test note instance
-        Note noteOne = new Note();
+        Notebook noteOne = new Notebook();
         noteOne.setNotes("This is a note");
         
         String noteOneInfo = noteOne.toString();

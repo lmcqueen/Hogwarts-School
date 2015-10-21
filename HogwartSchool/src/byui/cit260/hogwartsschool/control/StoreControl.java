@@ -11,8 +11,6 @@ package byui.cit260.hogwartsschool.control;
  */
 public class StoreControl {
     
-    public double appartentMagnitude (double absoluteMagnitude, double earthDistance)
-    {
-    }
+   
     
 }

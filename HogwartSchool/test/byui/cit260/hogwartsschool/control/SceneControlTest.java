@@ -46,6 +46,16 @@ public class SceneControlTest {
         result = instance.appartentMagnitude(magnitude, distance);
         assertEquals(expResult, result, 0.0001);
         
+         // Test case three.
+        System.out.println("Test case #3"); 
+        
+        magnitude = 56;
+        distance = 20;
+        
+        expResult = -999999;
+        result = instance.appartentMagnitude(magnitude, distance);
+        assertEquals(expResult, result, -999999);
+        
         // Test case four.
         System.out.println("Test case #4"); 
         
@@ -75,15 +85,28 @@ public class SceneControlTest {
         expResult = -0.3472;
         result = instance.appartentMagnitude(magnitude, distance);
         assertEquals(expResult, result, 0.0001);
-         // Test case three.
-        System.out.println("Test case #3"); 
         
-        magnitude = 56;
+        // Test case seven.
+        System.out.println("Test case #7"); 
+        
+        magnitude = 50;
         distance = 20;
         
-        expResult = -999999;
+        expResult = 0.125;
         result = instance.appartentMagnitude(magnitude, distance);
-        assertEquals(expResult, result, -999999);
+        assertEquals(expResult, result, 0.0001);
+        
+         // Test case eight.
+        System.out.println("Test case #8"); 
+        
+        magnitude = 13;
+        distance = 1;
+        
+        expResult = 13;
+        result = instance.appartentMagnitude(magnitude, distance);
+        assertEquals(expResult, result, 0.0001);
+        
+        
         
     }
     

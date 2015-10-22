@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package byui.cit260.hogwartsschool.control;
+import java.lang.Math;
 
 /**
  *
@@ -26,5 +27,18 @@ public class SceneControl {
 	
         return apparentMagnitude;
 
+   }
+   
+   public double gallonsCauldronHolds (double diameter, double depth) {
+       
+        if (diameter < 1 || depth < 1) {
+            return -1;
+        }
+       
+        double gallons; 
+	gallons = (Math.pow((diameter/2),2) * Math.PI * depth)/231;
+        
+        return gallons;
+    
    }
 }

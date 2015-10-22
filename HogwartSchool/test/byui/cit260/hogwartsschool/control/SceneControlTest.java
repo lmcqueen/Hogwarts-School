@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Johnson
+ * @author Johnson and lmcqueen
  */
 public class SceneControlTest {
     
@@ -106,8 +106,96 @@ public class SceneControlTest {
         result = instance.appartentMagnitude(magnitude, distance);
         assertEquals(expResult, result, 0.0001);
         
+    }
+    
+    /**
+     * Test of gallonsCauldronHolds method, of class SceneControl.
+     */
+    
+    @Test
+    public void gallonsCauldronHolds() {
+    
+        System.out.println("gallonsCauldronHolds");
         
+        //Test #1
+         System.out.println("Test case #1"); 
         
+        double diameter = 50;
+        double depth = 25;
+        
+        SceneControl instance = new SceneControl();
+        
+        double expResult = 212.4995;
+        double result = instance.gallonsCauldronHolds(diameter, depth);
+        
+        assertEquals(expResult, result, 0.0001);
+        
+        //Test #2
+         System.out.println("Test case #2");
+        
+        diameter = 15;
+        depth = -12;
+         
+        expResult = -1;
+        result = instance.gallonsCauldronHolds(diameter, depth);
+        
+        assertEquals(expResult, result, 0.0001);
+        
+        //Test #3
+         System.out.println("Test case #3");
+        
+        diameter = -5;
+        depth = 20;
+         
+        expResult = -1;
+        result = instance.gallonsCauldronHolds(diameter, depth);
+        
+        assertEquals(expResult, result, 0.0001);
+        
+        //Test #4
+         System.out.println("Test case #4");
+        
+        diameter = 0;
+        depth = 30;
+         
+        expResult = -1;
+        result = instance.gallonsCauldronHolds(diameter, depth);
+        
+        assertEquals(expResult, result, 0.0001);
+        
+        //Test #5
+         System.out.println("Test case #5");
+        
+        diameter = 14;
+        depth = 0;
+         
+        expResult = -1;
+        result = instance.gallonsCauldronHolds(diameter, depth);
+        
+        assertEquals(expResult, result, 0.0001);
+        
+        //Test #6
+        System.out.println("Test case #6");
+        
+        diameter = 1;
+        depth = 12;
+         
+        expResult = .0408;
+        result = instance.gallonsCauldronHolds(diameter, depth);
+        
+        assertEquals(expResult, result, 0.0001);
+         
+        //Test #7
+        System.out.println("Test case #7");
+        
+        diameter = 20;
+        depth = 1;
+         
+        expResult = 1.36;
+        result = instance.gallonsCauldronHolds(diameter, depth);
+        
+        assertEquals(expResult, result, 0.0001);
+       
     }
     
 }

@@ -198,4 +198,93 @@ public class SceneControlTest {
        
     }
     
+     /**
+     * Test of averageAcceleration method, of class SceneControl.
+     */
+    @Test
+    public void testAverageacceleration() {
+        System.out.println("Average Acceleration");
+        
+        // Test case one.
+        System.out.println("Test case #1"); 
+        
+        double distance = 200;
+        long time = 16;
+        
+        SceneControl instance = new SceneControl();
+        
+        double expResult = 0.78125;
+        double result = instance.averageAcceleration(distance, time);
+        assertEquals(expResult, result, -1);
+        
+        // Test case two.
+        System.out.println("Test case #2"); 
+        
+         distance = 80;
+        time = 200;
+        
+        
+         expResult = .002;
+        result = instance.averageAcceleration(distance, time);
+        assertEquals(expResult, result, -1);
+        
+        // Test case three.
+        System.out.println("Test case #3"); 
+        
+         distance = 0;
+        time = 15;
+        
+        
+         expResult = 0;
+        result = instance.averageAcceleration(distance, time);
+        assertEquals(expResult, result, -1);
+        
+        // Test case four.
+        System.out.println("Test case #4"); 
+        
+         distance = 12;
+        time = 1;
+        
+        
+         expResult = 12;
+        result = instance.averageAcceleration(distance, time);
+        assertEquals(expResult, result, -1);
+        
+        // Test case five.
+        System.out.println("Test case #5"); 
+        
+         distance = 1;
+        time = 1;
+        
+        
+         expResult = 1;
+        result = instance.averageAcceleration(distance, time);
+        assertEquals(expResult, result, -1);
+        
+        // Test case six.
+        System.out.println("Test case #6"); 
+        
+         distance = 3;
+        time = 8;
+        
+        
+         expResult = .046875;
+        result = instance.averageAcceleration(distance, time);
+        assertEquals(expResult, result, -1);
+        
+        // Test case seven.
+        System.out.println("Test case #7"); 
+        
+         distance = 200;
+        time = 1;
+        
+        
+         expResult = 200;
+        result = instance.averageAcceleration(distance, time);
+        assertEquals(expResult, result, -1);
+        
+        
+        
+    }    
+    
 }

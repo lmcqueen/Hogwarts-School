@@ -41,4 +41,24 @@ public class SceneControl {
         return gallons;
     
    }
+   
+   // Individual assignment of Johnson.
+
+    public double averageAcceleration (double distance, long time) {
+    
+     
+        if (distance < 0 || time < 1) {
+		return -1;
+        }        
+                
+       
+	double averageAcceleration;
+        averageAcceleration = (distance / time) / time;        
+
+	return averageAcceleration;
+
+    }
+   
+   
 }
+  

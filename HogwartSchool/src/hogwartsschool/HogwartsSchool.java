@@ -5,6 +5,7 @@
  */
 package hogwartsschool;
 
+import byui.cit260.hogwartsschool.model.Player;
 import byui.cit260.hogwartsschool.view.StartProgramView;
 
  /**
@@ -12,6 +13,7 @@ import byui.cit260.hogwartsschool.view.StartProgramView;
  */
 public class HogwartsSchool {
 
+    public static Player player = null;
     /**
      * @param args the command line arguments
      */
@@ -20,5 +22,9 @@ public class HogwartsSchool {
         StartProgramView startProgramView = new StartProgramView();
         startProgramView.startProgram();
         
+    }
+
+    public static void setPlayer(Player player) {
+        HogwartsSchool.player = player;
     }
 }

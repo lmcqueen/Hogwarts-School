@@ -6,6 +6,7 @@
 package byui.cit260.hogwartsschool.control;
 
 import byui.cit260.hogwartsschool.model.Player;
+import hogwartsschool.HogwartsSchool;
 
 /**
  *
@@ -25,8 +26,9 @@ public class ProgramControl {
         Player player = new Player();
         player.setName(playerName);
         
+        HogwartsSchool.setPlayer(player);
         
-        return null;
+        return player;
     }
     
 }

@@ -36,9 +36,10 @@ public class StartProgramView {
         String playerName = this.getPlayerName();
         Player player = ProgramControl.createPlayer(playerName);
         
-        this.displayWelcomeMessage(player);
+        this.displayWelcomeMessage(player); 
         
-        
+        MainMenuView mainMenu = new MainMenuView();
+        mainMenu.displayMenu();
         
     }
     

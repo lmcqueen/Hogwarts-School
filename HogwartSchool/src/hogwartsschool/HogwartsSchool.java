@@ -24,7 +24,11 @@ public class HogwartsSchool {
         
     }
 
+     public static Player getPlayer() {
+        return player;
+    }
+    
     public static void setPlayer(Player player) {
         HogwartsSchool.player = player;
-    }
+    }  
 }

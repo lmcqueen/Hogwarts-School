@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package byui.cit260.hogwartsschool.view;
 
+import byui.cit260.hogwartsschool.control.GameControl;
+import hogwartsschool.HogwartsSchool;
 import java.util.Scanner;
 
 /**
@@ -13,10 +10,9 @@ import java.util.Scanner;
  */
 public class MainMenuView {
 
-    private final String MENU = "\n"
-            + "\n-----------------------------------------"
-            + "\n Main Menu                              |"
-            + "\n-----------------------------------------"
+    private final String MENU = "\n------------------------------------------------"
+            + "\n|               Main Menu                      |"
+            + "\n------------------------------------------------"
             + "\nN - Start New Game" 
             + "\nG - Get Saved Game"
             + "\nH - Get Help"
@@ -28,7 +24,6 @@ public class MainMenuView {
         
         char selection = ' ';
         do{
-            
             System.out.println(MENU);
             
             String input = this.getInput();
@@ -37,6 +32,9 @@ public class MainMenuView {
             this.doAction(selection);
             
         }while(selection != 'E');
+        
+        System.out.println("\nThanks for playing!");
+                
     }
 
     private String getInput() {
@@ -46,13 +44,15 @@ public class MainMenuView {
         String input = null;
         
         while(!valid){
-            System.out.println("Please enter a menu option below:\n");
+            System.out.println("Please enter a menu option below:");
             
             input = keyboard.nextLine();
             input = input.trim();
+            input = input.toUpperCase();
             
             if(input.length() > 1){
-                System.out.println("Please enter only a single character");
+                System.out.println("\n *** Invalid Selection. Enter only a single character. ***\n");
+                System.out.println(MENU);
                 continue;
             }
             
@@ -80,24 +80,36 @@ public class MainMenuView {
             case 'E':
                 return;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
-                break;
-             
-        }
-        
+                System.out.println("\n*** Invalid selection. Try again. ***");
+                break;  
+        } 
    }
 
     private void startNewGame() {
+        
+        GameControl.createNewGame(HogwartsSchool.getPlayer());
+        
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.displayMenu();
+        
     }
 
     private void getSavedGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("\n*** getSavedGame stub function called ***\n");
     }
 
-  
-    private void saveGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     private void getHelp() {
+         
+        HelpMenuView helpMenu = new HelpMenuView();
+        helpMenu.displayMenu();
+        
     }
+     
+    private void saveGame() {
+        System.out.println("\n*** saveGame stub function called ***\n");
+    }
+
+   
     
     
 }

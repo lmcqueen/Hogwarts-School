@@ -5,11 +5,17 @@
  */
 package byui.cit260.hogwartsschool.control;
 
+import byui.cit260.hogwartsschool.model.Player;
+
 /**
  *
  * @author User
  */
 public class GameControl {
+
+    public static void createNewGame(Player player) {
+        System.out.println("*** createNewGame stub function called. ***");
+   }
     
     
 }

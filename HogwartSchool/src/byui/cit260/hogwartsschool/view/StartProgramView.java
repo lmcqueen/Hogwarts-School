@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package byui.cit260.hogwartsschool.view;
 
 import byui.cit260.hogwartsschool.control.ProgramControl;
@@ -44,8 +39,31 @@ public class StartProgramView {
     }
     
     public void displayBanner(){
-        System.out.println("Display banner here");
+        System.out.println("\n\n*************************************************");
+       
+        System.out.println("*                                                *"
+                       + "\n* Welcome to the role playing game Hogwarts      *"
+                       + "\n* School where you will be playing a student at  *"
+                       + "\n* Hogwarts School of Witchcraft and Wizardry. In *"
+                       + "\n* this game you goal is to earn points for one   *"
+                       + "\n* of the four Hogwarts houses (Gryffindor,       *"
+                       + "\n* Slytherin, Ravenclaw, or Hufflepuff) to win    *"
+                       + "\n* the house cup.\n                               *" 
+                       + "\n* You will be sorted into a house at the"
+                       + "\n* beginning of term at Hogwarts. During the game *"
+                       + "\n* you will earn points for your house through    *"
+                       + "\n* your accomplishments. Your goal is to get your *"
+                       + "\n* house to have the most points by the end of    *"
+                       + "\n* the school year to win the Hogwarts House Cup. *"
+                       + "\n* You will navigate through the school and take  *"
+                       + "\n* courses to earn points. There will be a final  *"
+                       + "\n* exam at the end of the school year on the      *"
+                       + "\n* things you learn in your courses. The test     *"
+                       + "\n* will be an opportunity to win a significant    *"
+                       + "\n* amount of points for your house.               *" 
+                       + "\n\n* Good luck with your first year at Hogwarts!    *");
         
+        System.out.println("\n\n*************************************************");
     }
     
     public String getPlayerName(){
@@ -56,14 +74,14 @@ public class StartProgramView {
         
         while(!valid) {
             
-            System.out.println("Please enter player's name below:");
+            System.out.println("\nPlease enter player's name below:");
             
             playerName = keyboard.nextLine();
             playerName = playerName.trim();
             
             if(playerName.length() < 2){
-                System.out.println("Invalid name - the name must not be blank \n"
-                        + "and must have more than one character.");
+                System.out.println("*** Invalid name - the name must not be "
+                        + "blank and must have more than one character. ***\n");
                 continue;
             }
             
@@ -76,7 +94,7 @@ public class StartProgramView {
     public void displayWelcomeMessage(Player player){
         System.out.println("\n\n================================================");
         System.out.println("\tWelcome to Hogwarts " + player.getName());
-        System.out.println("\tWe hope you have fun!");
+        System.out.println("\tWe hope you enjoy your first year here.");
         System.out.println("================================================");
 
     } 

@@ -1,42 +1,47 @@
+
+import java.util.Scanner;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package byui.cit260.hogwartsschool.view;
-
-import java.util.Scanner;
 
 /**
  *
- * @author lmcqueen and Johnson
+ * @author Johnson
  */
-public class MainMenuView {
-
-    private final String MENU = "\n"
-            + "\n-----------------------------------------"
-            + "\n Main Menu                              |"
-            + "\n-----------------------------------------"
-            + "\nN - Start New Game" 
-            + "\nG - Get Saved Game"
-            + "\nH - Get Help"
-            + "\nS - Save Game" 
-            + "\nE - Exit"
-            + "\n-----------------------------------------";
+public class getHelp {
     
-    public void displayMenu() {
+    private void getSomeHelp() {
+   
+        
+         final String help = "\n"  + "\n-----------------------------------------"
+            + "\n Help Menu                              |"
+            + "\n-----------------------------------------"
+            + "\nG - Game Goal" 
+            + "\nM - How to move"
+            + "\nP - How to earn Point"
+            + "\nH - What House In" 
+            + "\nN - What are Notes" 
+            + "\nQ - Quit"
+            + "\n-----------------------------------------";
+         
+    }
+    
+    public void displayHelp() {
         
         char selection = ' ';
         do{
             
-            System.out.println(MENU);
+            System.out.println();
             
             String input = this.getInput();
             selection = input.charAt(0);
             
-            this.doAction(selection);
+             this.doAction(selection);
             
-        }while(selection != 'E');
+        }while(selection != 'Q');
     }
 
     private String getInput() {
@@ -65,19 +70,22 @@ public class MainMenuView {
     private void doAction(char choice) {
         
         switch (choice) {
-            case 'N': 
-                this.startNewGame();
+            case 'G': 
+                this.gameGoal();
                 break;
-            case 'G':
-                this.getSavedGame();
+            case 'M':
+                this.howToMove();
                 break;
-            case 'H':
-                this.getHelp();
+            case 'P':
+                this.howToEarnPoint();
                 break;
-            case 'S': 
-                this.saveGame();
+            case 'H': 
+                this.whatHouseIn();
                 break;
-            case 'E':
+            case 'N':
+                this.whatAreNotes();
+                break;
+            case 'Q':
                 return;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
@@ -87,17 +95,29 @@ public class MainMenuView {
         
    }
 
-    private void startNewGame() {
+    private void gameGoal() {
     }
 
-    private void getSavedGame() {
+    private void howToMove() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
   
-    private void saveGame() {
+    private void howToEarnPoint() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    private void whatAreNotes() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+        
     
+    }
+
+    private void whatHouseIn() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
+
+    
+

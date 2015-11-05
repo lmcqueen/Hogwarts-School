@@ -17,6 +17,7 @@ public class Player implements Serializable {
     private String name;
     private int currentRow;
     private int currentCol;
+    private String currentLocationName;
 
     public Player() {
     }
@@ -45,6 +46,14 @@ public class Player implements Serializable {
         this.currentCol = currentCol;
     }
 
+       public String getCurrentLocationName() {
+        return currentLocationName;
+    }
+
+    public void setCurrentLocationName(String currentLocationName) {
+        this.currentLocationName = currentLocationName;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;

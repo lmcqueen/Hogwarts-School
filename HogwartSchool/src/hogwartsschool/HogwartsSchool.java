@@ -21,6 +21,7 @@ public class HogwartsSchool {
         
         StartProgramView startProgramView = new StartProgramView();
         startProgramView.startProgram();
+     
         
     }
 

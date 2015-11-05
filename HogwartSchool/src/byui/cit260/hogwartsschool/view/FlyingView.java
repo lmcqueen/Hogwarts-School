@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public class FlyingView {
             //to tell the program where the function is, lets create an instance of the class we are refering to.
-private SceneControl mySceneControl = new SceneControl();
+/*private SceneControl mySceneControl = new SceneControl();
 
     public void FView(){
         Scanner in = new Scanner(System.in);
@@ -41,7 +41,7 @@ private SceneControl mySceneControl = new SceneControl();
    
      
         
-    }
+    }*/
 
     
 }

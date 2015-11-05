@@ -102,7 +102,6 @@ public class MainMenuView {
          
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.displayMenu();
-        
     }
      
     private void saveGame() {
@@ -110,6 +109,6 @@ public class MainMenuView {
     }
 
    
-    
+ 
     
 }

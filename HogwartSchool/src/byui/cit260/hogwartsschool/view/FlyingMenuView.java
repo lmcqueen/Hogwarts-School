@@ -87,7 +87,8 @@ public class FlyingMenuView {
     }
 
     private void displayCalculate() {
-        System.out.println("*** getCalculate stub function called. ***");
+        FlyingView myFlyingView = new FlyingView();
+         myFlyingView.displayMenu();
     }
 
     private void displayFly() {

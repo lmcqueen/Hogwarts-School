@@ -50,6 +50,7 @@ public class PotionsView {
         boolean valid = false;
         Scanner keyboard = new Scanner(System.in);
         double value = -1;
+        String input;
         
         //WHILE a valid value has not been entered
         while(!valid){
@@ -57,7 +58,7 @@ public class PotionsView {
             System.out.println("Please enter your cauldron's "+ valueType + " in inches");
             
             //GET the value entered from keyboard 
-            String input = keyboard.nextLine();
+            input = keyboard.nextLine();
             
             //Trim front and trailing blanks off of the value 
             input = input.trim();

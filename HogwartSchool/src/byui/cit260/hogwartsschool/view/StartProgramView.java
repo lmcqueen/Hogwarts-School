@@ -48,7 +48,7 @@ public class StartProgramView {
                        + "\n* this game you goal is to earn points for one   *"
                        + "\n* of the four Hogwarts houses (Gryffindor,       *"
                        + "\n* Slytherin, Ravenclaw, or Hufflepuff) to win    *"
-                       + "\n* the house cup.\n                               *" 
+                       + "\n* the house cup.                                 *" 
                        + "\n* You will be sorted into a house at the"
                        + "\n* beginning of term at Hogwarts. During the game *"
                        + "\n* you will earn points for your house through    *"

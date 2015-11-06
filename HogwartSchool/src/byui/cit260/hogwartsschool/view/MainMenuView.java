@@ -27,6 +27,12 @@ public class MainMenuView {
             System.out.println(MENU);
             
             String input = this.getInput();
+            
+            if(input.length() < 1){
+                System.out.println( "*** Invalid input. Please enter a value. ");
+                continue;
+            }
+            
             selection = input.charAt(0);
             
             this.doAction(selection);

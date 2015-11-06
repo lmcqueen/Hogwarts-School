@@ -125,7 +125,7 @@ public class SceneControlTest {
         
         SceneControl instance = new SceneControl();
         
-        double expResult = 212.4995;
+        double expResult = 212.500;
         double result = instance.gallonsCauldronHolds(diameter, depth);
         
         assertEquals(expResult, result, 0.0001);
@@ -180,7 +180,7 @@ public class SceneControlTest {
         diameter = 1;
         depth = 12;
          
-        expResult = .0408;
+        expResult = .041;
         result = instance.gallonsCauldronHolds(diameter, depth);
         
         assertEquals(expResult, result, 0.0001);

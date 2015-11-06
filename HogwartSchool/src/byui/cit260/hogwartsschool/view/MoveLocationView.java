@@ -75,6 +75,12 @@ public class MoveLocationView {
     public void doAction(String location) {
 
         switch (location) {
+            case "potions":
+                MapControl.setPlayerLocation(location);
+                System.out.println("You are now in the potions classroom\n");
+                PotionsMenuView potionsMenuView = new PotionsMenuView();
+                potionsMenuView.displayMenu();
+                break;
             case "charms":
                 MapControl.setPlayerLocation(location);
                 System.out.println("You are now in the charms classroom\n");

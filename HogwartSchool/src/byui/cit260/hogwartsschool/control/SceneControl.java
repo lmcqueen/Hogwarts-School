@@ -30,7 +30,7 @@ public class SceneControl {
    }
    
    //Leah McQueen Individual Assignemnt
-   public double gallonsCauldronHolds (double diameter, double depth) {
+   public static double gallonsCauldronHolds (double diameter, double depth) {
        
         if (diameter < 1 || depth < 1) {
             return -1;
@@ -38,6 +38,7 @@ public class SceneControl {
        
         double gallons; 
 	gallons = (Math.pow((diameter/2),2) * Math.PI * depth)/231;
+        gallons = Math.round(gallons * 1000.0)/1000.0;
         
         return gallons;
     

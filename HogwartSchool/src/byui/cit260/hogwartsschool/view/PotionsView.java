@@ -14,18 +14,11 @@ import java.util.Scanner;
  */
 public class PotionsView {
 
-     /** 
-       * Description of the add water function
-       * Ask for cauldron depth
-       * Get input from user
-       * Ask for cauldron diameter
-       * Get input from user
-       * Display Result
-       */
     void displayAddWater() {
-        
+        //DISPLAY description of the add water function
         this.addWaterDescription();
         
+        //GET cauldron depth and diameter
         double diameter = this.getInput("diameter"); 
         double depth = this.getInput("depth"); 
         
@@ -33,6 +26,8 @@ public class PotionsView {
             System.out.println("*** There was an input error. ***");
         }
         else{
+            //Perform calculation
+            //DISPLAY result
             this.doAction(diameter, depth);
         }
       
@@ -49,33 +44,36 @@ public class PotionsView {
                          + "\n------------------------------------------------"
         );
     }
-
+  
     private double getInput(String valueType) {
-        /**
-         * Prompt user for input
-         * Get rid of spaces 
-         * convert string to double (make sure no letters)
-         * make sure input not negative and greater than 1
-         */
         boolean valid = false;
         Scanner keyboard = new Scanner(System.in);
         double value = -1;
         
+        //WHILE a valid value has not been entered
         while(!valid){
+            // DISPLAY a message prompting the user to enter a value
             System.out.println("Please enter your cauldron's "+ valueType + " in inches");
+            
+            //GET the value entered from keyboard 
             String input = keyboard.nextLine();
+            
+            //Trim front and trailing blanks off of the value 
             input = input.trim();
             
+            //IF input is a number THEN Convert the string to a double
             if (input.matches("[0-9]+")){
                 value = Double.parseDouble(input);
             }
+            //ELSE IF the user did not input a value greater or equal to one THEN DISPLAY an invalid message and CONTINUE
             else{
-                System.out.println("*** Invalid diameter. Enter only numbers. ***");
+                System.out.println("*** Invalid " + valueType + ". Enter a number greater or equal to one. ***");
                 continue;
             }
             
+            //IF the user did not enter a number THEN DISPLAY an invalid input message
             if(value < 1){
-                System.out.println("*** Invalid diameter. Enter only a positive numbers. ***");
+                System.out.println("*** Invalid " + valueType + ". Enter a number greater than one. ***");
                 continue;
             }
             
@@ -86,10 +84,11 @@ public class PotionsView {
     }
 
     private void doAction(double diameter, double depth) {
-        
+        //Perform calculation by calling control function
         double calculate = SceneControl.gallonsCauldronHolds(diameter, depth);
-        System.out.println("Your cauldron will hold " + calculate + " gallons of water");
         
+        //DISPLAY result
+        System.out.println("Your cauldron will hold " + calculate + " gallons of water");
     }
     
 }

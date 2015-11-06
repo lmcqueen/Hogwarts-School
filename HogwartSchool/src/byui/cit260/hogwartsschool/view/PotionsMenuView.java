@@ -12,13 +12,6 @@ import java.util.Scanner;
  * @author lmcqueen
  */
 public class PotionsMenuView {
-    /**
-    * steps:
-    * Display message describing class
-    * Display Menu
-    * Get menu option
-    * Perform Action
-    */
     
      public static String MENU = "\n------------------------------------------------"
         + "\n|               Potions Class Menu             |"
@@ -34,25 +27,21 @@ public class PotionsMenuView {
     public void displayMenu(){
         
         char selection = ' ';
-        
         do{
+            //DISPLAY message describing class
             this.displayLecture();
+            
+            //DISPLAY Menu options
             System.out.println(MENU);
             
-            String input = this.getInput();
-            
-            if(input.length() < 1){
-                System.out.println( "*** Invalid input. Please enter a value. ");
-                continue;
-            }
-                
+            //GET user input menu option
+            String input = this.getInput();                
             selection =  input.charAt(0);
             
+            //Perform selected Action
             this.doAction(selection);
             
         }while(selection != 'F');
-       
-        
     }
 
     private void displayLecture() {
@@ -60,26 +49,30 @@ public class PotionsMenuView {
     }
 
     private String getInput() {
-        /**
-         * Ask user for input
-         * check if more than one character (ask for valid input if larger than one)
-         * get rid of spaces and put to all caps
-         * 
-         */
         boolean valid = false;
         Scanner keyboard = new Scanner(System.in);
         String input = null;
         
+        //WHILE a valid value has not been entered
         while(!valid){
+            //DISPLAY a message prompting the user to enter a value
             System.out.println("Please enter a menu option below: ");
             
+            // GET the value entered from keyboard 
             input = keyboard.nextLine();
+            
+            //Trim front and trailing blanks off of the value
             input = input.trim();
             input = input.toUpperCase();
             
+            //IF invalid value THEN DISPLAY invalid value message  
             if(input.length() > 1)
             {
                 System.out.println("\n *** Invalid Selection. Enter only a single character. ***\n");
+                continue;
+            }
+            else if(input.length() < 1){
+                System.out.println("\n *** Invalid. Enter a selection. ***\n");
                 continue;
             }
             
@@ -90,25 +83,32 @@ public class PotionsMenuView {
     }
 
     private void doAction(char selection) {
-        
+        //SWITCH selection
         switch(selection){
+            //“I”: Display Instructions
             case 'I':
                 this.displayInstructions();
                 break;
+            //“S”: Add spiders to potion
             case 'S':
                 this.addSpider();
                 break;
+            //“N”: Add newts to potion
             case 'N':
                 this.addNewts();
                 break;
+            //“W”: Add water to potion
               case 'W':
                 this.addWater();
-                break;    
+                break;  
+            //"M": Mix potion
             case 'M':
                  this.mix();
                  break;
+            //“F”: return 
             case 'F':
                 return;
+            //OTHERWISE: DISPLAY “Invalid selection” 
             default:
                 System.out.println("\n*** Invalid selection. Try again. ***");
                 break;  

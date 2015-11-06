@@ -75,8 +75,9 @@ public class PotionsMenuView {
                 System.out.println("\n *** Invalid. Enter a selection. ***\n");
                 continue;
             }
-            
-            break;
+            else {
+                break;
+            }
         }
         
         return input;

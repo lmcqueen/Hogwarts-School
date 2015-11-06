@@ -69,11 +69,9 @@ public class PotionsMenuView {
             if(input.length() > 1)
             {
                 System.out.println("\n *** Invalid Selection. Enter only a single character. ***\n");
-                continue;
             }
             else if(input.length() < 1){
                 System.out.println("\n *** Invalid. Enter a selection. ***\n");
-                continue;
             }
             else {
                 break;

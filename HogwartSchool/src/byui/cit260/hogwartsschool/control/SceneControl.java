@@ -11,6 +11,10 @@ package byui.cit260.hogwartsschool.control;
  */
 public class SceneControl {
 
+    public static double averageAcceleration(double distance, double time) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
    //Group assignmnet
    public double appartentMagnitude (double magnitude, double distance){
    

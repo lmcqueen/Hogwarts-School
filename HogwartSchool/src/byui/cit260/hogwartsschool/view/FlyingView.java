@@ -14,77 +14,80 @@ import java.util.Scanner;
  */
 public class FlyingView {
 
-    public void displayMenu() {
-
-        Scanner in = new Scanner(System.in);
-
-        char selection = ' ';
+    void displayMenu() {
+        //DISPLAY description of the add water function
+        system.out.printIn("Wellcome to flying menu veiw");
         
-            System.out.println("Welcome to flying view!");
-            // To prompt and get two inputs from the user.
-            System.out.println("input distance");
-            String input = this.getInput();
-            int dist = in.nextInt();
-            System.out.println("input time");
-            String input2 = this.getInput();
-            int time = in.nextInt();
-            
-    }
-        // Do action by converting two strings into parse Double.
-
-
-    private void doAction(char distance, char time) {
-        String input = null;
-        Double dist = Double.parseDouble(input);
-        Double time1 = Double.parseDouble(input);
+        //GET cauldron depth and diameter
+        double distance = this.getInput("distance"); 
+        double time = this.getInput("time"); 
         
-        // Call to calculate average aceleration from the scene control.
-    SceneControl mySceneControl = new SceneControl();
-
-    double averageAcceleration = mySceneControl.averageAcceleration (dist, time);
-    if (averageAcceleration  >= 1){
-            System.out.println("Good job, move on");
+        if (distance == -1 || time == -1){
+            System.out.println(" Invalid input, try again.");
+        }
+        else{
+            //Perform calculation
+            //DISPLAY result
+            this.doAction(distance, time);
+        }
+      
     }
 
-    else{
-     }
-}
-    private String getInput() {
-    String input = null;
-    return input;
-}
-}
-  
-
-    
-            //to tell the program where the function is, lets create an instance of the class we are refering to.
-/*private SceneControl mySceneControl = new SceneControl();
-
-    public void FView(){
-        Scanner in = new Scanner(System.in);
-        System.out.println("input distance");
-        int dist = in.nextInt();
-        System.out.println("input time");
-        int time = in.nextInt();
-                
-    mySceneControl.averageAcceleration(dist, time);
-    
-    displayBanner();
-
-         double averageAcceleration = this.getDistance();
-        AverageAcceleration = SceneControl.createAverageAcceleration(distance);
-        double averageAcceleration = this.getTime();
-        AverageAcceleration = SceneControl.createAverageAcceleration(time);
-
-
-        this.displayWelcomeMessage(player);
-
-        
-        FlyingMenuView flyingMenu = new FlyingMenuView();{
-        flyingMenu.displayMenu();}
    
-     
+    private double getInput(String type) {
+        boolean valid = false;
+        Scanner keyboard = new Scanner(System.in);
+        double value = -1;
         
-    }*/
+        //WHILE a valid value has not been entered
+        while(!valid){
+            // DISPLAY a message prompting the user to enter a value
+            System.out.println("Please enter your your value" );
+            
+            //GET the value entered from keyboard 
+            String input = keyboard.nextLine();
+            
+            //Trim front and trailing blanks off of the value 
+            input = input.trim();
+            
+            //IF input is a number THEN Convert the string to a double
+            if (input.matches("[0-9]+")){
+                value = Double.parseDouble(input);
+            }
+            //ELSE IF the user did not input a value greater or equal to one THEN DISPLAY an invalid message and CONTINUE
+            else{
+                System.out.println(". Enter a number greater or equal to one.");
+                continue;
+            }
+            
+            //IF the user did not enter a number THEN DISPLAY an invalid input message
+            if(value < 1){
+                System.out.println(". Enter a number greater than one. ***");
+                continue;
+            }
+            
+            break;
+        }
+        
+        return value;
+    }
 
+    private void doAction(double distance, double time) {
+        //Perform calculation by calling control function
+        double averageAcceleration = mySceneControl.averageAcceleration(distance, time);
+        
+        //DISPLAY result
+        System.out.println("Good job, please move on");
+    }
+
+    private static class mySceneControl {
+
+        private static double averageAcceleration(double distance, long time) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        public mySceneControl() {
+        }
+    }
     
+}

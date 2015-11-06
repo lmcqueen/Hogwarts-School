@@ -22,6 +22,7 @@ public class PotionsView {
         double diameter = this.getInput("diameter"); 
         double depth = this.getInput("depth"); 
         
+        //check that input did not return an error
         if (diameter == -1 || depth == -1){
             System.out.println("*** There was an input error. ***");
         }

@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author User
+ * @author lmcqueen
  */
 public class MoveLocationView {
     

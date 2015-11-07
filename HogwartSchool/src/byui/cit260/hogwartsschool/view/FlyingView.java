@@ -29,12 +29,14 @@ public class FlyingView {
             this.doAction(distance, time);
         } while (selection != 'E');      
     }
-    public String getInput() {
+    public String getInput(String ValueType) {
         
-        Scanner keyboard = new Scanner(System.in);
         boolean valid = false;
+        Scanner keyboard = new Scanner(System.in);
+        double value = -1; 
+        String input;
         String selection = null;
-        
+        // While a value is enter
         while (!valid){
             
             selection = keyboard.nextLine();
@@ -58,14 +60,15 @@ public class FlyingView {
         
                     //IF input is a number THEN Convert the string to a double
             if (distance > 1 || time > 1){
-            
-                distance = Double.parseDouble(String value);
-                 time = Double.parseDouble(String value);
+            //DISPLAY result
+        System.out.println("Good job, please move on");
+        
+            double value = Double.parseDouble("distance");
+                 value = Double.parseDouble("time");
 
             }
 
-        //DISPLAY result
-        System.out.println("Good job, please move on");
+        
     }
 
     private static class mySceneControl {

@@ -14,15 +14,25 @@ import java.util.Scanner;
  */
 public class FlyingView {
 
-    void displayMenu() {
+    public void displayMenu() {
         //DISPLAY description of the add water function
-        system.out.printIn("Wellcome to flying menu veiw");
+        System.out.println("Wellcome to flying menu veiw");
+        System.out.println("MENU");
         
+        Scanner input= new Scanner(System.in);
+        
+        System.out.print("Please enter distance: ");
+        int distance = input.nextInt();
+        
+        System.out.print("Please enter time: ");
+        int time = input.nextInt();
+    
         //GET cauldron depth and diameter
-        double distance = this.getInput("distance"); 
-        double time = this.getInput("time"); 
+       // double distance = this.getInput(); 
+       // double time = this.getInput(); 
         
-        if (distance == -1 || time == -1){
+        
+        if ( distance == -1 ||  time == -1){
             System.out.println(" Invalid input, try again.");
         }
         else{
@@ -34,7 +44,7 @@ public class FlyingView {
     }
 
    
-    private double getInput(String type) {
+    void getInput() {
         boolean valid = false;
         Scanner keyboard = new Scanner(System.in);
         double value = -1;
@@ -42,17 +52,20 @@ public class FlyingView {
         //WHILE a valid value has not been entered
         while(!valid){
             // DISPLAY a message prompting the user to enter a value
-            System.out.println("Please enter your your value" );
+            System.out.println("Please enter distance" );
             
             //GET the value entered from keyboard 
-            String input = keyboard.nextLine();
-            
-            //Trim front and trailing blanks off of the value 
-            input = input.trim();
-            
+            int distance = keyboard.nextInt();
+            System.out.println("Please enter time");
+            int time = keyboard.nextInt();
+       
+                    
             //IF input is a number THEN Convert the string to a double
-            if (input.matches("[0-9]+")){
-                value = Double.parseDouble(input);
+            if (distance > 1 || time > 1){
+            
+                 String = Double.parseDouble();
+                 Doubl = Double.parseDouble();
+
             }
             //ELSE IF the user did not input a value greater or equal to one THEN DISPLAY an invalid message and CONTINUE
             else{
@@ -82,7 +95,7 @@ public class FlyingView {
 
     private static class mySceneControl {
 
-        private static double averageAcceleration(double distance, long time) {
+        private static double averageAcceleration(double distance, double time) {
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
 

@@ -5,6 +5,7 @@
  */
 package byui.cit260.hogwartsschool.view;
 
+import byui.cit260.hogwartsschool.control.SceneControl;
 import java.util.Scanner;
 
 /**
@@ -52,11 +53,10 @@ public class FlyingView {
         
 
     private void doAction(double distance, double time) {
-        //create instance
-        FlyingMenuView myMenu = new FlyingMenuView();
-           
+           SceneControl mySC;
+        mySC = new SceneControl();
         //Perform calculation by calling control function
-        double averageAcceleration = mySceneControl.averageAcceleration(distance, time);
+        double averageAcceleration = SceneControl.averageAcceleration(distance, time);
         
                     //IF input is a number THEN Convert the string to a double
             if (distance > 1 || time > 1){
@@ -71,13 +71,13 @@ public class FlyingView {
         
     }
 
-    private static class mySceneControl {
+    private static class SceneControl {
 
         private static double averageAcceleration(double distance, double time) {
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
 
-        public mySceneControl() {
+        public SceneControl() {
         }
     }
     

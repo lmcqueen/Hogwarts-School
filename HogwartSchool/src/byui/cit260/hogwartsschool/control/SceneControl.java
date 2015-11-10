@@ -55,7 +55,8 @@ public class SceneControl {
      
         if (distance < 0 || time < 1) {
 		return -1;
-        }        
+        }
+        else{        
                 
        
 	double averageAcceleration;
@@ -63,6 +64,7 @@ public class SceneControl {
 
 	return averageAcceleration;
 
+    }
     }
    
    

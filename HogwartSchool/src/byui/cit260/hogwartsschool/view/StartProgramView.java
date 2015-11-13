@@ -2,13 +2,12 @@ package byui.cit260.hogwartsschool.view;
 
 import byui.cit260.hogwartsschool.control.ProgramControl;
 import byui.cit260.hogwartsschool.model.Player;
-import java.util.Scanner;
 
 /**
  *
  * @author lmcqueen and Johnson
  */
-public class StartProgramView {
+public class StartProgramView extends View{
     
     /**
      * startProgram(): void
@@ -22,26 +21,8 @@ public class StartProgramView {
      */
     
     public StartProgramView(){
-    }
-    
-    public void startProgram(){
-        
-        this.displayBanner();
-        
-        String playerName = this.getPlayerName();
-        Player player = ProgramControl.createPlayer(playerName);
-        
-        this.displayWelcomeMessage(player); 
-        
-        MainMenuView mainMenu = new MainMenuView();
-        mainMenu.displayMenu();
-        
-    }
-    
-    public void displayBanner(){
-        System.out.println("\n\n*************************************************");
-       
-        System.out.println("*                                                *"
+        super ("\n\n*************************************************"
+            +"*                                                *"
                        + "\n* Welcome to the role playing game Hogwarts      *"
                        + "\n* School where you will be playing a student at  *"
                        + "\n* Hogwarts School of Witchcraft and Wizardry. In *"
@@ -61,42 +42,36 @@ public class StartProgramView {
                        + "\n* things you learn in your courses. The test     *"
                        + "\n* will be an opportunity to win a significant    *"
                        + "\n* amount of points for your house.               *" 
-                       + "\n\n* Good luck with your first year at Hogwarts!    *");
+                       + "\n\n* Good luck with your first year at Hogwarts!    *"
         
-        System.out.println("\n\n*************************************************");
+        + "\n\n*************************************************");
+        
     }
     
-    public String getPlayerName(){
+    @Override
+    public void display(){
         
-        boolean valid = false;
-        String playerName = null;
-        Scanner keyboard = new Scanner(System.in);
+        System.out.println(this.getPromptMessage());
         
-        while(!valid) {
-            
-            System.out.println("\nPlease enter player's name below:");
-            
-            playerName = keyboard.nextLine();
-            playerName = playerName.trim();
-            
-            if(playerName.length() < 2){
-                System.out.println("*** Invalid name - the name must not be "
-                        + "blank and must have more than one character. ***\n");
-                continue;
-            }
-            
-            break;
-        }
+        String playerName = this.getInput();
+        Player player = ProgramControl.createPlayer(playerName);
         
-        return playerName;
+        this.doAction(player); 
+        
+        MainMenuView mainMenu = new MainMenuView();
+        mainMenu.display();
     }
     
-    public void displayWelcomeMessage(Player player){
+    @Override
+    public boolean doAction(Object obj){
+        Player player = (Player) obj;
+        
         System.out.println("\n\n================================================");
         System.out.println("\tWelcome to Hogwarts " + player.getName());
         System.out.println("\tWe hope you enjoy your first year here.");
         System.out.println("================================================");
-
+        
+        return true;
     } 
             
 }

@@ -7,79 +7,45 @@ package byui.cit260.hogwartsschool.view;
 
 import byui.cit260.hogwartsschool.control.MapControl;
 import hogwartsschool.HogwartsSchool;
-import java.util.Scanner;
 
 /**
  *
  * @author lmcqueen
  */
-public class MoveLocationView {
+public class MoveLocationView extends View{
     
-    private final String LOCATIONS = "\n\nPotions\n" +
-                                        "Charms\n" +
-                                        "Ancient Runes\n" +
-                                        "Defense Against the Dark Arts\n" + 
-                                        "Astronomy\n" +
-                                        "Transfiguration\n" +   
-                                        "Divination\n" +    
-                                        "Herbology\n" + 
-                                        "Flying\n" +    
-                                        "Care of Magical Creatures\n" + 
-                                        "Great Hall\n" +
-                                        "Quidditch Field\n" +
-                                        "Bathroom\n\n";
-    
-    public void moveLocation() {
-        
-        this.displayInstruction();
-        
-        String input = this.getInput();
-        
-        this.doAction(input);
-        
+    public MoveLocationView() {
+        super("You are currently located at " + HogwartsSchool.getPlayer().getCurrentLocationName()
+                + " Where would you like to go?"
+                + " Options: \n "
+                + "\n\nPotions\n"
+                + "Charms\n"
+                + "Ancient Runes\n"
+                + "Defense Against the Dark Arts\n"
+                + "Astronomy\n"
+                + "Transfiguration\n"
+                + "Divination\n"
+                + "Herbology\n"
+                + "Flying\n"
+                + "Care of Magical Creatures\n"
+                + "Great Hall\n"
+                + "Quidditch Field\n"
+                + "Bathroom\n\n"
+                + "Enter \"e\" to return to game menu \n\n");
     }
     
-      public void displayInstruction() {
-       
-        System.out.println("You are currently located at " + HogwartsSchool.getPlayer().getCurrentLocationName());
-       
-        System.out.println("Where would you like to go?");
-        System.out.println("Options: \n " + LOCATIONS);
-    }
-      
-    private String getInput() {
+    @Override 
+    public boolean doAction(Object obj) {
         
-        boolean valid = false;
-        Scanner keyboard = new Scanner(System.in);
-        String input = null;
+        String location = (String) obj;
+        location = location.toLowerCase();
         
-        while(!valid){
-            System.out.println("Please enter the location you would like to go to below:");
-            
-            input = keyboard.nextLine();
-            input = input.trim();
-            input = input.toLowerCase();
-            
-            if(input.length() < 6){
-                System.out.println("\n *** Invalid Input. Make sure you write out"
-                        + " the entire location name like shown above. ***\n");
-                continue;
-            }
-            
-            break;
-        }
-       
-        return input;
-    }
-    
-    public void doAction(String location) {
-
         switch (location) {
             case "potions":
                 MapControl.setPlayerLocation(location);
                 System.out.println("You are now in the potions classroom\n");
                 PotionsMenuView potionsMenuView = new PotionsMenuView();
-                potionsMenuView.displayMenu();
+                potionsMenuView.display();
                 break;
             case "charms":
                 MapControl.setPlayerLocation(location);
@@ -120,7 +86,7 @@ public class MoveLocationView {
                 MapControl.setPlayerLocation(location);
                 System.out.println("You are now in the flying classroom\n");
                 FlyingMenuView flying = new FlyingMenuView();
-                flying.displayMenu();
+                flying.display();
                 break;
             case "care of magical creatures":
                 MapControl.setPlayerLocation(location);
@@ -137,14 +103,17 @@ public class MoveLocationView {
                 System.out.println("You are now on the quidditch field\n");
                 //insert scene menu here
                 break;
-            case "Bathroom":
+            case "bathroom":
                 MapControl.setPlayerLocation(location);
                 System.out.println("You are now in the bathroom\n");
                 //insert scene menu here
                 break;
+            case "e":
+                return true;
             default:
                 System.out.println(" *** You have entered an invalid location. Your location has not changed ***");
                 break;
         }
+        return false;
     }
 }

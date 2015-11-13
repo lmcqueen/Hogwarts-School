@@ -5,80 +5,81 @@
  */
 package byui.cit260.hogwartsschool.view;
 
-import byui.cit260.hogwartsschool.control.SceneControl;
-import java.util.Scanner;
 
 /**
  *
  * @author Johnson
  */
-public class FlyingView {
-       
-    public void displayMenu() {
-        char selection = ' ';
+public class FlyingView extends View{
+    
+     public FlyingView() {
+        super("Welcome to flying menu veiw enter a string");
+    }
+   
+    @Override
+    public void display() {
+        //DISPLAY prompt
+        System.out.println(getPromptMessage());
+        boolean done = false;
+        String distance;
+        String time;
+        double distanceNum;
+        double timeNum;
+
         do {
-            System.out.println("Welcome to flying menu veiw");
-            System.out.println("enter a String");
-            Scanner input= new Scanner(System.in);
-        
-        System.out.print("Please enter distance: ");
-        int distance = input.nextInt();
-        
-        System.out.print("Please enter time: ");
-        int time = input.nextInt();
-            
-            this.doAction(distance, time);
-        } while (selection != 'E');      
-    }
-    public String getInput(String ValueType) {
-        
-        boolean valid = false;
-        Scanner keyboard = new Scanner(System.in);
-        double value = -1; 
-        String input;
-        String selection = null;
-        // While a value is enter
-        while (!valid){
-            
-            selection = keyboard.nextLine();
-            selection = selection.trim();
-            
-            if (selection.length()<1){
-                System.out.println("\n*** Invalid selection ***Try again");
-            }
-            break;
-        }
-        return selection;
-    }
-        
 
-    private void doAction(double distance, double time) {
-           SceneControl mySC;
-        mySC = new SceneControl();
-        //Perform calculation by calling control function
-        double averageAcceleration = SceneControl.averageAcceleration(distance, time);
-        
-                    //IF input is a number THEN Convert the string to a double
-            if (distance > 1 || time > 1){
-            //DISPLAY result
-        System.out.println("Good job, please move on");
-        
-            double value = Double.parseDouble("distance");
-                 value = Double.parseDouble("time");
-
+            System.out.println("\nDistance: ");
+             distance = this.getInput();
+            if (this.doAction(distance)) {
+                distanceNum = Double.parseDouble(distance);
+            } else {
+                continue;
             }
 
-        
+            System.out.println("\nTime: ");
+            time = this.getInput();
+            if (this.doAction(time)) {
+                timeNum = Double.parseDouble(time);
+            } else {
+                continue;
+            }
+
+            this.Calculate(distanceNum, timeNum);
+            done = true;
+
+        } while (!done);
     }
-
-    private static class SceneControl {
-
-        private static double averageAcceleration(double distance, double time) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        public SceneControl() {
-        }
+  
+    @Override 
+    public boolean doAction(Object obj) {
+        String input = (String)obj;
+        double value; 
+        //Check input
+        //IF input is a number THEN Convert the string to a double
+            if (input.matches("[0-9]+")){
+                value = Double.parseDouble(input);
+            }
+            //ELSE IF the user did not input a value greater or equal to one THEN DISPLAY an invalid message and CONTINUE
+            else{
+                System.out.println("*** Enter a number greater or equal to one. ***");
+                return false;
+            }
+            
+            //IF the user did not enter a number THEN DISPLAY an invalid input message
+            if(value < 1){
+                System.out.println("*** Enter a number greater than one. ***");
+                return false;
+            }
+            
+        return true;
+       
+    }
+    
+    private void Calculate (double distance, double time){
+         double calculate = byui.cit260.hogwartsschool.control.SceneControl.averageAcceleration(distance, time);
+        
+        //DISPLAY result
+        System.out.println("Your speed is " + calculate + " miles per hour");
     }
     
 }

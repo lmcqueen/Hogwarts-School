@@ -7,7 +7,7 @@ package byui.cit260.hogwartsschool.view;
 
 /**
  *
- * @author Johnson
+ * @author lmcqueen and Johnson
  */
 public interface ViewInterface {
     
@@ -16,3 +16,5 @@ public interface ViewInterface {
     public boolean doAction(Object obj);
     
 }
+
+

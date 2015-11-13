@@ -1,14 +1,13 @@
 package byui.cit260.hogwartsschool.view;
 
-import java.util.Scanner;
-
 /**
  *
  * @author lmcqueen
  */
-class GameMenuView {
+class GameMenuView extends View{
     
-    private final String MENU = "\n------------------------------------------------"
+    public GameMenuView(){
+        super("\n------------------------------------------------"
             + "\n|               Game Menu                      |"
             + "\n------------------------------------------------"
             + "\nV - View map" 
@@ -20,53 +19,22 @@ class GameMenuView {
             + "\nX - Take Exam" 
             + "\nH - Help"
             + "\nR - Return to last screen"
-            + "\n-----------------------------------------";
-            
-
-
-    void displayMenu() {
-       
-        char selection = ' ';
-        do{
-            System.out.println(MENU);
-            
-            String input = this.getInput();
-            selection = input.charAt(0);
-            
-            this.doAction(selection);
-            
-        }while(selection != 'R');
-              
+            + "\n-----------------------------------------");
     }
-    
-     private String getInput() {
+
+    @Override 
+    public boolean doAction(Object obj) {
         
-        boolean valid = false;
-        Scanner keyboard = new Scanner(System.in);
-        String input = null;
-        
-        while(!valid){
-            System.out.println("Please enter a menu option below:");
-            
-            input = keyboard.nextLine();
-            input = input.trim();
-            input = input.toUpperCase();
-            
-            if(input.length() > 1){
-                System.out.println("\n *** Invalid Selection. Enter only a single character. ***\n");
-                System.out.println(MENU);
-                continue;
-            }
-            
-            break;
+       String value = (String) obj;
+        value = value.toUpperCase();
+        if(value.length() > 1){
+            System.out.println("\n *** Invalid Selection. Enter only a single character. ***\n");
+            return false;
         }
-       
-        return input;
-    }
-
-    private void doAction(char choice) {
         
-        switch (choice) {
+        char selection = value.charAt(0);
+        
+        switch (selection) {
             case 'V': 
                 this.viewMap();
                 break;
@@ -92,11 +60,13 @@ class GameMenuView {
                 this.getHelp();
                 break;
             case 'R':
-                return;
+                return true;
             default:
                 System.out.println("\n*** Invalid selection. Try again. ***");
                 break;  
         } 
+        
+        return false;
    }
 
     private void viewMap() {
@@ -108,7 +78,7 @@ class GameMenuView {
 
     private void moveLocation() {
         MoveLocationView moveLocation = new MoveLocationView();
-        moveLocation.moveLocation();
+        moveLocation.display();
     }
 
     private void exploreArea() {
@@ -130,7 +100,7 @@ class GameMenuView {
     private void getHelp() {
         
         HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayMenu();
+        helpMenu.display();
     }
 
 }

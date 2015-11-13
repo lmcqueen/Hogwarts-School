@@ -9,14 +9,18 @@ import java.util.Scanner;
 
 /**
  *
- * @author Johnson
+ * @author lmcqueen and Johnson
  */
 public abstract class View implements ViewInterface {
-    
+      
     private String promptMessage;
-    
-    @Override
-     public void display() {
+      
+      public View(String promptMessage){
+          this.promptMessage = promptMessage;
+      }
+      
+      @Override
+      public void display() {
         
         String value = "";
         boolean done = false;
@@ -25,35 +29,43 @@ public abstract class View implements ViewInterface {
             System.out.println(this.promptMessage);
             value = this.getInput();
             done = this.doAction(value);
-            
+           
         }while(!done);
                 
     }
-
-    private String getInput() {
+    
+      @Override
+    public String getInput() {
         
         boolean valid = false;
         Scanner keyboard = new Scanner(System.in);
-        String input = null;
+        String value = null;
         
         while(!valid){
-            System.out.println("Please enter a menu option below:");
+            System.out.println("Please enter you input:");
             
-            input = keyboard.nextLine();
-            input = input.trim();
-            input = input.toUpperCase();
+            value = keyboard.nextLine();
+            value = value.trim();
             
-            if(input.length() > 1){
-                System.out.println("\n *** Invalid Selection. Enter only a single character. ***\n");
-                System.out.println(MENU);
+            if(value.length() < 1) {
+                System.out.println("\n *** Invalid Selection. Please enter a selection. ***\n");
+                System.out.println(this.promptMessage);
                 continue;
             }
             
             break;
         }
        
-        return input;
+        return value;
+    }
+
+    public String getPromptMessage() {
+        return promptMessage;
+    }
+
+    public void setPromptMessage(String promptMessage) {
+        this.promptMessage = promptMessage;
     }
     
-    
 }
+

@@ -6,36 +6,15 @@
 package byui.cit260.hogwartsschool.view;
 
 import byui.cit260.hogwartsschool.control.SceneControl;
-import java.util.Scanner;
 
 /**
  *
  * @author lmcqueen
  */
-public class PotionsView {
+public class PotionsView extends View {
 
-    void displayAddWater() {
-        //DISPLAY description of the add water function
-        this.addWaterDescription();
-        
-        //GET cauldron depth and diameter
-        double diameter = this.getInput("diameter"); 
-        double depth = this.getInput("depth"); 
-        
-        //check that input did not return an error
-        if (diameter == -1 || depth == -1){
-            System.out.println("*** There was an input error. ***");
-        }
-        else{
-            //Perform calculation
-            //DISPLAY result
-            this.doAction(diameter, depth);
-        }
-      
-    }
-
-    private void addWaterDescription() {
-        System.out.println("\n------------------------------------------------"
+    public PotionsView() {
+        super("\n------------------------------------------------"
                          + "\n| To figure out how much water needs to be       |"
                          + "\n| added to your cauldron, use the cauldron       |"
                          + "\n| calculator to figure how much water your       |"
@@ -45,49 +24,69 @@ public class PotionsView {
                          + "\n------------------------------------------------"
         );
     }
+   
+    @Override
+    public void display() {
+        //DISPLAY prompt
+        System.out.println(getPromptMessage());
+        boolean done = false;
+        String diameter;
+        String depth;
+        double diameterNum;
+        double depthNum;
+
+        do {
+            //GET cauldron depth and diameter
+            System.out.println("\nDiameter: ");
+            diameter = this.getInput();
+
+            if (this.doAction(diameter)) {
+                diameterNum = Double.parseDouble(diameter);
+            } else {
+                continue;
+            }
+
+            System.out.println("\nDepth: ");
+            depth = this.getInput();
+            if (this.doAction(depth)) {
+                depthNum = Double.parseDouble(depth);
+            } else {
+                continue;
+            }
+
+            this.Calculate(diameterNum, depthNum);
+            done = true;
+
+        } while (!done);
+    }
   
-    private double getInput(String valueType) {
-        boolean valid = false;
-        Scanner keyboard = new Scanner(System.in);
-        double value = -1;
-        String input;
-        
-        //WHILE a valid value has not been entered
-        while(!valid){
-            // DISPLAY a message prompting the user to enter a value
-            System.out.println("Please enter your cauldron's "+ valueType + " in inches");
-            
-            //GET the value entered from keyboard 
-            input = keyboard.nextLine();
-            
-            //Trim front and trailing blanks off of the value 
-            input = input.trim();
-            
-            //IF input is a number THEN Convert the string to a double
+    @Override 
+    public boolean doAction(Object obj) {
+        String input = (String)obj;
+        double value; 
+        //Check input
+        //IF input is a number THEN Convert the string to a double
             if (input.matches("[0-9]+")){
                 value = Double.parseDouble(input);
             }
             //ELSE IF the user did not input a value greater or equal to one THEN DISPLAY an invalid message and CONTINUE
             else{
-                System.out.println("*** Invalid " + valueType + ". Enter a number greater or equal to one. ***");
-                continue;
+                System.out.println("*** Enter a number greater or equal to one. ***");
+                return false;
             }
             
             //IF the user did not enter a number THEN DISPLAY an invalid input message
             if(value < 1){
-                System.out.println("*** Invalid " + valueType + ". Enter a number greater than one. ***");
-                continue;
+                System.out.println("*** Enter a number greater than one. ***");
+                return false;
             }
             
-            break;
-        }
-        
-        return value;
+        return true;
+       
     }
-
-    private void doAction(double diameter, double depth) {
-        //Perform calculation by calling control function
-        double calculate = SceneControl.gallonsCauldronHolds(diameter, depth);
+    
+    private void Calculate (double diameter, double depth){
+         double calculate = SceneControl.gallonsCauldronHolds(diameter, depth);
         
         //DISPLAY result
         System.out.println("Your cauldron will hold " + calculate + " gallons of water");

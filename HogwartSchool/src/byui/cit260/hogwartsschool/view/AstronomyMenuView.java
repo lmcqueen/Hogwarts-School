@@ -5,13 +5,12 @@
  */
 package byui.cit260.hogwartsschool.view;
 
-import java.util.Scanner;
 
 /**
  *
  * @author lmcqueen
  */
-public class AstronomyMenuView {
+public class AstronomyMenuView extends View{
     
    /**
     * steps:
@@ -20,7 +19,7 @@ public class AstronomyMenuView {
     * Get menu option
     * Perform Action
     
-    
+    */
     
     public AstronomyMenuView() {
         super("\n------------------------------------------------"
@@ -32,14 +31,18 @@ public class AstronomyMenuView {
         + "\n-----------------------------------------");
     }
     
-
-    private void displayLecture() {
-        System.out.println("Stub function to retrieve lecture and display astronomy lecture stored in classroom model");
-    }
-
     public boolean doAction(Object obj) {
+    
+        String value = (String) obj;
+        value = value.toUpperCase();
+        if(value.length() > 1){
+            System.out.println("\n *** Invalid Selection. Enter only a single character. ***\n");
+            return false;
+        }
         
-        switch(selection){
+        char choice = value.charAt(0);
+        
+        switch(choice){
             case 'I':
                 this.displayInstructions();
                 break;
@@ -47,21 +50,22 @@ public class AstronomyMenuView {
                 this.calculate();
                 break;
             case 'F':
-                return;
+                return true;
             default:
                 System.out.println("\n*** Invalid selection. Try again. ***");
                 break;  
         }
+        return false;
     }
 
     private void displayInstructions() {
         
-        System.out.println("In order to correctly calculate the absolute magnitude "
-                + "between earth and ");
+        System.out.println("displayInstructions() stub function called ");
     }
 
     private void calculate() {
-        System.out.println("this will calculate the magnitude.");
+        AstronomyView astronomyView = new AstronomyView();
+        astronomyView.display();
     }
-    */
+    
 }

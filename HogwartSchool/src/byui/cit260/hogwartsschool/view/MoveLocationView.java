@@ -18,97 +18,104 @@ public class MoveLocationView extends View{
         super("You are currently located at " + HogwartsSchool.getPlayer().getCurrentLocationName()
                 + " Where would you like to go?"
                 + " Options: \n "
-                + "\n\nPotions\n"
-                + "Charms\n"
-                + "Ancient Runes\n"
-                + "Defense Against the Dark Arts\n"
-                + "Astronomy\n"
-                + "Transfiguration\n"
-                + "Divination\n"
-                + "Herbology\n"
-                + "Flying\n"
-                + "Care of Magical Creatures\n"
-                + "Great Hall\n"
-                + "Quidditch Field\n"
-                + "Bathroom\n\n"
-                + "Enter \"e\" to return to game menu \n\n");
+                + "\n\nP - Potions\n"
+                + "C - Charms\n"
+                + "A - Ancient Runes\n"
+                + "D - Defense Against the Dark Arts\n"
+                + "S - Astronomy\n"
+                + "T - Transfiguration\n"
+                + "I - Divination\n"
+                + "H - Herbology\n"
+                + "F - Flying\n"
+                + "M - Care of Magical Creatures\n"
+                + "G - Great Hall\n"
+                + "Q - Quidditch Field\n"
+                + "B - Bathroom\n"
+                + "R - Return \n\n");
     }
     
     @Override 
     public boolean doAction(Object obj) {
         
-        String location = (String) obj;
-        location = location.toLowerCase();
+        String value = (String) obj;
+        value = value.toUpperCase();
+        if(value.length() > 1){
+            System.out.println("\n *** Invalid Selection. Enter only a single character. ***\n");
+            return false;
+        }
         
-        switch (location) {
-            case "potions":
-                MapControl.setPlayerLocation(location);
+        char choice = value.charAt(0);
+        
+        switch (choice) {
+            case 'P':
+                MapControl.setPlayerLocation("Potions");
                 System.out.println("You are now in the potions classroom\n");
                 PotionsMenuView potionsMenuView = new PotionsMenuView();
                 potionsMenuView.display();
                 break;
-            case "charms":
-                MapControl.setPlayerLocation(location);
+            case 'C':
+                MapControl.setPlayerLocation("Charms");
                 System.out.println("You are now in the charms classroom\n");
                 //insert scene menu here
                 break;
-            case "ancient runes":
-                MapControl.setPlayerLocation(location);
+            case 'A':
+                MapControl.setPlayerLocation("Ancient Ruins");
                 System.out.println("You are now in the ancient runes classroom\n");
                 //insert scene menu here
                 break;
-            case "defense against the dark arts":
-                MapControl.setPlayerLocation(location);
+            case 'D':
+                MapControl.setPlayerLocation("Defense Against the Dark Arts");
                 System.out.println("You are now in the defense against the dark arts classroom\n");
                 //insert scene menu here
                 break;
-            case "astronomy":
-                MapControl.setPlayerLocation(location);
+            case 'S':
+                MapControl.setPlayerLocation("Astronomy");
                 System.out.println("You are now in the astronomy classroom\n");
-                //insert scene menu here
+                AstronomyMenuView astronomyMenuView = new AstronomyMenuView();
+                astronomyMenuView.display();
                 break;
-            case "transfiguration":
-                MapControl.setPlayerLocation(location);
+            case 'T':
+                MapControl.setPlayerLocation("Transfiguration");
                 System.out.println("You are now in the transfiguration classroom\n");
                 //insert scene menu here
                 break;
-            case "divination":
-                MapControl.setPlayerLocation(location);
+            case 'I':
+                MapControl.setPlayerLocation("Divination");
                 System.out.println("You are now in the divination classroom\n");
                 //insert scene menu here
                 break;
-            case "herbology":
-                MapControl.setPlayerLocation(location);
+            case 'H':
+                MapControl.setPlayerLocation("Herbology");
                 System.out.println("You are now in the herbology classroom\n");
                 //insert scene menu here
                 break;
-            case "flying":
-                MapControl.setPlayerLocation(location);
+            case 'F':
+                MapControl.setPlayerLocation("Flying");
                 System.out.println("You are now in the flying classroom\n");
                 FlyingMenuView flying = new FlyingMenuView();
                 flying.display();
                 break;
-            case "care of magical creatures":
-                MapControl.setPlayerLocation(location);
+            case 'M':
+                MapControl.setPlayerLocation("Care of Magical Creatures");
                 System.out.println("You are now in the magical creatures classroom\n");
                 //insert scene menu here
                 break;
-            case "great hall":
-                MapControl.setPlayerLocation(location);
+            case 'G':
+                MapControl.setPlayerLocation("Great Hall");
                 System.out.println("You are now in the great hall\n");
                 //insert scene menu here
                 break;
-            case "quidditch field":
-                MapControl.setPlayerLocation(location);
+            case 'Q':
+                MapControl.setPlayerLocation("Quidditch Field");
                 System.out.println("You are now on the quidditch field\n");
                 //insert scene menu here
                 break;
-            case "bathroom":
-                MapControl.setPlayerLocation(location);
+            case 'B':
+                MapControl.setPlayerLocation("Bathroom");
                 System.out.println("You are now in the bathroom\n");
                 //insert scene menu here
                 break;
-            case "e":
+            case 'R':
                 return true;
             default:
                 System.out.println(" *** You have entered an invalid location. Your location has not changed ***");

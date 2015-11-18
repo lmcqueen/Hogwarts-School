@@ -12,7 +12,7 @@ package byui.cit260.hogwartsschool.control;
 public class SceneControl {
 
    //Group assignmnet
-   public double appartentMagnitude (double magnitude, double distance){
+   public static double appartentMagnitude (double magnitude, double distance){
    
        if (magnitude > 50 || magnitude < -50) {
 		return -999999;

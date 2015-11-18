@@ -12,72 +12,34 @@ import java.util.Objects;
  *
  * @author lmcqueen
  */
-public class Course implements Serializable {
+public enum Course implements Serializable {
     
-    private String name;
+    Potions("Potions class"),
+    Charms("Charms class"),
+    Ancient("Ancient Runes class"),
+    Defense("Defense Against the Dark Arts class"),
+    Astronomy("Astronomy class"),
+    Transfiguration("Transfiguration class"),
+    Divination("Divination class"),
+    Herbology("Herbology class"),
+    Flying("Flying class"),
+    Care("Care of magical creatures class"),
+    Quidditch ("Quidditch field class");
+
     private String description;
-    private String teacher;
+    private Coordinate coordinates;
 
-    public Course() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    Course(String description) {
+        this.description = description;
+        coordinates = new Coordinate(1,1);
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public Coordinate getCoordinates(){
+        return coordinates;
     }
-
-    public String getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(String teacher) {
-        this.teacher = teacher;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 29 * hash + Objects.hashCode(this.name);
-        hash = 29 * hash + Objects.hashCode(this.description);
-        hash = 29 * hash + Objects.hashCode(this.teacher);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Course other = (Course) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        if (!Objects.equals(this.teacher, other.teacher)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Course{" + "name=" + name + ", description=" + description + ", teacher=" + teacher + '}';
-    }
-    
+   
 }

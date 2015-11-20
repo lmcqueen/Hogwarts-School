@@ -56,6 +56,8 @@ public class MoveLocationView extends View{
                 MapControl.setPlayerLocation("Charms");
                 System.out.println("You are now in the charms classroom\n");
                 //insert scene menu here
+                CharmMenuView charmMenuView = new CharmMenuView();
+                charmMenuView.display();
                 break;
             case 'A':
                 MapControl.setPlayerLocation("Ancient Ruins");

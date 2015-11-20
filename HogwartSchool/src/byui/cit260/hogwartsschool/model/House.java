@@ -18,7 +18,6 @@ public class House implements Serializable {
     private String name;
     private String description;
     private int points;
-    private ArrayList<Character> characters = new ArrayList<>();
 
     public House() {
         this.points = 0;
@@ -46,14 +45,6 @@ public class House implements Serializable {
 
     public void setPoints(int points) {
         this.points = points;
-    }
-
-    public ArrayList<Character> getCharacters() {
-        return characters;
-    }
-
-    public void setCharacters(ArrayList<Character> characters) {
-        this.characters = characters;
     }
 
     @Override

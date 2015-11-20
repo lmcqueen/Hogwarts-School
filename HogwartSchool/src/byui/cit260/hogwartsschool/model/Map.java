@@ -14,16 +14,28 @@ public class Map implements Serializable{
     // class instance varriable
     private int rowCount;
     private int columnCount;
-    private Location[][] location = new Location[5][5];
+    private Location[][] locations;
     
-    public Map() {
-        /**
-         * for every row in location
-         *  for every column in location
-         *      create new location
-         *      set default values for location
-         *      assign location to current row and column
-         */
+    public Map(int rowCount, int columnCount) {
+        
+        if(rowCount < 1 || columnCount < 1){
+            System.out.println("You need more than 0 rows or columns");
+            return;
+        }
+        
+        this.rowCount = rowCount;
+        this.columnCount = columnCount;
+        this.locations = new Location[this.rowCount][this.columnCount];
+        
+        for(int row = 0; row < rowCount; row++){
+            for(int column = 0; column < columnCount; column++){
+                Location location= new Location();
+                location.setRow(row);
+                location.setColumn(column);
+                
+                locations[row][column] = location;
+            }
+        }
     }
 
     @Override
@@ -68,6 +80,13 @@ public class Map implements Serializable{
         this.columnCount = columnCount;
     }
 
+    public Location[][] getLocations() {
+        return locations;
+    }
+
+    public void setLocations(Location[][] locations) {
+        this.locations = locations;
+    }
 
     @Override
     public String toString() {

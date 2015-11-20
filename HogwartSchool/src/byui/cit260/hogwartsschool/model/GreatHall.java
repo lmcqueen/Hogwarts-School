@@ -4,17 +4,20 @@
  * and open the template in the editor.
  */
 package byui.cit260.hogwartsschool.model;
+
+import java.util.Arrays;
+
 /**
  *
  * @author lmcqueen
  */
-public class Classroom extends Scene {
+public class GreatHall extends Scene{
     
     private boolean blocked;
     private boolean visited;
-    private Course course;
+    private String[] testQuestions;
 
-    public Classroom() {
+    public GreatHall() {
     }
 
     public boolean isBlocked() {
@@ -33,19 +36,20 @@ public class Classroom extends Scene {
         this.visited = visited;
     }
 
-    public Course getCourse() {
-        return course;
+    public String[] getTestQuestions() {
+        return testQuestions;
     }
 
-    public void setCourse(Course course) {
-        this.course = course;
+    public void setTestQuestions(String[] testQuestions) {
+        this.testQuestions = testQuestions;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 23 * hash + (this.blocked ? 1 : 0);
-        hash = 23 * hash + (this.visited ? 1 : 0);
+        int hash = 3;
+        hash = 59 * hash + (this.blocked ? 1 : 0);
+        hash = 59 * hash + (this.visited ? 1 : 0);
+        hash = 59 * hash + Arrays.deepHashCode(this.testQuestions);
         return hash;
     }
 
@@ -57,11 +61,14 @@ public class Classroom extends Scene {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Classroom other = (Classroom) obj;
+        final GreatHall other = (GreatHall) obj;
         if (this.blocked != other.blocked) {
             return false;
         }
         if (this.visited != other.visited) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.testQuestions, other.testQuestions)) {
             return false;
         }
         return true;
@@ -69,7 +76,7 @@ public class Classroom extends Scene {
 
     @Override
     public String toString() {
-        return "Classroom{" + ", blocked=" + blocked + ", visited=" + visited + '}';
+        return "GreatHall{" + "blocked=" + blocked + ", visited=" + visited + ", testQuestions=" + testQuestions + '}';
     }
-   
+    
 }

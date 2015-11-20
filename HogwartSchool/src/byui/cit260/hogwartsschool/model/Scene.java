@@ -13,6 +13,34 @@ import java.io.Serializable;
  */
 public class Scene implements Serializable {
     
+    public enum SceneNames {
+        hallwayHarry,
+        hallwayRon,
+        hallwayHermione, 
+        hallwayDean, 
+        hallwayNick, 
+        hallwayNeville, 
+        hallwayFredandGeorge,
+        hallwayPercy,
+        hallwayDraco, 
+        hallwayPeeves, 
+        hallwayGinny,
+        hallwayDumbledore, 
+        potions,
+        charms,
+        ancient,
+        defense,
+        astronomy,
+        transfiguration,
+        divination,
+        herbology, 
+        flying,
+        care,
+        quidditch,
+        bathroom, 
+        greatHall;
+    }
+    
     private String description;
     private Character character;
     private String information;

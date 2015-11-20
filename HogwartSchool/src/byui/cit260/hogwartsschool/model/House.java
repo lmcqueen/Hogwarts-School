@@ -6,6 +6,7 @@
 package byui.cit260.hogwartsschool.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -17,8 +18,10 @@ public class House implements Serializable {
     private String name;
     private String description;
     private int points;
+    private ArrayList<Character> characters = new ArrayList<>();
 
     public House() {
+        this.points = 0;
     }
 
     public String getName() {
@@ -43,6 +46,14 @@ public class House implements Serializable {
 
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    public ArrayList<Character> getCharacters() {
+        return characters;
+    }
+
+    public void setCharacters(ArrayList<Character> characters) {
+        this.characters = characters;
     }
 
     @Override

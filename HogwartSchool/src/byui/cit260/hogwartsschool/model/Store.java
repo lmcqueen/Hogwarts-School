@@ -10,24 +10,22 @@ import java.util.Objects;
 
 /**
  *
- * @author lmcqueen
+ * @author User
  */
-public class Player implements Serializable {
+public class Store extends Scene{
     
-    private String name;
+    private String Name;
     private Location location;
-    private House house;
-    
 
-    public Player() {
+    public Store() {
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
     public Location getLocation() {
@@ -38,18 +36,11 @@ public class Player implements Serializable {
         this.location = location;
     }
 
-    public House getHouse() {
-        return house;
-    }
-
-    public void setHouse(House house) {
-        this.house = house;
-    }
-   
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 17 * hash + Objects.hashCode(this.name);
+        int hash = 3;
+        hash = 47 * hash + Objects.hashCode(this.Name);
+        hash = 47 * hash + Objects.hashCode(this.location);
         return hash;
     }
 
@@ -61,8 +52,11 @@ public class Player implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Player other = (Player) obj;
-        if (!Objects.equals(this.name, other.name)) {
+        final Store other = (Store) obj;
+        if (!Objects.equals(this.Name, other.Name)) {
+            return false;
+        }
+        if (!Objects.equals(this.location, other.location)) {
             return false;
         }
         return true;
@@ -70,9 +64,7 @@ public class Player implements Serializable {
 
     @Override
     public String toString() {
-        return "Player{" + "name=" + name + '}';
+        return "Store{" + "Name=" + Name + ", location=" + location + '}';
     }
-    
-    
-    
+   
 }

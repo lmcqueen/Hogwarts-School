@@ -6,7 +6,6 @@
 package byui.cit260.hogwartsschool.model;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  *
@@ -14,32 +13,31 @@ import java.util.Objects;
  */
 public enum Course implements Serializable {
     
-    Potions("Potions class"),
-    Charms("Charms class"),
-    Ancient("Ancient Runes class"),
-    Defense("Defense Against the Dark Arts class"),
-    Astronomy("Astronomy class"),
-    Transfiguration("Transfiguration class"),
-    Divination("Divination class"),
-    Herbology("Herbology class"),
-    Flying("Flying class"),
-    Care("Care of magical creatures class"),
-    Quidditch ("Quidditch field class");
+    Potions("Potions class", "Stub lecture"),
+    Charms("Charms class", "Stub lecture"),
+    Ancient("Ancient Runes class", "Stub lecture"),
+    Defense("Defense Against the Dark Arts class", "Stub lecture"),
+    Astronomy("Astronomy class", "Stub lecture"),
+    Transfiguration("Transfiguration class", "Stub lecture"),
+    Divination("Divination class", "Stub lecture"),
+    Herbology("Herbology class", "Stub lecture"),
+    Flying("Flying class", "Stub lecture"),
+    Care("Care of magical creatures class", "Stub lecture");
 
-    private String description;
-    private Coordinate coordinates;
-
-    Course(String description) {
+    private final String description;
+    private final String lecture;
+    
+    Course(String description, String lecture) {
         this.description = description;
-        coordinates = new Coordinate(1,1);
+        this.lecture = lecture;
     }
-
+    
     public String getDescription() {
         return description;
     }
-
-    public Coordinate getCoordinates(){
-        return coordinates;
+    
+    public String getLecture() {
+        return lecture;
     }
-   
+
 }

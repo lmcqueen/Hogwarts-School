@@ -6,28 +6,19 @@
 package byui.cit260.hogwartsschool.model;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  *
- * @author jagiriga
+ * @author jagiriga and lmcqueen
  */
 public class Location implements Serializable{
     
     // class instance variables
-    private String name;
     private int row;
     private int column;
+    private Scene scene;
 
     public Location() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getRow() {
@@ -46,12 +37,19 @@ public class Location implements Serializable{
         this.column = column;
     }
 
+    public Scene getScene() {
+        return scene;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 47 * hash + Objects.hashCode(this.name);
-        hash = 47 * hash + this.row;
-        hash = 47 * hash + this.column;
+        int hash = 5;
+        hash = 11 * hash + this.row;
+        hash = 11 * hash + this.column;
         return hash;
     }
 
@@ -64,9 +62,6 @@ public class Location implements Serializable{
             return false;
         }
         final Location other = (Location) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
         if (this.row != other.row) {
             return false;
         }
@@ -78,8 +73,7 @@ public class Location implements Serializable{
 
     @Override
     public String toString() {
-        return "Location{" + "name=" + name + ", row=" + row + ", column=" + column + '}';
+        return "Location{" + "row=" + row + ", column=" + column + '}';
     }
-    
     
 }

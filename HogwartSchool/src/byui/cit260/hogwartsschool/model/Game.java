@@ -5,6 +5,8 @@
  */
 package byui.cit260.hogwartsschool.model;
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Objects;
 
 /**
  *
@@ -12,12 +14,63 @@ import java.io.Serializable;
  */
 public class Game implements Serializable{
     
-    private double startTime;
+    private Player player;
+    private Map map;
+    private House[] houses;
+    private InventoryItem[] inventory; 
+    private Character[] characters;
+    
+    public Game(){
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+
+    public House[] getHouses() {
+        return houses;
+    }
+
+    public void setHouses(House[] houses) {
+        this.houses = houses;
+    }
+
+    public InventoryItem[] getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(InventoryItem[] inventory) {
+        this.inventory = inventory;
+    }
+
+    public Character[] getCharacters() {
+        return characters;
+    }
+
+    public void setCharacters(Character[] characters) {
+        this.characters = characters;
+    }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 43 * hash + (int) (Double.doubleToLongBits(this.startTime) ^ (Double.doubleToLongBits(this.startTime) >>> 32));
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.player);
+        hash = 47 * hash + Objects.hashCode(this.map);
+        hash = 47 * hash + Arrays.deepHashCode(this.houses);
+        hash = 47 * hash + Arrays.deepHashCode(this.inventory);
+        hash = 47 * hash + Arrays.deepHashCode(this.characters);
         return hash;
     }
 
@@ -30,7 +83,19 @@ public class Game implements Serializable{
             return false;
         }
         final Game other = (Game) obj;
-        if (Double.doubleToLongBits(this.startTime) != Double.doubleToLongBits(other.startTime)) {
+        if (!Objects.equals(this.player, other.player)) {
+            return false;
+        }
+        if (!Objects.equals(this.map, other.map)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.houses, other.houses)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.inventory, other.inventory)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.characters, other.characters)) {
             return false;
         }
         return true;
@@ -38,18 +103,7 @@ public class Game implements Serializable{
 
     @Override
     public String toString() {
-        return "Game{" + "startTime=" + startTime + '}';
+        return "Game{" + "player=" + player + ", map=" + map + ", houses=" + houses + ", inventory=" + inventory + ", characters=" + characters + '}';
     }
-
-    public Game() {
-    }
-
-    public double getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(double startTime) {
-        this.startTime = startTime;
-    }
-    
+   
 }

@@ -5,6 +5,9 @@
  */
 package byui.cit260.hogwartsschool.control;
 
+import byui.cit260.hogwartsschool.model.Classroom;
+import byui.cit260.hogwartsschool.model.Map;
+import byui.cit260.hogwartsschool.model.Scene;
 import hogwartsschool.HogwartsSchool;
 
 /**
@@ -12,6 +15,8 @@ import hogwartsschool.HogwartsSchool;
  * @author User
  */
 public class MapControl {
+    
+    private Scene[] scenes = new Scene[25];
     
     public static void setPlayerLocation (String location){
         
@@ -44,4 +49,26 @@ public class MapControl {
         System.out.println("Stub function for setting the player's coordinates");
     }
     
+    public Scene[] createScenes(){
+        Scene hallway = new Scene();
+        hallway.setDescription("This is a hallway");
+        this.scenes[0] = hallway;
+        
+        Classroom potions = new Classroom();
+        potions.setDescription("this is the potions class");
+        potions.setBlocked(true);
+        potions.setVisited(false);
+        this.scenes[1] = potions;
+    }
+    
+    public static Map createMap(){
+        Map map = new Map();
+        /**
+         * create new map object
+         * create each scene
+         * assign locations to scenes
+         * 
+         */
+        return map;
+    }
 }

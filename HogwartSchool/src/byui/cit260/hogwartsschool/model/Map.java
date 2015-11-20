@@ -14,6 +14,17 @@ public class Map implements Serializable{
     // class instance varriable
     private int rowCount;
     private int columnCount;
+    private Location[][] location = new Location[5][5];
+    
+    public Map() {
+        /**
+         * for every row in location
+         *  for every column in location
+         *      create new location
+         *      set default values for location
+         *      assign location to current row and column
+         */
+    }
 
     @Override
     public int hashCode() {
@@ -57,8 +68,6 @@ public class Map implements Serializable{
         this.columnCount = columnCount;
     }
 
-    public Map() {
-    }
 
     @Override
     public String toString() {

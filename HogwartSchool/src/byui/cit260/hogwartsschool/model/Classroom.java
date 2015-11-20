@@ -4,29 +4,18 @@
  * and open the template in the editor.
  */
 package byui.cit260.hogwartsschool.model;
-
-import java.io.Serializable;
-import java.util.Objects;
-
 /**
  *
  * @author lmcqueen
  */
-public class Classroom implements Serializable {
+public class Classroom extends Scene {
     
-    private String description;
     private boolean blocked;
     private boolean visited;
+    private Location location;
+    private Course course;
 
     public Classroom() {
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public boolean isBlocked() {
@@ -45,10 +34,25 @@ public class Classroom implements Serializable {
         this.visited = visited;
     }
 
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 23 * hash + Objects.hashCode(this.description);
         hash = 23 * hash + (this.blocked ? 1 : 0);
         hash = 23 * hash + (this.visited ? 1 : 0);
         return hash;
@@ -63,9 +67,6 @@ public class Classroom implements Serializable {
             return false;
         }
         final Classroom other = (Classroom) obj;
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
         if (this.blocked != other.blocked) {
             return false;
         }
@@ -74,14 +75,10 @@ public class Classroom implements Serializable {
         }
         return true;
     }
-    
-    
 
     @Override
     public String toString() {
-        return "Classroom{" + "description=" + description + ", blocked=" + blocked + ", visited=" + visited + '}';
+        return "Classroom{" + ", blocked=" + blocked + ", visited=" + visited + '}';
     }
-    
-    
-    
+   
 }

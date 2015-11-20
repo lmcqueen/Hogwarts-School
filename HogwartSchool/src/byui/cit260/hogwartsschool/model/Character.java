@@ -19,22 +19,22 @@ public enum Character implements Serializable {
     McGonagall("Professor of Transfiguration and head of Gryffindor house"),
     Dumbledore("Headmaster of Hogwarts"),
     Flitwick("Professor of charms"),
-    Trelany("Professor of Divination");
+    Trelany("Professor of Divination"),
+    Lupin("Professor of Defense Against the Dark Arts"),
+    Sprout("Professor of Herbology"),
+    Hooch("Flying instructor"),
+    Hagrid("Professor of Care of Magical Creatures"),
+    Sinistra("Professor of Astronomy"),
+    Babbling("Professor of Ancient Runes");
     
     private final String description;
-    private final Coordinate coordinates;
 
     Character(String description) {
         this.description = description;
-        coordinates = new Coordinate(1,1);
     }
 
     public String getDescription() {
         return description;
-    }
-
-    public Coordinate getCoordinates() {
-        return coordinates;
     }
     
 }

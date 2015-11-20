@@ -5,10 +5,16 @@
  */
 package byui.cit260.hogwartsschool.control;
 
+import byui.cit260.hogwartsschool.model.House;
+
 /**
  *
  * @author User
  */
 public class HouseControl {
+
+    static House[] createHouseList() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

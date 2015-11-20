@@ -15,8 +15,7 @@ import hogwartsschool.HogwartsSchool;
 public class MoveLocationView extends View{
     
     public MoveLocationView() {
-        super("You are currently located at " + HogwartsSchool.getPlayer().getCurrentLocationName()
-                + " Where would you like to go?"
+        super(" Where would you like to go?"
                 + " Options: \n "
                 + "\n\nP - Potions\n"
                 + "C - Charms\n"

@@ -2,6 +2,8 @@ package byui.cit260.hogwartsschool.view;
 
 import byui.cit260.hogwartsschool.control.GameControl;
 import byui.cit260.hogwartsschool.model.InventoryItem;
+import byui.cit260.hogwartsschool.model.Map;
+import hogwartsschool.HogwartsSchool;
 
 /**
  *
@@ -77,7 +79,9 @@ class GameMenuView extends View{
    }
 
     private void viewMap() {
-        System.out.println("\n*** viewMap stub function called ***\n");
+        Map map = HogwartsSchool.currentGame.getMap();
+        
+        
     }
 
     private void viewCurrentPoints() {

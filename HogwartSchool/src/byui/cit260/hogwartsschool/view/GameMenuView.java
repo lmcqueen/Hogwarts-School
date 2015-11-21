@@ -1,6 +1,7 @@
 package byui.cit260.hogwartsschool.view;
 
 import byui.cit260.hogwartsschool.control.GameControl;
+import byui.cit260.hogwartsschool.model.Course;
 import byui.cit260.hogwartsschool.model.House;
 import byui.cit260.hogwartsschool.model.InventoryItem;
 import byui.cit260.hogwartsschool.model.Location;
@@ -19,7 +20,8 @@ class GameMenuView extends View{
             + "\n------------------------------------------------"
             + "\nV - View map" 
             + "\nP - View current points" 
-            + "\nI - View Inventory"    
+            + "\nI - View Inventory"   
+            + "\nC - View All Courses"    
             + "\nM - Move to a new location" 
             + "\nE - Explore the area"
             + "\nT - Take Notes"
@@ -51,6 +53,9 @@ class GameMenuView extends View{
                 break;
             case 'I':
                 this.viewInventory();
+                break;
+            case 'C':
+                this.viewCourses();
                 break;
             case 'M':
                 this.moveLocation();
@@ -155,6 +160,16 @@ class GameMenuView extends View{
             
         }
         
+    }
+
+    private void viewCourses() {
+        Course[] courses = GameControl.getSortedCourses();
+        
+        System.out.println("View All Courses:");
+        
+        for(Course course : courses){
+            System.out.println(course.getDescription());
+        }
     }
 
 }

@@ -10,6 +10,7 @@ import byui.cit260.hogwartsschool.model.House;
 import byui.cit260.hogwartsschool.model.InventoryItem;
 import byui.cit260.hogwartsschool.model.Map;
 import byui.cit260.hogwartsschool.model.Player;
+import byui.cit260.hogwartsschool.model.Course;
 import hogwartsschool.HogwartsSchool;
 
 /**
@@ -34,7 +35,8 @@ public class GameControl {
        Map map = MapControl.createMap();
        game.setMap(map);
        
-       
+       Course[] courses= Course.values();
+       game.setCourses(courses);
     }
 
     public static InventoryItem[] getSortedInventoryList() {
@@ -77,4 +79,25 @@ public class GameControl {
         return housesSorted;
     }
     
+    
+    public static Course[] getSortedCourses(){
+        
+        Course[] coursesOrigional = HogwartsSchool.currentGame.getCourses();
+        
+        Course[] coursesSorted = coursesOrigional.clone();
+        
+        Course tempCourse;
+        for(int i = 1; i < coursesSorted.length; i++){
+            for(int j = i; j > 0; j--){
+                if(coursesSorted[j].getDescription().compareToIgnoreCase(coursesSorted[j-1].getDescription()) < 0){
+                    tempCourse = coursesSorted[j];
+                    coursesSorted[j] = coursesSorted[j-1];
+                    coursesSorted[j-1] = tempCourse;
+                }
+            }
+        }
+        
+        return coursesSorted;
+        
+    }
 }

@@ -13,16 +13,16 @@ import java.io.Serializable;
  */
 public enum Course implements Serializable {
     
-    Potions("Potions class", "Stub lecture"),
-    Charms("Charms class", "Stub lecture"),
-    Ancient("Ancient Runes class", "Stub lecture"),
-    Defense("Defense Against the Dark Arts class", "Stub lecture"),
-    Astronomy("Astronomy class", "Stub lecture"),
-    Transfiguration("Transfiguration class", "Stub lecture"),
-    Divination("Divination class", "Stub lecture"),
-    Herbology("Herbology class", "Stub lecture"),
-    Flying("Flying class", "Stub lecture"),
-    Care("Care of magical creatures class", "Stub lecture");
+    Potions("Potions", "Stub lecture"),
+    Charms("Charms", "Stub lecture"),
+    Ancient("Ancient Runes", "Stub lecture"),
+    Defense("Defense Against the Dark Arts", "Stub lecture"),
+    Astronomy("Astronomy", "Stub lecture"),
+    Transfiguration("Transfiguration", "Stub lecture"),
+    Divination("Divination", "Stub lecture"),
+    Herbology("Herbology", "Stub lecture"),
+    Flying("Flying", "Stub lecture"),
+    Care("Care of Magical Creatures", "Stub lecture");
 
     private final String description;
     private final String lecture;

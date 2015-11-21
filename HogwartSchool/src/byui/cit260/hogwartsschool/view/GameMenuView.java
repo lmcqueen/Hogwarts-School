@@ -1,5 +1,8 @@
 package byui.cit260.hogwartsschool.view;
 
+import byui.cit260.hogwartsschool.control.GameControl;
+import byui.cit260.hogwartsschool.model.InventoryItem;
+
 /**
  *
  * @author lmcqueen
@@ -12,6 +15,7 @@ class GameMenuView extends View{
             + "\n------------------------------------------------"
             + "\nV - View map" 
             + "\nP - View current points" 
+            + "\nI - View Inventory"    
             + "\nM - Move to a new location" 
             + "\nE - Explore the area"
             + "\nT - Take Notes"
@@ -40,6 +44,9 @@ class GameMenuView extends View{
                 break;
             case 'P':
                 this.viewCurrentPoints();
+                break;
+            case 'I':
+                this.viewInventory();
                 break;
             case 'M':
                 this.moveLocation();
@@ -101,6 +108,22 @@ class GameMenuView extends View{
         
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.display();
+    }
+
+    private void viewInventory() {
+        InventoryItem[] inventory = GameControl.getSortedInventoryList();
+        
+        System.out.println("\nList of Inventory Items");
+        System.out.println("Description" + "\t" + "Item Type" + "\t" + "Quantity");
+        
+        for (InventoryItem inventoryItem : inventory){
+            System.out.print(inventoryItem.getName() + "\t");
+            System.out.print(inventoryItem.getDescription() + "\t");
+            System.out.print(inventoryItem.getItemType()+ "\t");
+            System.out.print(inventoryItem.getQuantity()+ "\t");
+            
+        }
+        
     }
 
 }

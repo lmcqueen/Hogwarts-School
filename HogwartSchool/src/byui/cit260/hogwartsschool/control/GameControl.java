@@ -34,6 +34,27 @@ public class GameControl {
        Map map = MapControl.createMap();
        game.setMap(map);
        
+       
+    }
+
+    public static InventoryItem[] getSortedInventoryList() {
+        
+        InventoryItem[] origionalInventoryList = HogwartsSchool.currentGame.getInventory();
+        
+        InventoryItem[] inventorySorted = origionalInventoryList.clone();
+        
+        InventoryItem tempInventoryItem;
+        for(int i = 0; i < inventorySorted.length-1; i++){
+            for(int j = 0; j < inventorySorted.length-1-i; j++){
+                if(inventorySorted[j].getName().compareToIgnoreCase(inventorySorted[j + 1].getName()) > 0){
+                    tempInventoryItem = inventorySorted[j];
+                    inventorySorted[j] = inventorySorted[j + 1];
+                    inventorySorted[j + 1] = tempInventoryItem;
+                }
+            }
+        }
+        
+        return inventorySorted;
     }
     
 }

@@ -15,17 +15,7 @@ public class InventoryControl {
 
     static InventoryItem[] createInventoryList() {
         
-    HornedSlugs("A potion ingredient", 3),
-    PorcupineQuills("A potion ingredient", 1),
-    PungousOnions("A potion ingredient", 1),
-    SnakeFangs("Potion ingredient", 1),
-    FlobberwormMucus("Potion ingredient", 2),
-    GingerRoot("Potion ingredient", 1),
-    Feather("A potion ingredient", 1),
-    Goblet("A goblet for transfiguration practice", 1),
-    Cauldron("A cauldron", 10),
-    Telescope("For looking at the stars in astronomy", 4);
-    
+  
         InventoryItem[] inventory = new InventoryItem[11];
         
         InventoryItem wand = new InventoryItem();
@@ -41,6 +31,71 @@ public class InventoryControl {
         hornedSlugs.setName("Horned Slug");
         hornedSlugs.setQuantity(0);
         inventory[1] = hornedSlugs;
+        
+        
+        InventoryItem porcupineQuills = new InventoryItem();
+        porcupineQuills.setDescription("Spines that protect a porcupine fron danger");
+        porcupineQuills.setItemType("Potion ingredient");
+        porcupineQuills.setName("porcupineQuills");
+        porcupineQuills.setQuantity(0);
+        inventory[2] = porcupineQuills;
+        
+        InventoryItem pungousOnions = new InventoryItem();
+        pungousOnions.setDescription("Magical leaves used for the cure of boils");
+        pungousOnions.setItemType("Potion ingredient");
+        pungousOnions.setName("pungousOnions");
+        pungousOnions.setQuantity(0);
+        inventory[3] = pungousOnions;
+        
+        InventoryItem snakeFangs = new InventoryItem();
+        snakeFangs.setDescription("Magical ingredient that must not be gotten from the snake vernom");
+        snakeFangs.setItemType("Potion ingredient");
+        snakeFangs.setName("snakeFangs");
+        snakeFangs.setQuantity(0);
+        inventory[4] = snakeFangs;
+        
+        InventoryItem flobberwormMucus = new InventoryItem();
+        flobberwormMucus.setDescription("A sticky and green substance that is extracted from flobberworm");
+        snakeFangs.setItemType("Potion ingredient");
+        snakeFangs.setName("snakeFangs");
+        snakeFangs.setQuantity(0);
+        inventory[5] = snakeFangs;
+        
+        InventoryItem gingerRoot = new InventoryItem();
+        gingerRoot.setDescription("Magical ingredient that is used for the cure of boils");
+        gingerRoot.setItemType("Potion ingredient");
+        gingerRoot.setName("gingerRoot");
+        gingerRoot.setQuantity(0);
+        inventory[5] = gingerRoot;
+        
+        InventoryItem feather = new InventoryItem();
+        feather.setDescription("Magical ingredient that is used for the cure of boil");
+        feather.setItemType("Potion ingredient");
+        feather.setName("feather");
+        feather.setQuantity(0);
+        inventory[6] = feather;
+        
+        InventoryItem goblet = new InventoryItem();
+        goblet.setDescription("Magical ingredient that is used for the cure of boil");
+        goblet.setItemType("Potion ingredient");
+        goblet.setName("goblet");
+        goblet.setQuantity(0);
+        inventory[7] = goblet;
+        
+        InventoryItem cauldron = new InventoryItem();
+        cauldron.setDescription("A vessel that is used to brew or hold potions");
+        cauldron.setItemType("Potion ingredient");
+        cauldron.setName("cauldron");
+        cauldron.setQuantity(0);
+        inventory[8] = cauldron;
+        
+        InventoryItem telescope = new InventoryItem();
+        telescope.setDescription("For looking at the stars in astronomy");
+        telescope.setItemType("Potion ingredient");
+        telescope.setName("telescope");
+        telescope.setQuantity(0);
+        inventory[8] = telescope;
+        
 
         
     

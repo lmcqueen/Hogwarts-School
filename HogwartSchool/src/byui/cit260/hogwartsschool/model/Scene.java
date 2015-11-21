@@ -44,6 +44,7 @@ public class Scene implements Serializable {
     private String description;
     private Character character;
     private String information;
+    private String mapSymbol;
 
     public Scene() {
     }
@@ -71,4 +72,14 @@ public class Scene implements Serializable {
     public void setInformation(String information) {
         this.information = information;
     }
+
+    public String getMapSymbol() {
+        return mapSymbol;
+    }
+
+    public void setMapSymbol(String mapSymbol) {
+        this.mapSymbol = mapSymbol;
+    }
+    
+    
 }

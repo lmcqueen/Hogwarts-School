@@ -1,7 +1,9 @@
 package byui.cit260.hogwartsschool.view;
 
 import byui.cit260.hogwartsschool.control.GameControl;
+import byui.cit260.hogwartsschool.model.House;
 import byui.cit260.hogwartsschool.model.InventoryItem;
+import byui.cit260.hogwartsschool.model.Location;
 import byui.cit260.hogwartsschool.model.Map;
 import hogwartsschool.HogwartsSchool;
 
@@ -81,11 +83,38 @@ class GameMenuView extends View{
     private void viewMap() {
         Map map = HogwartsSchool.currentGame.getMap();
         
+        Location[][] locations = map.getLocations();
+        int rowCount = map.getRowCount();
+        int columnCount = map.getColumnCount();
         
+        System.out.println("View Map");
+        System.out.println("Legend: Halways = ****  First 2 characters of "
+                + "location name = visited Great Hall = XX");
+        Location location;
+        for(int i = 0; i < rowCount; i++){
+            System.out.print(i + 1);
+            System.out.println("========================");
+            for(int j = 0; j < columnCount; j++){
+                System.out.print("|");
+                location = locations[i][j];
+                System.out.print(location.getScene().getMapSymbol());
+            }
+            System.out.println("|");
+        }
+        System.out.println("========================");
     }
 
     private void viewCurrentPoints() {
-        System.out.println("\n*** viewCurrentPoints stub function called ***\n"); }
+        House[] houses = GameControl.getSortedHouses();
+        
+        System.out.println("View House Points");
+        System.out.println("House\t\tPoints");
+        
+        for(House house : houses){
+            System.out.println(house.getName() + "\t" + house.getPoints());
+        }
+        
+    }
 
     private void moveLocation() {
         MoveLocationView moveLocation = new MoveLocationView();
@@ -118,13 +147,11 @@ class GameMenuView extends View{
         InventoryItem[] inventory = GameControl.getSortedInventoryList();
         
         System.out.println("\nList of Inventory Items");
-        System.out.println("Description" + "\t" + "Item Type" + "\t" + "Quantity");
-        
+        System.out.printf("%20s\t%20s\t%20s\t%20s\t\n", "Name","Item Type","Quantity","Description");
+        System.out.println("---------------------------------------------------------------------------------------------------");
         for (InventoryItem inventoryItem : inventory){
-            System.out.print(inventoryItem.getName() + "\t");
-            System.out.print(inventoryItem.getDescription() + "\t");
-            System.out.print(inventoryItem.getItemType()+ "\t");
-            System.out.print(inventoryItem.getQuantity()+ "\t");
+            System.out.printf("%20s\t%20s\t%20s\t%20s\t\n",inventoryItem.getName(),inventoryItem.getItemType(),
+             inventoryItem.getQuantity(),inventoryItem.getDescription());
             
         }
         

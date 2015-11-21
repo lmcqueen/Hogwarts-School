@@ -13,6 +13,20 @@ import java.util.Objects;
  */
 public class InventoryItem implements Serializable{
     
+    public enum Items {
+        wand,
+        hornedSlug,
+        porcupineQuills, 
+        pungousOnions, 
+        snakeFangs, 
+        flobberwormMucus, 
+        gingerRoot, 
+        feather,
+        goblet,
+        cauldron,
+        telescope
+    }
+    
     //class instance variables
     private String name;
     private String description;

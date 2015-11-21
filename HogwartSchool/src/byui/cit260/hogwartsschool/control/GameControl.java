@@ -57,4 +57,24 @@ public class GameControl {
         return inventorySorted;
     }
     
+    public static House[] getSortedHouses(){
+        
+        House[] housesOrigional = HogwartsSchool.currentGame.getHouses();
+        
+        House[] housesSorted = housesOrigional.clone();
+        
+        House tempHouse;
+        for(int i = 1; i < housesSorted.length; i++){
+            for(int j = i; j > 0; j--){
+                if(housesSorted[j].getName().compareToIgnoreCase(housesSorted[j-1].getName()) < 0){
+                    tempHouse = housesSorted[j];
+                    housesSorted[j] = housesSorted[j-1];
+                    housesSorted[j-1] = tempHouse;
+                }
+            }
+        }
+        
+        return housesSorted;
+    }
+    
 }

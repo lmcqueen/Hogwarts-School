@@ -6,6 +6,7 @@ import byui.cit260.hogwartsschool.model.House;
 import byui.cit260.hogwartsschool.model.InventoryItem;
 import byui.cit260.hogwartsschool.model.Location;
 import byui.cit260.hogwartsschool.model.Map;
+import byui.cit260.hogwartsschool.model.Merchandise;
 import hogwartsschool.HogwartsSchool;
 
 /**
@@ -28,6 +29,7 @@ class GameMenuView extends View{
             + "\nN - View notes"
             + "\nX - Take Exam" 
             + "\nH - Help"
+            + "\nS - View Store"
             + "\nR - Return to last screen"
             + "\n-----------------------------------------");
     }
@@ -140,6 +142,19 @@ class GameMenuView extends View{
 
     private void takeExam() {
         System.out.println("\n*** takeExam stub function called ***\n");
+    }
+    
+     private void viewStore() {
+        // convert the enum to an array
+      Merchandise[] merchandiseList = Merchandise.values();
+      
+      for (Merchandise nextMerchandiseItem : merchandiseList) {
+          System.out.println(nextMerchandiseItem.getDescription()+ nextMerchandiseItem.getPrice());
+      }
+      
+        // Go through every item in the list
+            // display the item discriptions and price
+         
     }
 
     private void getHelp() {

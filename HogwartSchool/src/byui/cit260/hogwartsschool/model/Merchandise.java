@@ -32,6 +32,19 @@ public enum Merchandise implements Serializable{
        
         this.description = description;
         this.Price = Price;
+        
+        
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public double getPrice() {
+        return Price;
+    }
+    
+    
+    
     
 }

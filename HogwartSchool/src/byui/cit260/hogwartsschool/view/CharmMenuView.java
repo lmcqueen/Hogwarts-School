@@ -65,12 +65,8 @@ public class CharmMenuView extends View {
     }
 
   private void getInstructions() {
-        
-        GameControl.createNewGame(HogwartsSchool.getPlayer());
-        
-        MoveLocationView locationMenu = new MoveLocationView();
-        locationMenu.display();
-        
+       
+        System.out.println("\n*** getInstructions stub function called ***\n");
     }
 
     private void getSwitch() {

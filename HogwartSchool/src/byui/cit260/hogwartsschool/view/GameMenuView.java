@@ -98,6 +98,7 @@ class GameMenuView extends View{
         System.out.println("Legend: Halways = ****  First 2 characters of "
                 + "location name = visited Great Hall = XX");
         Location location;
+        System.out.println("\n\n  1    2    3    4    5");
         for(int i = 0; i < rowCount; i++){
             System.out.print(i + 1);
             System.out.println("========================");

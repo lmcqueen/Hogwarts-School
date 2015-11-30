@@ -5,12 +5,15 @@
  */
 package byui.cit260.hogwartsschool.control;
 
+import byui.cit260.hogwartsschool.exceptions.MapControlException;
 import byui.cit260.hogwartsschool.model.ActivityScene;
 import byui.cit260.hogwartsschool.model.Classroom;
 import byui.cit260.hogwartsschool.model.GreatHall;
 import byui.cit260.hogwartsschool.model.Location;
 import byui.cit260.hogwartsschool.model.Map;
 import byui.cit260.hogwartsschool.model.Scene;
+import hogwartsschool.HogwartsSchool;
+import java.awt.Point;
 
 /**
  *
@@ -221,5 +224,16 @@ public class MapControl {
         MapControl.assignSceneLocations(map, scenes);
         
         return map;
+    }
+    
+    public static void movePlayer(Point coordinates) throws MapControlException {
+        
+        Map map = HogwartsSchool.currentGame.getMap();
+        int row = coordinates.x-1;
+        int column = coordinates.y-1;
+        
+        if(row < 0 || column < 0 || row >= map.getRowCount() || column >= map.getColumnCount()){
+            throw new MapControlException("Cannot move player to location because it is outside the bounds of the map");
+        }
     }
 }

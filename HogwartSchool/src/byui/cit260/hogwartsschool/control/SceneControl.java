@@ -5,6 +5,8 @@
  */
 package byui.cit260.hogwartsschool.control;
 
+import byui.cit260.hogwartsschool.exceptions.SceneControlException;
+
 /**
  *
  * @author lmcqueen and Johnson
@@ -12,14 +14,14 @@ package byui.cit260.hogwartsschool.control;
 public class SceneControl {
 
    //Group assignmnet
-   public static double appartentMagnitude (double magnitude, double distance){
+   public static double appartentMagnitude (double magnitude, double distance) throws SceneControlException {
    
        if (magnitude > 50 || magnitude < -50) {
-		return -999999;
+            throw new SceneControlException("Cannot have a magnitude greater than 50 or less than -50");
         }
        
 	if (distance < 1) {
-		return -999999;
+            throw new SceneControlException("Cannot have a distance under 1");
         }
         
         double apparentMagnitude;
@@ -30,10 +32,10 @@ public class SceneControl {
    }
    
    //Leah McQueen Individual Assignemnt
-   public static double gallonsCauldronHolds (double diameter, double depth) {
+   public static double gallonsCauldronHolds (double diameter, double depth) throws SceneControlException {
        
         if (diameter < 1 || depth < 1) {
-            return -1;
+            throw new SceneControlException("Cannot have a distance or depth under 1");
         }
        
         double gallons; 

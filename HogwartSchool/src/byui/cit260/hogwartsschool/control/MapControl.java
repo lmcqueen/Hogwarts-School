@@ -23,14 +23,6 @@ public class MapControl {
     
     private static Scene[] scenes = new Scene[25];
     
-    public static void setPlayerLocation (String location){
-        
-        if(location == null) {
-            System.out.println("Could not change the location");
-            return;
-        }
-    }
-    
     private static Scene[] createScenes(){
         
         Scene hallwayHarry = new Scene();

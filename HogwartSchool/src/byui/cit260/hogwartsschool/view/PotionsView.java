@@ -6,6 +6,7 @@
 package byui.cit260.hogwartsschool.view;
 
 import byui.cit260.hogwartsschool.control.SceneControl;
+import byui.cit260.hogwartsschool.exceptions.SceneControlException;
 
 /**
  *
@@ -40,56 +41,48 @@ public class PotionsView extends View {
             System.out.println("\nDiameter: ");
             diameter = this.getInput();
 
-            if (this.doAction(diameter)) {
+            try {
                 diameterNum = Double.parseDouble(diameter);
-            } else {
+            } catch(NumberFormatException nf) {
+                System.out.println("You must enter a valid number. Please try again. ");
                 continue;
             }
 
             System.out.println("\nDepth: ");
             depth = this.getInput();
-            if (this.doAction(depth)) {
+            try {
                 depthNum = Double.parseDouble(depth);
-            } else {
+            } catch(NumberFormatException nf){
+                System.out.println("You must enter a valid number. Please try again. ");
                 continue;
             }
 
-            this.Calculate(diameterNum, depthNum);
-            done = true;
+            Double[] calculate = {diameterNum, depthNum};
+            
+            if(this.doAction(calculate)){
+                done = true;
+            }
 
         } while (!done);
     }
   
     @Override 
     public boolean doAction(Object obj) {
-        String input = (String)obj;
-        double value; 
-        //Check input
-        //IF input is a number THEN Convert the string to a double
-            if (input.matches("[0-9]+")){
-                value = Double.parseDouble(input);
-            }
-            //ELSE IF the user did not input a value greater or equal to one THEN DISPLAY an invalid message and CONTINUE
-            else{
-                System.out.println("*** Enter a number greater or equal to one. ***");
-                return false;
-            }
-            
-            //IF the user did not enter a number THEN DISPLAY an invalid input message
-            if(value < 1){
-                System.out.println("*** Enter a number greater than one. ***");
-                return false;
-            }
+        
+        Double[] calculation = (Double[]) obj;
+        
+        try{
+            double calculate = SceneControl.gallonsCauldronHolds(calculation[0], calculation[1]);
+        
+            //DISPLAY result
+            System.out.println("Your cauldron will hold " + calculate + " gallons of water");
+        } catch (SceneControlException me){
+            System.out.println(me.getMessage());
+            return false;
+        }   
             
         return true;
        
-    }
-    
-    private void Calculate (double diameter, double depth){
-         double calculate = SceneControl.gallonsCauldronHolds(diameter, depth);
-        
-        //DISPLAY result
-        System.out.println("Your cauldron will hold " + calculate + " gallons of water");
     }
     
 }

@@ -17,6 +17,8 @@ public class MainMenuView extends View {
             + "\nG - Get Saved Game"
             + "\nH - Get Help"
             + "\nS - Save Game" 
+                
+                +"\nTemporary menus for testing: P-Potions F-Flying A-Astronomy"
             + "\nE - Exit"
             + "\n-----------------------------------------");
     }
@@ -45,6 +47,17 @@ public class MainMenuView extends View {
                 break;
             case 'S': 
                 this.saveGame();
+                break;
+                
+                //TEMPORARY FOR TESTING MUST FIX!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            case 'P':
+                this.tempPotions();
+                break;
+            case 'A':
+                this.tempAstronomy();
+                break;
+            case 'F':
+                this.tempFlying();
                 break;
             case 'E':
                 return true;
@@ -76,6 +89,26 @@ public class MainMenuView extends View {
      
     private void saveGame() {
         System.out.println("\n*** saveGame stub function called ***\n");
+    }
+    
+    
+    
+    
+    
+
+    private void tempPotions() {
+        PotionsMenuView potionsMenu = new PotionsMenuView();
+        potionsMenu.display();
+    }
+
+    private void tempAstronomy() {
+       AstronomyMenuView astronomyMenu = new AstronomyMenuView();
+       astronomyMenu.display();
+    }
+
+    private void tempFlying() {
+       FlyingMenuView flying = new FlyingMenuView();
+       flying.display();
     }
     
 }

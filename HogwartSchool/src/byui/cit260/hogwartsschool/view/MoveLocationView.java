@@ -22,7 +22,7 @@ public class MoveLocationView extends View{
     @Override
     public void display() {
         //DISPLAY prompt
-        System.out.println(getPromptMessage());
+        this.console.println(getPromptMessage());
         boolean done = false;
         String row;
         String column;
@@ -31,26 +31,26 @@ public class MoveLocationView extends View{
 
         do {
             //GET cauldron depth and diameter
-            System.out.println("\nEnter the row you would like to go to: ");
+            this.console.println("\nEnter the row you would like to go to: ");
             row = this.getInput();
             
             try{
                rowNum = Double.parseDouble(row); 
             }
             catch(NumberFormatException nf){
-                System.out.println("You must enter a valid number. Please try again. /n");
+                ErrorView.display(this.getClass().getName(), "You must enter a valid number. Please try again. /n");
                 continue;
             }
             
             
-            System.out.println("\nEnter the column you would like to go to: ");
+            this.console.println("\nEnter the column you would like to go to: ");
             column = this.getInput();
             
             try{
                columnNum = Double.parseDouble(column); 
             }
             catch(NumberFormatException nf){
-                System.out.println("You must enter a valid number. Please try again. /n");
+                ErrorView.display(this.getClass().getName(),"You must enter a valid number. Please try again. /n");
                 continue;
             }
  
@@ -72,7 +72,7 @@ public class MoveLocationView extends View{
            MapControl.movePlayer(point);
        }
        catch(MapControlException me){
-           System.out.println(me.getMessage());
+           ErrorView.display(this.getClass().getName(), me.getMessage());
            return false;
        }
        

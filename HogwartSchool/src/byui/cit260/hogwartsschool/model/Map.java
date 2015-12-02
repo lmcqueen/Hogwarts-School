@@ -5,6 +5,7 @@
  */
 package byui.cit260.hogwartsschool.model;
 
+import byui.cit260.hogwartsschool.view.ErrorView;
 import java.io.Serializable;
 /**
  *
@@ -19,7 +20,7 @@ public class Map implements Serializable{
     public Map(int rowCount, int columnCount) {
         
         if(rowCount < 1 || columnCount < 1){
-            System.out.println("You need more than 0 rows or columns");
+            ErrorView.display(this.getClass().getName(),"You need more than 0 rows or columns");
             return;
         }
         

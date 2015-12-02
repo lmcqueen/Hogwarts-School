@@ -36,7 +36,7 @@ public class AstronomyMenuView extends View{
         String value = (String) obj;
         value = value.toUpperCase();
         if(value.length() > 1){
-            System.out.println("\n *** Invalid Selection. Enter only a single character. ***\n");
+            this.console.println("\n *** Invalid Selection. Enter only a single character. ***\n");
             return false;
         }
         
@@ -52,7 +52,7 @@ public class AstronomyMenuView extends View{
             case 'F':
                 return true;
             default:
-                System.out.println("\n*** Invalid selection. Try again. ***");
+                ErrorView.display(this.getClass().getName(), "\n*** Invalid selection. Try again. ***");
                 break;  
         }
         return false;
@@ -60,7 +60,7 @@ public class AstronomyMenuView extends View{
 
     private void displayInstructions() {
         
-        System.out.println("displayInstructions() stub function called ");
+        this.console.println("displayInstructions() stub function called ");
     }
 
     private void calculate() {

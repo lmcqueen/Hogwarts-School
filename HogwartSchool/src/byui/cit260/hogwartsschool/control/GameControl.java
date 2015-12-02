@@ -41,7 +41,7 @@ public class GameControl {
 
     public static InventoryItem[] getSortedInventoryList() {
         
-        InventoryItem[] origionalInventoryList = HogwartsSchool.currentGame.getInventory();
+        InventoryItem[] origionalInventoryList = HogwartsSchool.getCurrentGame().getInventory();
         
         InventoryItem[] inventorySorted = origionalInventoryList.clone();
         
@@ -61,7 +61,7 @@ public class GameControl {
     
     public static House[] getSortedHouses(){
         
-        House[] housesOrigional = HogwartsSchool.currentGame.getHouses();
+        House[] housesOrigional = HogwartsSchool.getCurrentGame().getHouses();
         
         House[] housesSorted = housesOrigional.clone();
         
@@ -82,7 +82,7 @@ public class GameControl {
     
     public static Course[] getSortedCourses(){
         
-        Course[] coursesOrigional = HogwartsSchool.currentGame.getCourses();
+        Course[] coursesOrigional = HogwartsSchool.getCurrentGame().getCourses();
         
         Course[] coursesSorted = coursesOrigional.clone();
         

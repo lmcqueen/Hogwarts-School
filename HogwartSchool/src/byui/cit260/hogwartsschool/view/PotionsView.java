@@ -29,7 +29,7 @@ public class PotionsView extends View {
     @Override
     public void display() {
         //DISPLAY prompt
-        System.out.println(getPromptMessage());
+        this.console.println(getPromptMessage());
         boolean done = false;
         String diameter;
         String depth;
@@ -38,22 +38,22 @@ public class PotionsView extends View {
 
         do {
             //GET cauldron depth and diameter
-            System.out.println("\nDiameter: ");
+            this.console.println("\nDiameter: ");
             diameter = this.getInput();
 
             try {
                 diameterNum = Double.parseDouble(diameter);
             } catch(NumberFormatException nf) {
-                System.out.println("You must enter a valid number. Please try again. ");
+                ErrorView.display(this.getClass().getName(), "You must enter a valid number. Please try again. ");
                 continue;
             }
 
-            System.out.println("\nDepth: ");
+            this.console.println("\nDepth: ");
             depth = this.getInput();
             try {
                 depthNum = Double.parseDouble(depth);
             } catch(NumberFormatException nf){
-                System.out.println("You must enter a valid number. Please try again. ");
+                ErrorView.display(this.getClass().getName(), "You must enter a valid number. Please try again. ");
                 continue;
             }
 
@@ -75,9 +75,9 @@ public class PotionsView extends View {
             double calculate = SceneControl.gallonsCauldronHolds(calculation[0], calculation[1]);
         
             //DISPLAY result
-            System.out.println("Your cauldron will hold " + calculate + " gallons of water");
+            this.console.println("Your cauldron will hold " + calculate + " gallons of water");
         } catch (SceneControlException me){
-            System.out.println(me.getMessage());
+            ErrorView.display(this.getClass().getName(), me.getMessage());
             return false;
         }   
             

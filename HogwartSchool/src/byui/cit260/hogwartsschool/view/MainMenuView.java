@@ -17,8 +17,7 @@ public class MainMenuView extends View {
             + "\nG - Get Saved Game"
             + "\nH - Get Help"
             + "\nS - Save Game" 
-                
-                +"\nTemporary menus for testing: P-Potions F-Flying A-Astronomy"
+            +"\nTemporary menus for testing: P-Potions F-Flying A-Astronomy"
             + "\nE - Exit"
             + "\n-----------------------------------------");
     }
@@ -29,7 +28,7 @@ public class MainMenuView extends View {
         String value = (String) obj;
         value = value.toUpperCase();
         if(value.length() > 1){
-            System.out.println("\n *** Invalid Selection. Enter only a single character. ***\n");
+            ErrorView.display(this.getClass().getName(), "\n *** Invalid Selection. Enter only a single character. ***\n");
             return false;
         }
 
@@ -62,7 +61,7 @@ public class MainMenuView extends View {
             case 'E':
                 return true;
             default:
-                System.out.println("\n*** Invalid selection. Try again. ***");
+                ErrorView.display(this.getClass().getName(), "\n*** Invalid selection. Try again. ***");
                 break; 
         } 
         return false;
@@ -78,7 +77,7 @@ public class MainMenuView extends View {
     }
 
     private void getSavedGame() {
-        System.out.println("\n*** getSavedGame stub function called ***\n");
+        this.console.println("\n*** getSavedGame stub function called ***\n");
     }
 
      private void getHelp() {
@@ -88,7 +87,7 @@ public class MainMenuView extends View {
     }
      
     private void saveGame() {
-        System.out.println("\n*** saveGame stub function called ***\n");
+        this.console.println("\n*** saveGame stub function called ***\n");
     }
     
     

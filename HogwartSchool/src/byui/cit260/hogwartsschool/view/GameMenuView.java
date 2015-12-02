@@ -40,7 +40,7 @@ class GameMenuView extends View{
        String value = (String) obj;
         value = value.toUpperCase();
         if(value.length() > 1){
-            System.out.println("\n *** Invalid Selection. Enter only a single character. ***\n");
+            ErrorView.display(this.getClass().getName(), "\n *** Invalid Selection. Enter only a single character. ***\n");
             return false;
         }
         
@@ -80,7 +80,7 @@ class GameMenuView extends View{
             case 'R':
                 return true;
             default:
-                System.out.println("\n*** Invalid selection. Try again. ***");
+                ErrorView.display(this.getClass().getName(), "\n*** Invalid selection. Try again. ***");
                 break;  
         } 
         
@@ -88,38 +88,38 @@ class GameMenuView extends View{
    }
 
     private void viewMap() {
-        Map map = HogwartsSchool.currentGame.getMap();
+        Map map = HogwartsSchool.getCurrentGame().getMap();
         
         Location[][] locations = map.getLocations();
         int rowCount = map.getRowCount();
         int columnCount = map.getColumnCount();
         
-        System.out.println("View Map");
-        System.out.println("Legend: Halways = ****  First 2 characters of "
+        this.console.println("View Map");
+        this.console.println("Legend: Halways = ****  First 2 characters of "
                 + "location name = visited Great Hall = XX");
         Location location;
-        System.out.println("\n\n  1    2    3    4    5");
+        this.console.println("\n\n  1    2    3    4    5");
         for(int i = 0; i < rowCount; i++){
-            System.out.print(i + 1);
-            System.out.println("========================");
+            this.console.print(i + 1);
+            this.console.println("========================");
             for(int j = 0; j < columnCount; j++){
-                System.out.print("|");
+                this.console.print("|");
                 location = locations[i][j];
-                System.out.print(location.getScene().getMapSymbol());
+                this.console.print(location.getScene().getMapSymbol());
             }
-            System.out.println("|");
+            this.console.println("|");
         }
-        System.out.println("========================");
+        this.console.println("========================");
     }
 
     private void viewCurrentPoints() {
         House[] houses = GameControl.getSortedHouses();
         
-        System.out.println("View House Points");
-        System.out.println("House\t\tPoints");
+        this.console.println("View House Points");
+        this.console.println("House\t\tPoints");
         
         for(House house : houses){
-            System.out.println(house.getName() + "\t" + house.getPoints());
+            this.console.println(house.getName() + "\t" + house.getPoints());
         }
         
     }
@@ -130,19 +130,19 @@ class GameMenuView extends View{
     }
 
     private void exploreArea() {
-        System.out.println("\n*** exploreArea stub function called ***\n");
+        this.console.println("\n*** exploreArea stub function called ***\n");
     }
 
     private void viewNotes() {
-        System.out.println("\n*** viewNotes stub function called ***\n");
+        this.console.println("\n*** viewNotes stub function called ***\n");
     }
 
     private void takeNotes() {
-        System.out.println("\n*** takeNotes stub function called ***\n");
+        this.console.println("\n*** takeNotes stub function called ***\n");
     }
 
     private void takeExam() {
-        System.out.println("\n*** takeExam stub function called ***\n");
+        this.console.println("\n*** takeExam stub function called ***\n");
     }
     
      private void viewStore() {
@@ -150,7 +150,7 @@ class GameMenuView extends View{
       Merchandise[] merchandiseList = Merchandise.values();
       
       for (Merchandise nextMerchandiseItem : merchandiseList) {
-          System.out.println(nextMerchandiseItem.getDescription()+ nextMerchandiseItem.getPrice());
+          this.console.println(nextMerchandiseItem.getDescription()+ nextMerchandiseItem.getPrice());
       }
       
         // Go through every item in the list
@@ -167,11 +167,11 @@ class GameMenuView extends View{
     private void viewInventory() {
         InventoryItem[] inventory = GameControl.getSortedInventoryList();
         
-        System.out.println("\nList of Inventory Items");
-        System.out.printf("%20s\t%20s\t%20s\t%20s\t\n", "Name","Item Type","Quantity","Description");
-        System.out.println("---------------------------------------------------------------------------------------------------");
+        this.console.println("\nList of Inventory Items");
+        this.console.printf("%20s\t%20s\t%20s\t%20s\t\n", "Name","Item Type","Quantity","Description");
+        this.console.println("---------------------------------------------------------------------------------------------------");
         for (InventoryItem inventoryItem : inventory){
-            System.out.printf("%20s\t%20s\t%20s\t%20s\t\n",inventoryItem.getName(),inventoryItem.getItemType(),
+            this.console.printf("%20s\t%20s\t%20s\t%20s\t\n",inventoryItem.getName(),inventoryItem.getItemType(),
              inventoryItem.getQuantity(),inventoryItem.getDescription());
             
         }
@@ -181,10 +181,10 @@ class GameMenuView extends View{
     private void viewCourses() {
         Course[] courses = GameControl.getSortedCourses();
         
-        System.out.println("View All Courses:");
+        this.console.println("View All Courses:");
         
         for(Course course : courses){
-            System.out.println(course.getDescription());
+            this.console.println(course.getDescription());
         }
     }
 

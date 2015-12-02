@@ -220,7 +220,7 @@ public class MapControl {
     
     public static void movePlayer(Point coordinates) throws MapControlException {
         
-        Map map = HogwartsSchool.currentGame.getMap();
+        Map map = HogwartsSchool.getCurrentGame().getMap();
         int row = coordinates.x-1;
         int column = coordinates.y-1;
         

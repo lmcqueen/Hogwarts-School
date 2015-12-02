@@ -51,7 +51,7 @@ public class StartProgramView extends View{
     @Override
     public void display(){
         
-        System.out.println(this.getPromptMessage());
+        this.console.println(this.getPromptMessage());
         
         String playerName = this.getInput();
         Player player = ProgramControl.createPlayer(playerName);
@@ -66,10 +66,10 @@ public class StartProgramView extends View{
     public boolean doAction(Object obj){
         Player player = (Player) obj;
         
-        System.out.println("\n\n================================================");
-        System.out.println("\tWelcome to Hogwarts " + player.getName());
-        System.out.println("\tWe hope you enjoy your first year here.");
-        System.out.println("================================================");
+        this.console.println("\n\n================================================");
+        this.console.println("\tWelcome to Hogwarts " + player.getName());
+        this.console.println("\tWe hope you enjoy your first year here.");
+        this.console.println("================================================");
         
         return true;
     } 

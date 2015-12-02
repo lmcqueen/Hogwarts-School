@@ -32,7 +32,7 @@ public class HelpMenuView extends View {
         String value = (String) obj;
         value = value.toUpperCase();
         if(value.length() > 1){
-            System.out.println("\n *** Invalid Selection. Enter only a single character. ***\n");
+            ErrorView.display(this.getClass().getName(), "\n *** Invalid Selection. Enter only a single character. ***\n");
             return false;
         }
 
@@ -57,7 +57,7 @@ public class HelpMenuView extends View {
             case 'R':
                 return true;
             default:
-                System.out.println("\n*** Invalid selection. Try again. ***");
+                ErrorView.display(this.getClass().getName(),"\n*** Invalid selection. Try again. ***");
                 break;  
         } 
         
@@ -65,22 +65,22 @@ public class HelpMenuView extends View {
    }
 
     private void displayGoalHelp() {
-        System.out.println("*** getGoalHelp stub function called. ***");
+        this.console.println("*** getGoalHelp stub function called. ***");
     }
 
     private void displayMoveHelp() {
-        System.out.println("*** getMoveHelp stub function called. ***");
+        this.console.println("*** getMoveHelp stub function called. ***");
     }
 
     private void getPointsHelp() {
-        System.out.println("*** getPointsHelp stub function called. ***");}
+        this.console.println("*** getPointsHelp stub function called. ***");}
 
     private void getHouseHelp() {
-        System.out.println("*** getHouseHelp stub function called. ***");
+        this.console.println("*** getHouseHelp stub function called. ***");
     }
 
     private void getNotesHelp() {
-        System.out.println("*** getNotesHelp stub function called. ***");
+        this.console.println("*** getNotesHelp stub function called. ***");
     }
 
     

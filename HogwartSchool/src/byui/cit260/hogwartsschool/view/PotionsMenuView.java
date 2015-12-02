@@ -30,7 +30,7 @@ public class PotionsMenuView extends View {
         String value = (String) obj;
         value = value.toUpperCase();
         if(value.length() > 1){
-            System.out.println("\n *** Invalid Selection. Enter only a single character. ***\n");
+            ErrorView.display(this.getClass().getName(), "\n *** Invalid Selection. Enter only a single character. ***\n");
             return false;
         }
         
@@ -62,7 +62,7 @@ public class PotionsMenuView extends View {
                 return true;
             //OTHERWISE: DISPLAY “Invalid selection” 
             default:
-                System.out.println("\n*** Invalid selection. Try again. ***");
+                ErrorView.display(this.getClass().getName(), "\n*** Invalid selection. Try again. ***");
                 break;  
         }
         
@@ -70,15 +70,15 @@ public class PotionsMenuView extends View {
     }
     
      private void displayInstructions() {
-        System.out.println("Stub function for diplaying instructions.");
+        this.console.println("Stub function for diplaying instructions.");
      }
 
     private void addSpider() {
-        System.out.println("Stub function for addSpider.");
+        this.console.println("Stub function for addSpider.");
     }
 
     private void addNewts() {
-        System.out.println("Stub function for addNewts.");
+        this.console.println("Stub function for addNewts.");
      }
     
     private void addWater() {
@@ -87,6 +87,6 @@ public class PotionsMenuView extends View {
     }
 
     private void mix() {
-       System.out.println("Stub function for mixing the potion.");
+       this.console.println("Stub function for mixing the potion.");
     }
 }

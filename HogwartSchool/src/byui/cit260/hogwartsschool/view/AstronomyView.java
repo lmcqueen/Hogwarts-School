@@ -27,7 +27,7 @@ public class AstronomyView extends View {
     @Override
     public void display() {
         //DISPLAY prompt
-        System.out.println(getPromptMessage());
+        this.console.println(getPromptMessage());
         boolean done = false;
         String distance;
         String absoluteMagnitude;
@@ -36,22 +36,22 @@ public class AstronomyView extends View {
 
         do {
             //GET cauldron depth and diameter
-            System.out.println("\nDistance: ");
+            this.console.println("\nDistance: ");
             distance = this.getInput();
 
             try{
                 distanceNum = Double.parseDouble(distance);
             }  catch(NumberFormatException nf){
-                System.out.println("You must enter a valid number. Please try again.");
+                ErrorView.display(this.getClass().getName(), "You must enter a valid number. Please try again.");
                 continue;
             }
 
-            System.out.println("\nAbsolute Magnitude: ");
+            this.console.println("\nAbsolute Magnitude: ");
             absoluteMagnitude = this.getInput();
             try {
                 absoluteMagnitudeNum = Double.parseDouble(absoluteMagnitude);
             } catch(NumberFormatException nf){
-                System.out.println("You must enter a valid number. Please try again. ");
+                ErrorView.display(this.getClass().getName(), "You must enter a valid number. Please try again. ");
                 continue;
             }
 
@@ -71,10 +71,10 @@ public class AstronomyView extends View {
         
         try{ 
             double calculate = SceneControl.appartentMagnitude(calculation[0], calculation[1]);
-            System.out.println("Your apparent magnitude is " +  calculate);
+            this.console.println("Your apparent magnitude is " +  calculate);
         }
         catch(SceneControlException me){
-            System.out.println(me.getMessage());
+            ErrorView.display(this.getClass().getName(), me.getMessage());
             return false;
         }   
         

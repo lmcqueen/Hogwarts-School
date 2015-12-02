@@ -5,57 +5,64 @@
  */
 package byui.cit260.hogwartsschool.view;
 
-import java.util.Scanner;
+import hogwartsschool.HogwartsSchool;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 
 /**
  *
  * @author lmcqueen and Johnson
  */
 public abstract class View implements ViewInterface {
-      
+
     private String promptMessage;
-      
-      public View(String promptMessage){
-          this.promptMessage = promptMessage;
-      }
-      
-      @Override
-      public void display() {
-        
+
+    protected final BufferedReader keyboard = HogwartsSchool.getInFile();
+    protected final PrintWriter console = HogwartsSchool.getOutFile();
+
+    public View(String promptMessage) {
+        this.promptMessage = promptMessage;
+    }
+
+    @Override
+    public void display() {
+
         String value = "";
         boolean done = false;
-        
-        do{
-            System.out.println(this.promptMessage);
+
+        do {
+            this.console.println(this.promptMessage);
             value = this.getInput();
             done = this.doAction(value);
-           
-        }while(!done);
-                
+
+        } while (!done);
+
     }
-    
-      @Override
+
+    @Override
     public String getInput() {
-        
+
         boolean valid = false;
-        Scanner keyboard = new Scanner(System.in);
+
         String value = null;
-        
-        while(!valid){
-            System.out.println("Please enter you input:");
-            
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if(value.length() < 1) {
-                System.out.println("\n *** Invalid Selection. Please enter a selection. ***\n");
-                System.out.println(this.promptMessage);
-                continue;
+        try {
+            while (!valid) {
+
+                value = keyboard.readLine();
+                value = value.trim();
+
+                if (value.length() < 1) {
+                    ErrorView.display(this.getClass().getName(), "\n *** Invalid Selection. Please enter a selection. ***\n");
+                    continue;
+                }
+
+                break;
             }
-            
-            break;
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(),"Error reading input: " + e.getMessage());
+            return null;
         }
-       
+
         return value;
     }
 
@@ -66,6 +73,5 @@ public abstract class View implements ViewInterface {
     public void setPromptMessage(String promptMessage) {
         this.promptMessage = promptMessage;
     }
-    
-}
 
+}

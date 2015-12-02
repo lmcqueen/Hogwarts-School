@@ -5,6 +5,7 @@
  */
 package byui.cit260.hogwartsschool.control;
 
+import byui.cit260.hogwartsschool.exceptions.ProgramControlException;
 import byui.cit260.hogwartsschool.model.Player;
 import hogwartsschool.HogwartsSchool;
 
@@ -17,10 +18,11 @@ public class ProgramControl {
     public ProgramControl(){
     }
     
-    public static Player createPlayer(String playerName){
+    public static Player createPlayer(String playerName)throws ProgramControlException { 
         
         if(playerName == null){
-            return null;
+            throw new ProgramControlException("The player name is invalid. "
+                    + "input a valid name.");
         }
         
         Player player = new Player();

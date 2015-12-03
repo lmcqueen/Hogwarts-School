@@ -87,7 +87,9 @@ public class MainMenuView extends View {
     }
      
     private void saveGame() {
-        this.console.println("\n*** saveGame stub function called ***\n");
+        this.console.println("Enter the filepath of where you would like to save your game.");
+        
+        String filePath = this.getInput();
     }
     
     

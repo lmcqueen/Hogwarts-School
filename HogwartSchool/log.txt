@@ -1,0 +1,6 @@
+byui.cit260.hogwartsschool.view.PotionsMenuView - 
+*** Invalid selection. Try again. ***
+byui.cit260.hogwartsschool.view.PotionsMenuView - 
+ *** Invalid Selection. Enter only a single character. ***
+
+byui.cit260.hogwartsschool.view.PotionsView - Cannot have a distance or depth under 1

@@ -1,7 +1,11 @@
 package byui.cit260.hogwartsschool.view;
 
 import byui.cit260.hogwartsschool.control.ProgramControl;
+import byui.cit260.hogwartsschool.exceptions.ProgramControlException;
 import byui.cit260.hogwartsschool.model.Player;
+import static hogwartsschool.HogwartsSchool.player;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -64,13 +68,23 @@ public class StartProgramView extends View{
     
     @Override
     public boolean doAction(Object obj){
-        Player player = (Player) obj;
+        String playerName = (String) obj;
         
         this.console.println("\n\n================================================");
         this.console.println("\tWelcome to Hogwarts " + player.getName());
         this.console.println("\tWe hope you enjoy your first year here.");
         this.console.println("================================================");
         
+        try {
+            //call control function to save the players name
+            ProgramControl.createPlayer(playerName);
+        } catch (ProgramControlException ex) {
+            Logger.getLogger(StartProgramView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        MainMenuView mainMenu = new MainMenuView();
+        mainMenu.display();
+
         return true;
     } 
             

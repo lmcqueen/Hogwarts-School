@@ -11,6 +11,7 @@ package byui.cit260.hogwartsschool.view;
  * @author Johnson
  */
 public class FlyingView extends View{
+    private boolean message;
     
      public FlyingView() {
         super("Welcome to flying menu veiw enter a string");
@@ -28,7 +29,7 @@ public class FlyingView extends View{
 
         do {
 
-            System.out.println("\nDistance: ");
+            this.console.println(this.message); // "\nDistance: ")
              distance = this.getInput();
             if (this.doAction(distance)) {
                 distanceNum = Double.parseDouble(distance);
@@ -36,7 +37,7 @@ public class FlyingView extends View{
                 continue;
             }
 
-            System.out.println("\nTime: ");
+            this.console.println("enter a valid Time: ");
             time = this.getInput();
             if (this.doAction(time)) {
                 timeNum = Double.parseDouble(time);
@@ -61,13 +62,13 @@ public class FlyingView extends View{
             }
             //ELSE IF the user did not input a value greater or equal to one THEN DISPLAY an invalid message and CONTINUE
             else{
-                System.out.println("*** Enter a number greater or equal to one. ***");
+                this.console.println("*** Enter a number greater or equal to one. ***");
                 return false;
             }
             
             //IF the user did not enter a number THEN DISPLAY an invalid input message
             if(value < 1){
-                System.out.println("*** Enter a number greater than one. ***");
+                this.console.println("*** Enter a number greater than one. ***");
                 return false;
             }
             
@@ -79,7 +80,7 @@ public class FlyingView extends View{
          double calculate = byui.cit260.hogwartsschool.control.SceneControl.averageAcceleration(distance, time);
         
         //DISPLAY result
-        System.out.println("Your speed is " + calculate + " miles per hour");
+        this.console.println("Your speed is " + calculate + " miles per hour");
     }
     
 }

@@ -48,13 +48,13 @@ public class SceneControl {
    
    // Individual assignment of Johnson.
 
-    public static double averageAcceleration (double distance, double time) {
+    public static double averageAcceleration (double distance, double time) throws SceneControlException {
     
      
         if (distance < 0 || time < 1) {
-            return -1;
+            throw new SceneControlException("Distance and time cannot be less than 1");
         }
-        else{        
+          
                 
        
 	double averageAcceleration;
@@ -62,7 +62,7 @@ public class SceneControl {
 
 	return averageAcceleration;
 
-    }
+  
     }
    
    

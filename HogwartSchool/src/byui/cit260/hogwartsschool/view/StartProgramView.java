@@ -62,7 +62,7 @@ public class StartProgramView extends View{
         
         }catch (ProgramControlException ex) {
             ErrorView.display(this.getClass().getName(), ex.getMessage());
-        }
+        } 
         
         MainMenuView mainMenu = new MainMenuView();
         mainMenu.display();

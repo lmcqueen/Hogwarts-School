@@ -5,6 +5,10 @@
  */
 package byui.cit260.hogwartsschool.view;
 
+import byui.cit260.hogwartsschool.exceptions.SceneControlException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
  *
@@ -77,10 +81,16 @@ public class FlyingView extends View{
     }
     
     private void Calculate (double distance, double time){
-         double calculate = byui.cit260.hogwartsschool.control.SceneControl.averageAcceleration(distance, time);
-        
-        //DISPLAY result
+         double calculate;
+        try {
+            calculate = byui.cit260.hogwartsschool.control.SceneControl.averageAcceleration(distance, time);
+             //DISPLAY result
         this.console.println("Your speed is " + calculate + " miles per hour");
+        } catch (SceneControlException ex) {
+            ErrorView.display(this.getClass().getName(),ex.getMessage());
+        }
+        
+       
     }
     
 }

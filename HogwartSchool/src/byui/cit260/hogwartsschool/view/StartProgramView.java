@@ -3,7 +3,6 @@ package byui.cit260.hogwartsschool.view;
 import byui.cit260.hogwartsschool.control.ProgramControl;
 import byui.cit260.hogwartsschool.exceptions.ProgramControlException;
 import byui.cit260.hogwartsschool.model.Player;
-import static hogwartsschool.HogwartsSchool.player;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -58,9 +57,14 @@ public class StartProgramView extends View{
         this.console.println(this.getPromptMessage());
         
         String playerName = this.getInput();
-        Player player = ProgramControl.createPlayer(playerName);
+        Player player = null;
+        try {
+            player = ProgramControl.createPlayer(playerName);
+        } catch (ProgramControlException ex) {
+            Logger.getLogger(StartProgramView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        this.doAction(player); 
+        boolean doAction = this.doAction(player); 
         
         MainMenuView mainMenu = new MainMenuView();
         mainMenu.display();

@@ -6,8 +6,6 @@
 package byui.cit260.hogwartsschool.view;
 
 import byui.cit260.hogwartsschool.exceptions.SceneControlException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 /**
@@ -15,7 +13,6 @@ import java.util.logging.Logger;
  * @author Johnson
  */
 public class FlyingView extends View{
-    private boolean message;
     
      public FlyingView() {
         super("Welcome to flying menu veiw enter a string");
@@ -24,7 +21,7 @@ public class FlyingView extends View{
     @Override
     public void display() {
         //DISPLAY prompt
-        System.out.println(getPromptMessage());
+        this.console.println(getPromptMessage());
         boolean done = false;
         String distance;
         String time;
@@ -32,8 +29,6 @@ public class FlyingView extends View{
         double timeNum;
 
         do {
-
-            this.console.println(this.message); // "\nDistance: ")
              distance = this.getInput();
             if (this.doAction(distance)) {
                 distanceNum = Double.parseDouble(distance);
@@ -66,13 +61,13 @@ public class FlyingView extends View{
             }
             //ELSE IF the user did not input a value greater or equal to one THEN DISPLAY an invalid message and CONTINUE
             else{
-                this.console.println("*** Enter a number greater or equal to one. ***");
+                ErrorView.display(this.getClass().getName(),"*** Enter a number greater or equal to one. ***");
                 return false;
             }
             
             //IF the user did not enter a number THEN DISPLAY an invalid input message
             if(value < 1){
-                this.console.println("*** Enter a number greater than one. ***");
+                ErrorView.display(this.getClass().getName(),"*** Enter a number greater than one. ***");
                 return false;
             }
             

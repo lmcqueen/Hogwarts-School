@@ -4,8 +4,6 @@ import byui.cit260.hogwartsschool.control.GameControl;
 import byui.cit260.hogwartsschool.model.Course;
 import byui.cit260.hogwartsschool.model.House;
 import byui.cit260.hogwartsschool.model.InventoryItem;
-import byui.cit260.hogwartsschool.model.Location;
-import byui.cit260.hogwartsschool.model.Map;
 import byui.cit260.hogwartsschool.model.Merchandise;
 import hogwartsschool.HogwartsSchool;
 
@@ -20,6 +18,7 @@ class GameMenuView extends View{
             + "\n|               Game Menu                      |"
             + "\n------------------------------------------------"
             + "\nV - View map" 
+            + "\nF - Print Map to File"
             + "\nP - View current points" 
             + "\nI - View Inventory"   
             + "\nC - View All Courses"    
@@ -51,6 +50,9 @@ class GameMenuView extends View{
         switch (selection) {
             case 'V': 
                 this.viewMap();
+                break;
+            case 'F':
+                this.printMapToFile();
                 break;
             case 'P':
                 this.viewCurrentPoints();
@@ -93,28 +95,8 @@ class GameMenuView extends View{
    }
 
     private void viewMap() {
-        Map map = HogwartsSchool.getCurrentGame().getMap();
-        
-        Location[][] locations = map.getLocations();
-        int rowCount = map.getRowCount();
-        int columnCount = map.getColumnCount();
-        
-        this.console.println("View Map");
-        this.console.println("Legend: Halways = ****  First 2 characters of "
-                + "location name = visited Great Hall = XX");
-        Location location;
-        this.console.println("\n\n  1    2    3    4    5");
-        for(int i = 0; i < rowCount; i++){
-            this.console.print(i + 1);
-            this.console.println("========================");
-            for(int j = 0; j < columnCount; j++){
-                this.console.print("|");
-                location = locations[i][j];
-                this.console.print(location.getScene().getMapSymbol());
-            }
-            this.console.println("|");
-        }
-        this.console.println("========================");
+        MapView map = new MapView();
+        map.printMap();
     }
 
     private void viewCurrentPoints() {
@@ -130,7 +112,7 @@ class GameMenuView extends View{
     }
 
     private void moveLocation() {
-        MoveLocationView moveLocation = new MoveLocationView();
+        MapView moveLocation = new MapView();
         moveLocation.display();
     }
 
@@ -195,6 +177,12 @@ class GameMenuView extends View{
     
     private void getTemp(){
         this.console.println(HogwartsSchool.getCurrentGame().getPlayer().getName());
+    }
+
+    private void printMapToFile() {
+        MapPrintView mapPrint = new MapPrintView();
+        mapPrint.display();
+        
     }
 
 }

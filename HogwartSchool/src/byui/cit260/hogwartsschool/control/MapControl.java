@@ -89,82 +89,82 @@ public class MapControl {
         potions.setDescription("Potions classroom");
         potions.setBlocked(false);
         potions.setVisited(false);
-        potions.setMapSymbol(" PO ");
+        potions.setMapSymbol(" ?? ");
         MapControl.scenes[Scene.SceneNames.potions.ordinal()] = potions;
         
         Classroom charms = new Classroom();
         charms.setDescription("Charms classroom");
         charms.setBlocked(false);
         charms.setVisited(false);
-        charms.setMapSymbol(" CH ");
+        charms.setMapSymbol(" ?? ");
         MapControl.scenes[Scene.SceneNames.charms.ordinal()] = charms;
         
         Classroom ancientRune = new Classroom();
         ancientRune.setDescription("Ancient Runes Classroom");
         ancientRune.setBlocked(false);
         ancientRune.setVisited(false);
-        ancientRune.setMapSymbol(" AN ");
+        ancientRune.setMapSymbol(" ?? ");
         MapControl.scenes[Scene.SceneNames.ancient.ordinal()] = ancientRune;
         
         Classroom defense = new Classroom();
         defense.setDescription("Defense Against the Dark Arts Classroom");
         defense.setBlocked(false);
         defense.setVisited(false);
-        defense.setMapSymbol(" DE ");
+        defense.setMapSymbol(" ?? ");
         MapControl.scenes[Scene.SceneNames.defense.ordinal()] = defense;
         
         Classroom astronomy = new Classroom();
         astronomy.setDescription("Astronomy Classroom");
         astronomy.setBlocked(false);
         astronomy.setVisited(false);
-        astronomy.setMapSymbol(" AS ");
+        astronomy.setMapSymbol(" ?? ");
         MapControl.scenes[Scene.SceneNames.astronomy.ordinal()] = astronomy;
         
         Classroom transfiguration = new Classroom();
         transfiguration.setDescription("Transfiguration Classroom");
         transfiguration.setBlocked(false);
         transfiguration.setVisited(false);
-        transfiguration.setMapSymbol(" TR ");
+        transfiguration.setMapSymbol(" ?? ");
         MapControl.scenes[Scene.SceneNames.transfiguration.ordinal()] = transfiguration;
         
         Classroom divination = new Classroom();
         divination.setDescription("Divination Classroom");
         divination.setBlocked(false);
         divination.setVisited(false);
-        divination.setMapSymbol(" DI ");
+        divination.setMapSymbol(" ?? ");
         MapControl.scenes[Scene.SceneNames.divination.ordinal()] = divination;
         
         Classroom herbology = new Classroom();
         herbology.setDescription("Herbology Classroom");
         herbology.setBlocked(false);
         herbology.setVisited(false);
-        herbology.setMapSymbol(" HE ");
+        herbology.setMapSymbol(" ?? ");
         MapControl.scenes[Scene.SceneNames.herbology.ordinal()] = herbology;
         
         Classroom flying = new Classroom();
         flying.setDescription("Flying Classroom");
         flying.setBlocked(false);
         flying.setVisited(false);
-        flying.setMapSymbol(" FL ");
+        flying.setMapSymbol(" ?? ");
         MapControl.scenes[Scene.SceneNames.flying.ordinal()] = flying;
         
         Classroom care = new Classroom();
         care.setDescription("Care of Magical Creatures Classroom");
         care.setBlocked(false);
         care.setVisited(false);
-        care.setMapSymbol(" CA ");
+        care.setMapSymbol(" ?? ");
         MapControl.scenes[Scene.SceneNames.care.ordinal()] = care;
         
         ActivityScene quidditch = new ActivityScene();
         quidditch.setDescription("Quidditch pitch where you can view quidditch games");
         quidditch.setVisited(false);
-        quidditch.setMapSymbol(" QU ");
+        quidditch.setMapSymbol(" ?? ");
         MapControl.scenes[Scene.SceneNames.quidditch.ordinal()] = quidditch;
         
         ActivityScene bathroom = new ActivityScene();
         bathroom.setDescription("A bathroom. Beware of ghosts.");
         bathroom.setVisited(false);
-        bathroom.setMapSymbol(" BA ");
+        bathroom.setMapSymbol(" ?? ");
         MapControl.scenes[Scene.SceneNames.bathroom.ordinal()] = bathroom;
         
 	GreatHall greatHall = new GreatHall();

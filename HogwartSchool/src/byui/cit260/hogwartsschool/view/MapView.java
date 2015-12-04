@@ -7,15 +7,18 @@ package byui.cit260.hogwartsschool.view;
 
 import byui.cit260.hogwartsschool.control.MapControl;
 import byui.cit260.hogwartsschool.exceptions.MapControlException;
+import byui.cit260.hogwartsschool.model.Location;
+import byui.cit260.hogwartsschool.model.Map;
+import hogwartsschool.HogwartsSchool;
 import java.awt.Point;
 
 /**
  *
  * @author lmcqueen
  */
-public class MoveLocationView extends View{
+public class MapView extends View{
     
-    public MoveLocationView() {
+    public MapView() {
         super("\n Please enter the coodinates of where you would like to go.");
     }
    
@@ -80,5 +83,35 @@ public class MoveLocationView extends View{
       
     }
    
+    public void printMap () {
+        
+        Map map = HogwartsSchool.getCurrentGame().getMap();
+        if(map == null){
+            ErrorView.display(this.getClass().getName(), "Map did not exist");
+        }
+        
+        Location[][] locations = map.getLocations();
+        int rowCount = map.getRowCount();
+        int columnCount = map.getColumnCount();
+        
+        this.console.println("View Map");
+        this.console.println("Legend: \nHalways = **** \nLocation that has not been visited = ??  \nVisited Locations = First 2 characters of "
+                + "location name  \nGreat Hall = XX");
+        Location location;
+        this.console.println("\n\n  1    2    3    4    5");
+        for(int i = 0; i < rowCount; i++){
+            this.console.print(i + 1);
+            this.console.println("========================");
+            for(int j = 0; j < columnCount; j++){
+                this.console.print("|");
+                location = locations[i][j];
+                this.console.print(location.getScene().getMapSymbol());
+            }
+            this.console.println("|");
+        }
+        this.console.println("========================");
+    }
+    
+    
   
 }

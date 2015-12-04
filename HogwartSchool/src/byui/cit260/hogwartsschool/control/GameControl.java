@@ -5,6 +5,7 @@
  */
 package byui.cit260.hogwartsschool.control;
 
+import byui.cit260.hogwartsschool.exceptions.GameControlException;
 import byui.cit260.hogwartsschool.model.Game;
 import byui.cit260.hogwartsschool.model.House;
 import byui.cit260.hogwartsschool.model.InventoryItem;
@@ -12,6 +13,12 @@ import byui.cit260.hogwartsschool.model.Map;
 import byui.cit260.hogwartsschool.model.Player;
 import byui.cit260.hogwartsschool.model.Course;
 import hogwartsschool.HogwartsSchool;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  *
@@ -99,6 +106,33 @@ public class GameControl {
         
         return coursesSorted;
         
+    }
+
+    public static void saveGame(Game currentGame, String filePath) throws GameControlException {
+        try(FileOutputStream fops = new FileOutputStream(filePath)){
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            output.writeObject(currentGame);
+        } catch(IOException ex){
+            throw new GameControlException(ex.getMessage());
+        }
+    }
+
+    public static void getSavedGame(String filePath) throws GameControlException {
+        Game game = null;
+        
+        try(FileInputStream fips = new FileInputStream(filePath)){
+            ObjectInputStream output = new ObjectInputStream(fips);
+            
+            game = (Game) output.readObject();
+        } catch(FileNotFoundException fnfe){
+            throw new GameControlException(fnfe.getMessage());
+        }
+        catch (Exception ex){
+            throw new GameControlException(ex.getMessage());
+        }
+        
+        HogwartsSchool.setCurrentGame(game);
+            
     }
 }
 

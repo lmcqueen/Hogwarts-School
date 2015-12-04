@@ -77,7 +77,19 @@ public class MainMenuView extends View {
     }
 
     private void getSavedGame() {
-        this.console.println("\n*** getSavedGame stub function called ***\n");
+        this.console.println("Enter the filepath to where your game is saved.");
+        
+        String filePath = this.getInput();
+        
+        try{
+            GameControl.getSavedGame(filePath);
+            
+        }catch(Exception ex){
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+        
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
     }
 
      private void getHelp() {
@@ -90,7 +102,17 @@ public class MainMenuView extends View {
         this.console.println("Enter the filepath of where you would like to save your game.");
         
         String filePath = this.getInput();
+         try{
+             GameControl.saveGame(HogwartsSchool.getCurrentGame(), filePath);
+         } catch (Exception ex){
+             ErrorView.display("MainMenuView", ex.getMessage());
+         }
     }
+    
+    
+    
+    
+    
     
     
     

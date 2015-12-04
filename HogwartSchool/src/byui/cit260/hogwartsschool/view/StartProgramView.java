@@ -45,7 +45,8 @@ public class StartProgramView extends View{
                        + "\n* amount of points for your house.               *" 
                        + "\n\n* Good luck with your first year at Hogwarts!    *"
         
-        + "\n\n*************************************************");
+        + "\n\n*************************************************"
+        + "\nPlease Enter your name:");
         
     }
     

@@ -31,6 +31,8 @@ class GameMenuView extends View{
             + "\nH - Help"
             + "\nS - View Store"
             + "\nR - Return to last screen"
+                +"\nA - Temporary option to test save game: show current player's name"
+                
             + "\n-----------------------------------------");
     }
 
@@ -76,6 +78,9 @@ class GameMenuView extends View{
                 break;
             case 'H':
                 this.getHelp();
+                break;
+            case 'A':
+                this.getTemp();
                 break;
             case 'R':
                 return true;
@@ -186,6 +191,10 @@ class GameMenuView extends View{
         for(Course course : courses){
             this.console.println(course.getDescription());
         }
+    }
+    
+    private void getTemp(){
+        this.console.println(HogwartsSchool.getCurrentGame().getPlayer().getName());
     }
 
 }

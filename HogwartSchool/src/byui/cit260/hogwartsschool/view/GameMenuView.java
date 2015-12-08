@@ -86,6 +86,9 @@ class GameMenuView extends View{
             case 'H':
                 this.getHelp();
                 break;
+            case 'S':
+                this.viewStore();
+                break;
             case 'A':
                 this.getTemp();
                 break;

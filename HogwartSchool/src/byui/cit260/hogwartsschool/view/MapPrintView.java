@@ -17,6 +17,7 @@ import java.io.PrintWriter;
 public class MapPrintView extends View{
 
     private static PrintWriter mapPrintFile = null;
+    static PrintWriter inventoryPrintFile;
     
     public MapPrintView() {
         super("Please enter where you would like to save your map print: \n");

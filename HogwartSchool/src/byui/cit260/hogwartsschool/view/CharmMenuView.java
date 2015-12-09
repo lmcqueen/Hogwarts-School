@@ -22,8 +22,9 @@ public class CharmMenuView extends View {
             + "\nI - Get Instructions" 
             + "\nS - Get Switch"
             + "\nK - Get Flick"
-            + "\nC - Get Incantation" 
+            + "\nC - Get Incantation"
             + "\nF - Finish"
+            + "\nE - Exit"
             + "\n-----------------------------------------");
     }
 
@@ -55,7 +56,10 @@ public class CharmMenuView extends View {
             case 'C': 
                 this.getIncantation();
                 break;
-            case 'F':
+            case 'F': 
+                this.getFinish();
+                break;
+            case 'E':
                 return true;
             default:
                 System.out.println("\n*** Invalid selection. Try again. ***");
@@ -66,7 +70,7 @@ public class CharmMenuView extends View {
 
   private void getInstructions() {
        
-        System.out.println("\n*** getInstructions stub function called ***\n");
+        System.out.println("\n To perform the charm, follow this steps. Use the getSwitch and getFlick once \n");
     }
 
     private void getSwitch() {
@@ -79,9 +83,12 @@ public class CharmMenuView extends View {
     }
 
     private void getIncantation() {
-        System.out.println("\n*** getIncantation stub function called ***\n");
+        System.out.println("\n To get incantation follow this steps. Click getSwitch and getFlick two times each. \n");
     }
-
+    
+    private void getFinish() {
+        System.out.println("\n*** getFinish stub function called ***\n");
+    }
     
 
 }

@@ -19,6 +19,7 @@ class GameMenuView extends View{
             + "\n------------------------------------------------"
             + "\nV - View map" 
             + "\nF - Print Map to File"
+            + "\nB - Print Inventory to File"
             + "\nP - View current points" 
             + "\nI - View Inventory"   
             + "\nC - View All Courses"    
@@ -54,6 +55,10 @@ class GameMenuView extends View{
             case 'F':
                 this.printMapToFile();
                 break;
+            case 'B':
+                this.printInventory();
+                break;
+                
             case 'P':
                 this.viewCurrentPoints();
                 break;
@@ -80,6 +85,9 @@ class GameMenuView extends View{
                 break;
             case 'H':
                 this.getHelp();
+                break;
+            case 'S':
+                this.viewStore();
                 break;
             case 'A':
                 this.getTemp();
@@ -183,6 +191,11 @@ class GameMenuView extends View{
         MapPrintView mapPrint = new MapPrintView();
         mapPrint.display();
         
+    }
+
+    private void printInventory() {
+       InventoryPrintView inventoryPrint = new InventoryPrintView();
+       inventoryPrint.display();
     }
 
 }

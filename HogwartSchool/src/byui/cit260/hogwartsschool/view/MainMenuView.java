@@ -17,7 +17,7 @@ public class MainMenuView extends View {
             + "\nG - Get Saved Game"
             + "\nH - Get Help"
             + "\nS - Save Game" 
-            +"\nTemporary menus for testing: P-Potions F-Flying A-Astronomy"
+            +"\nTemporary menus for testing: P-Potions F-Flying A-Astronomy C-Charms"
             + "\nE - Exit"
             + "\n-----------------------------------------");
     }
@@ -57,6 +57,9 @@ public class MainMenuView extends View {
                 break;
             case 'F':
                 this.tempFlying();
+                break;
+            case 'C':
+                this.tempCharms();
                 break;
             case 'E':
                 return true;
@@ -132,6 +135,11 @@ public class MainMenuView extends View {
     private void tempFlying() {
        FlyingMenuView flying = new FlyingMenuView();
        flying.display();
+    }
+
+    private void tempCharms() {
+         CharmMenuView charm = new CharmMenuView();
+         charm.display();
     }
     
 }

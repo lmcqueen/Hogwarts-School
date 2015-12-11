@@ -13,29 +13,11 @@ import java.util.Arrays;
  */
 public class GreatHall extends Scene{
     
-    private boolean blocked;
-    private boolean visited;
     private String[] testQuestions;
 
     public GreatHall() {
     }
-
-    public boolean isBlocked() {
-        return blocked;
-    }
-
-    public void setBlocked(boolean blocked) {
-        this.blocked = blocked;
-    }
-
-    public boolean isVisited() {
-        return visited;
-    }
-
-    public void setVisited(boolean visited) {
-        this.visited = visited;
-    }
-
+    
     public String[] getTestQuestions() {
         return testQuestions;
     }
@@ -47,8 +29,6 @@ public class GreatHall extends Scene{
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 59 * hash + (this.blocked ? 1 : 0);
-        hash = 59 * hash + (this.visited ? 1 : 0);
         hash = 59 * hash + Arrays.deepHashCode(this.testQuestions);
         return hash;
     }
@@ -62,12 +42,6 @@ public class GreatHall extends Scene{
             return false;
         }
         final GreatHall other = (GreatHall) obj;
-        if (this.blocked != other.blocked) {
-            return false;
-        }
-        if (this.visited != other.visited) {
-            return false;
-        }
         if (!Arrays.deepEquals(this.testQuestions, other.testQuestions)) {
             return false;
         }
@@ -76,7 +50,7 @@ public class GreatHall extends Scene{
 
     @Override
     public String toString() {
-        return "GreatHall{" + "blocked=" + blocked + ", visited=" + visited + ", testQuestions=" + testQuestions + '}';
+        return "GreatHall{" + ", testQuestions=" + testQuestions + '}';
     }
     
 }

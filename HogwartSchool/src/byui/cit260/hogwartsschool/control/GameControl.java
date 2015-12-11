@@ -12,6 +12,7 @@ import byui.cit260.hogwartsschool.model.InventoryItem;
 import byui.cit260.hogwartsschool.model.Map;
 import byui.cit260.hogwartsschool.model.Player;
 import byui.cit260.hogwartsschool.model.Course;
+import byui.cit260.hogwartsschool.model.Location;
 import hogwartsschool.HogwartsSchool;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -30,7 +31,7 @@ public class GameControl {
         
        Game game = new Game();
        HogwartsSchool.setCurrentGame(game);
-       
+
        game.setPlayer(player);
        
        InventoryItem[] inventoryList = InventoryControl.createInventoryList();
@@ -41,6 +42,9 @@ public class GameControl {
        
        Map map = MapControl.createMap();
        game.setMap(map);
+       
+       Location[][] locations = map.getLocations();
+       game.getPlayer().setLocation(locations[3][3]);
        
        Course[] courses= Course.values();
        game.setCourses(courses);

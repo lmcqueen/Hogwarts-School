@@ -10,7 +10,6 @@ import byui.cit260.hogwartsschool.exceptions.MapControlException;
 import byui.cit260.hogwartsschool.model.Location;
 import byui.cit260.hogwartsschool.model.Map;
 import hogwartsschool.HogwartsSchool;
-import java.awt.Point;
 
 /**
  *
@@ -19,73 +18,69 @@ import java.awt.Point;
 public class MapView extends View{
     
     public MapView() {
-        super("\n Please enter the coodinates of where you would like to go.");
+        super("\n Map menu: U - Move up one space"
+                + "\n D - Move down one space"
+                + "\n R - Move Right one space"
+                + "\n L - Move Left one space"
+                + "\n E - Exit to game menu");
     }
    
     @Override
     public void display() {
-        //DISPLAY prompt
-        this.console.println(getPromptMessage());
+
+        String value = "";
         boolean done = false;
-        String row;
-        String column;
-        double rowNum;
-        double columnNum;
 
         do {
-            //GET cauldron depth and diameter
-            this.console.println("\nEnter the row you would like to go to: ");
-            row = this.getInput();
-            
-            try{
-               rowNum = Double.parseDouble(row); 
-            }
-            catch(NumberFormatException nf){
-                ErrorView.display(this.getClass().getName(), "You must enter a valid number. Please try again. /n");
-                continue;
-            }
-            
-            
-            this.console.println("\nEnter the column you would like to go to: ");
-            column = this.getInput();
-            
-            try{
-               columnNum = Double.parseDouble(column); 
-            }
-            catch(NumberFormatException nf){
-                ErrorView.display(this.getClass().getName(),"You must enter a valid number. Please try again. /n");
-                continue;
-            }
- 
-            Point point = new Point();
-            point.setLocation(rowNum, columnNum);
-            
-            if(this.doAction(point)){
-                done = true;
-            }
+            this.printMap();
+            this.console.println(getPromptMessage());
+            value = this.getInput();
+            done = this.doAction(value);
 
         } while (!done);
+
     }
-  
-    @Override 
+    
+   @Override
     public boolean doAction(Object obj) {
-       Point point = (Point) obj;
-       
-       try{
-           MapControl.movePlayer(point);
-       }
-       catch(MapControlException me){
-           ErrorView.display(this.getClass().getName(), me.getMessage());
-           return false;
-       }
-       
-      return true;
-      
-    }
+        
+        String value = (String) obj;
+        value = value.toUpperCase();
+        if(value.length() > 1){
+            ErrorView.display(this.getClass().getName(), "\n *** Invalid Selection. Enter only a single character. ***\n");
+            return false;
+        }
+        
+        char selection = value.charAt(0);
+        
+        switch (selection) {
+            case 'U': 
+                this.moveUp();
+                break;
+            case 'D':
+                this.moveDown();
+                break;
+            case 'L':
+                this.moveLeft();
+                break;
+            case 'R':
+                this.moveRight();
+                break;
+            case 'E':
+                return true;
+            default:
+                ErrorView.display(this.getClass().getName(), "\n*** Invalid selection. Try again. ***");
+                break;  
+        } 
+        
+        return false;
+ }    
+    
    
     public void printMap () {
         
         Map map = HogwartsSchool.getCurrentGame().getMap();
+        Location currentLocation = HogwartsSchool.getPlayer().getLocation();
         if(map == null){
             ErrorView.display(this.getClass().getName(), "Map did not exist");
         }
@@ -105,12 +100,70 @@ public class MapView extends View{
             for(int j = 0; j < columnCount; j++){
                 this.console.print("|");
                 location = locations[i][j];
-                this.console.print(location.getScene().getMapSymbol());
+                if(location.equals(currentLocation)){
+                    this.console.print("HERE");
+                }
+                else if(location.getScene().isVisited()){
+                    this.console.print(location.getScene().getMapSymbol());
+                }
+                else{
+                    this.console.print(" ?? ");
+                }
             }
             this.console.println("|");
         }
         this.console.println("========================");
     }
+
+    private void moveDown() {
+        
+        Location currentLocation = HogwartsSchool.getCurrentGame().getPlayer().getLocation();
+        
+        try {
+            MapControl.movePlayer(currentLocation.getRow() + 1, currentLocation.getColumn());
+            this.console.println("Your character has moved to a " + HogwartsSchool.getPlayer().getLocation().getScene().getSceneType());
+        } catch (MapControlException ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        }
+    }
+
+    private void moveLeft() {
+         
+        Location currentLocation = HogwartsSchool.getCurrentGame().getPlayer().getLocation();
+        
+        try {
+            MapControl.movePlayer(currentLocation.getRow(), currentLocation.getColumn() - 1);
+            this.console.println("Your character has moved to a " + HogwartsSchool.getPlayer().getLocation().getScene().getSceneType());
+        } catch (MapControlException ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        }
+    }
+
+    private void moveRight() {
+         
+        Location currentLocation = HogwartsSchool.getCurrentGame().getPlayer().getLocation();
+        
+        try {
+            MapControl.movePlayer(currentLocation.getRow(), currentLocation.getColumn() + 1);
+            this.console.println("Your character has moved to a " + HogwartsSchool.getPlayer().getLocation().getScene().getSceneType());
+        } catch (MapControlException ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        }
+    }
+
+    private void moveUp() {
+         
+        Location currentLocation = HogwartsSchool.getCurrentGame().getPlayer().getLocation();
+        
+        try {
+            MapControl.movePlayer(currentLocation.getRow() - 1, currentLocation.getColumn());
+            this.console.println("Your character has moved to a " + HogwartsSchool.getPlayer().getLocation().getScene().getSceneType());
+        } catch (MapControlException ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        }
+    }
+
+    
     
     
   

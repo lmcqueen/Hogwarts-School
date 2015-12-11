@@ -65,8 +65,6 @@ public class StartProgramView extends View{
             ErrorView.display(this.getClass().getName(), ex.getMessage());
         } 
         
-        MainMenuView mainMenu = new MainMenuView();
-        mainMenu.display();
     }
     
     @Override

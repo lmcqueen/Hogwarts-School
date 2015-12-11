@@ -6,6 +6,7 @@
 package byui.cit260.hogwartsschool.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -66,6 +67,9 @@ public class Location implements Serializable{
             return false;
         }
         if (this.column != other.column) {
+            return false;
+        }
+        if (!Objects.equals(this.scene, other.scene)) {
             return false;
         }
         return true;

@@ -55,7 +55,7 @@ public class FlyingMenuView extends View {
    }
 
     private void displayInstructions() {
-        System.out.println("*** getInstructions stub function called. ***");
+        System.out.println("Use the results of the averageAcceleration gotten to fly, if the result is wrong.Try again");
     }
 
     private void displayCalculate() {
@@ -64,7 +64,7 @@ public class FlyingMenuView extends View {
     }
 
     private void displayFly() {
-        System.out.println("*** getFly stub function called. ***");}
+        System.out.println("If Average Acceleration is right; Congratulation. You can now fly. If wrong, please try again ");}
 
 
     

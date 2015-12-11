@@ -17,7 +17,7 @@ public class MainMenuView extends View {
             + "\nG - Get Saved Game"
             + "\nH - Get Help"
             + "\nS - Save Game" 
-            +"\nTemporary menus for testing: P-Potions F-Flying A-Astronomy C-Charms"
+            +"\nTemporary menus for testing: P-Potions F-Flying A-Astronomy C-Charms O-Herbology"
             + "\nE - Exit"
             + "\n-----------------------------------------");
     }
@@ -60,6 +60,9 @@ public class MainMenuView extends View {
                 break;
             case 'C':
                 this.tempCharms();
+                break;
+            case 'O':
+                this.tempHerbology();
                 break;
             case 'E':
                 return true;
@@ -140,6 +143,11 @@ public class MainMenuView extends View {
     private void tempCharms() {
          CharmMenuView charm = new CharmMenuView();
          charm.display();
+    }
+    
+    private void tempHerbology() {
+         HerbologyView herbology = new HerbologyView();
+         herbology.display();
     }
     
 }

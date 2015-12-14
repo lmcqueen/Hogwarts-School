@@ -17,7 +17,7 @@ public class MainMenuView extends View {
             + "\nG - Get Saved Game"
             + "\nH - Get Help"
             + "\nS - Save Game" 
-            +"\nTemporary menus for testing: P-Potions F-Flying A-Astronomy C-Charms O-Herbology"
+            +"\nTemporary menus for testing: P-Potions F-Flying A-Astronomy C-Charms O-Herbology T-Transfiguration"
             + "\nE - Exit"
             + "\n-----------------------------------------");
     }
@@ -150,4 +150,8 @@ public class MainMenuView extends View {
          herbology.display();
     }
     
+    private void tempTransfiguration() {
+        TransfigurationView transfiguration = new TransfigurationView();
+        transfiguration.display();
+    }
 }

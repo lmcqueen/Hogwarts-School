@@ -9,15 +9,15 @@ package byui.cit260.hogwartsschool.view;
  *
  * @author Johnson
  */
-public class HerbologyView extends View {
+public class TransfigurationView extends View {
     
-       public HerbologyView() {
+    public TransfigurationView() {
         super("\n------------------------------------------------"
-        + "\n|               Herbology Menu                      |"
+        + "\n|               Transfiguration Menu                      |"
         + "\n------------------------------------------------"
         + "\nI - Instructions" 
-        + "\nO - Observe Plant"
-        + "\nD - Identify"
+        + "\nW – Wave wand"
+        + "\nC - Incantation"
         + "\nF - Finish"
         + "\n-----------------------------------------");
     }
@@ -28,7 +28,7 @@ public class HerbologyView extends View {
         String value = (String) obj;
         value = value.toUpperCase();
         if(value.length() > 1){
-            ErrorView.display(this.getClass().getName(),"\n *** Invalid Selection. Enter only a single character. ***\n");
+            ErrorView.display(this.getClass().getName(), "\n *** Invalid Selection. Enter only a single character. ***\n");
             return false;
         }
 
@@ -38,11 +38,11 @@ public class HerbologyView extends View {
             case 'I': 
                 this.displayInstructions();
                 break;
-            case 'O':
-                this.displayObservePlant();
+            case 'W':
+                this.displayWaveWand();
                 break;
-            case 'D':
-                this.displayIdentify();
+            case 'C':
+                this.displayIncantation();
                 break;
             case 'F':
                 return true;
@@ -55,33 +55,26 @@ public class HerbologyView extends View {
    }
 
     private void displayInstructions() {
-        this.console.println("First observe the plant based on what learned in the lecture and then move to identify tab to indentify the plant");
+        this.console.println("This is a charm that transform one thing into an entirely different thing");
     }
 
-    private void displayObservePlant() {
-        this.console.println("You are observing a plant that has glowing objects inside it, and if you touch it or pork it, it stars glowing ");
+    private void displayWaveWand () {
+        this.console.println("Used this burton to wave a wand ");
         //FlyingView myFlyingView = new FlyingView();
          //myFlyingView.display();
     }
 
-    private void displayIdentify() {
-        this.console.println("Type in what you observe here. ");}
+    private void displayIncantation () {
+        this.console.println("Used this burtton for incantation ");}
         String identify = this.getInput();
-       // if (identify.equals(Puffapod)) {
-            //this.console.println("You are right, proceed with the game");
-            //return false;
-        
-        
-       //if the value is equall to puffapod, 
-            // then call funtion of Leah control
-       //else 
-            // display an error message
-       //
-        
+        //HerbologyView myHerbologyView = new HerbologyView();
+        //myHerbologyView.display();
         
 
-                }   
+        
 
 
     
+}
 
+    

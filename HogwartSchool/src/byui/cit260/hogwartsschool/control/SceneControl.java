@@ -54,14 +54,11 @@ public class SceneControl {
         if (distance < 0 || time < 1) {
             throw new SceneControlException("Distance and time cannot be less than 1");
         }
-          
-                
        
 	double averageAcceleration;
         averageAcceleration = (distance / time) / time;        
 
 	return averageAcceleration;
-
   
     }
    

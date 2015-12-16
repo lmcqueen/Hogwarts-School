@@ -5,7 +5,9 @@
  */
 package byui.cit260.hogwartsschool.control;
 
+import byui.cit260.hogwartsschool.exceptions.InventoryControlException;
 import byui.cit260.hogwartsschool.model.InventoryItem;
+import hogwartsschool.HogwartsSchool;
 
 /**
  *
@@ -13,92 +15,126 @@ import byui.cit260.hogwartsschool.model.InventoryItem;
  */
 public class InventoryControl {
 
-    static InventoryItem[] createInventoryList() {
-        
-  
-        InventoryItem[] inventory = new InventoryItem[11];
-        
+    public static InventoryItem[] createInventoryList() {
+
+        InventoryItem[] inventory = new InventoryItem[9];
+
         InventoryItem wand = new InventoryItem();
+        wand.setName("Wand");
         wand.setDescription("10 inch unicorn hair and holly wand");
-        wand.setItemType("Wand");
-        wand.setName("Magic Wand");
-        wand.setQuantity(0);
+        wand.setQuantity(1);
         inventory[InventoryItem.Items.wand.ordinal()] = wand;
-                
-        InventoryItem hornedSlugs = new InventoryItem();
-        hornedSlugs.setDescription("A type of slug that has boil curing properties when stewed");
-        hornedSlugs.setItemType("Potion ingredient");
-        hornedSlugs.setName("Horned Slug");
-        hornedSlugs.setQuantity(0);
-        inventory[InventoryItem.Items.hornedSlug.ordinal()] = hornedSlugs;
-        
-        
-        InventoryItem porcupineQuills = new InventoryItem();
-        porcupineQuills.setDescription("Spines that protect a porcupine fron danger");
-        porcupineQuills.setItemType("Potion ingredient");
-        porcupineQuills.setName("Porcupine Quills");
-        porcupineQuills.setQuantity(0);
-        inventory[InventoryItem.Items.porcupineQuills.ordinal()] = porcupineQuills;
-        
-        InventoryItem pungousOnions = new InventoryItem();
-        pungousOnions.setDescription("Magical leaves used for the cure of boils");
-        pungousOnions.setItemType("Potion ingredient");
-        pungousOnions.setName("Pungous Onions");
-        pungousOnions.setQuantity(0);
-        inventory[InventoryItem.Items.pungousOnions.ordinal()] = pungousOnions;
-        
-        InventoryItem snakeFangs = new InventoryItem();
-        snakeFangs.setDescription("Magical ingredient that must not be gotten from the snake vernom");
-        snakeFangs.setItemType("Potion ingredient");
-        snakeFangs.setName("Snake Fangs");
-        snakeFangs.setQuantity(0);
-        inventory[InventoryItem.Items.snakeFangs.ordinal()] = snakeFangs;
-        
-        InventoryItem flobberwormMucus = new InventoryItem();
-        flobberwormMucus.setDescription("A sticky and green substance that is extracted from flobberworm");
-        flobberwormMucus.setItemType("Potion ingredient");
-        flobberwormMucus.setName("Flobberworm Mucus");
-        flobberwormMucus.setQuantity(0);
-        inventory[InventoryItem.Items.flobberwormMucus.ordinal()] = flobberwormMucus;
-        
-        InventoryItem gingerRoot = new InventoryItem();
-        gingerRoot.setDescription("Magical ingredient that is used for the cure of boils");
-        gingerRoot.setItemType("Potion ingredient");
-        gingerRoot.setName("Ginger Root");
-        gingerRoot.setQuantity(0);
-        inventory[InventoryItem.Items.gingerRoot.ordinal()] = gingerRoot;
-        
+
+        InventoryItem newts = new InventoryItem();
+        newts.setDescription("Newts to add to potions.");
+        newts.setName("Newts");
+        newts.setQuantity(0);
+        inventory[InventoryItem.Items.newts.ordinal()] = newts;
+
+        InventoryItem spiders = new InventoryItem();
+        spiders.setDescription("Spiders to add to potions");
+        spiders.setName("Spiders");
+        spiders.setQuantity(0);
+        inventory[InventoryItem.Items.spiders.ordinal()] = spiders;
+
         InventoryItem feather = new InventoryItem();
         feather.setDescription("Magical ingredient that is used for the cure of boil");
-        feather.setItemType("Charms tool");
         feather.setName("Feather");
         feather.setQuantity(0);
         inventory[InventoryItem.Items.feather.ordinal()] = feather;
-        
-        InventoryItem goblet = new InventoryItem();
-        goblet.setDescription("Magical ingredient that is used for the cure of boil");
-        goblet.setItemType("Transfiguration tool");
-        goblet.setName("Goblet");
-        goblet.setQuantity(0);
-        inventory[InventoryItem.Items.goblet.ordinal()] = goblet;
-        
+
+        InventoryItem match = new InventoryItem();
+        match.setDescription("A regular match");
+        match.setName("Match");
+        match.setQuantity(0);
+        inventory[InventoryItem.Items.match.ordinal()] = match;
+
         InventoryItem cauldron = new InventoryItem();
         cauldron.setDescription("A vessel that is used to brew or hold potions");
-        cauldron.setItemType("Potions tool");
         cauldron.setName("Cauldron");
         cauldron.setQuantity(0);
         inventory[InventoryItem.Items.cauldron.ordinal()] = cauldron;
-        
+
         InventoryItem telescope = new InventoryItem();
         telescope.setDescription("For looking at the stars in astronomy");
-        telescope.setItemType("Astonomy tool");
         telescope.setName("Telescope");
         telescope.setQuantity(0);
         inventory[InventoryItem.Items.telescope.ordinal()] = telescope;
-        
+
+        InventoryItem teacup = new InventoryItem();
+        teacup.setDescription("A regular tea cup which is used for making predictions");
+        teacup.setName("Tea Cup");
+        teacup.setQuantity(0);
+        inventory[InventoryItem.Items.teacup.ordinal()] = teacup;
+
+        InventoryItem galleons = new InventoryItem();
+        galleons.setDescription("Wizarding world version of money");
+        galleons.setName("Galleons");
+        galleons.setQuantity(0);
+        inventory[InventoryItem.Items.galleons.ordinal()] = galleons;
 
         return inventory;
-    
+
     }
-    
+
+    public static int getGalleons() throws InventoryControlException {
+
+        try {
+            InventoryItem[] items = HogwartsSchool.getCurrentGame().getInventory();
+
+            int galleons = items[InventoryItem.Items.galleons.ordinal()].getQuantity();
+
+            return galleons;
+        } catch (Exception ex) {
+            throw new InventoryControlException(ex.getMessage());
+        }
+    }
+
+    public static void addItem(int position) throws InventoryControlException {
+        try {
+            InventoryItem[] items = HogwartsSchool.getCurrentGame().getInventory();
+            int curQuantity = items[position].getQuantity();
+            curQuantity += 1;
+            items[position].setQuantity(curQuantity);
+            HogwartsSchool.getCurrentGame().setInventory(items);
+        } catch (Exception ex) {
+            throw new InventoryControlException(ex.getMessage());
+        }
+
+    }
+
+    public static int getCurrentQuantity(int position) throws InventoryControlException {
+        try {
+            InventoryItem[] items = HogwartsSchool.getCurrentGame().getInventory();
+            int curQuantity = items[position].getQuantity();
+            return curQuantity;
+        } catch (Exception ex) {
+            throw new InventoryControlException(ex.getMessage());
+        }
+    }
+
+    public static void subtractCost(int cost) throws InventoryControlException {
+
+        try {
+            InventoryItem[] items = HogwartsSchool.getCurrentGame().getInventory();
+            int galleons = items[InventoryItem.Items.galleons.ordinal()].getQuantity();
+            galleons -= cost;
+            items[InventoryItem.Items.galleons.ordinal()].setQuantity(galleons);
+        } catch (Exception ex) {
+            throw new InventoryControlException(ex.getMessage());
+        }
+
+    }
+
+    public static void addGalleons(int numGalleons) throws InventoryControlException {
+        try {
+            InventoryItem[] items = HogwartsSchool.getCurrentGame().getInventory();
+            int galleons = items[InventoryItem.Items.galleons.ordinal()].getQuantity();
+            galleons += numGalleons;
+            items[InventoryItem.Items.galleons.ordinal()].setQuantity(galleons);
+        } catch (Exception ex) {
+            throw new InventoryControlException(ex.getMessage());
+        }
+    }
+
 }

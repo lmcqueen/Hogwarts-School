@@ -6,7 +6,6 @@
 package byui.cit260.hogwartsschool.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Objects;
 
 /**

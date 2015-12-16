@@ -5,9 +5,6 @@
  */
 package byui.cit260.hogwartsschool.view;
 
-import byui.cit260.hogwartsschool.control.GameControl;
-import hogwartsschool.HogwartsSchool;
-
 
 /**
  *

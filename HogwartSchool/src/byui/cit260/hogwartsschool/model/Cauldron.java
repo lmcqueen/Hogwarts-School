@@ -64,7 +64,7 @@ public class Cauldron extends InventoryItem implements Serializable{
 
     @Override
     public String toString() {
-        return "Cauldron{" + "name=" + this.getName() + ", description=" + this.getDescription() + ", itemType=" + this.getItemType() + ", quantity=" + this.getQuantity() + ", depth=" + depth + ", diameter=" + diameter + '}';
+        return "Cauldron{" + "name=" + this.getName() + ", description=" + this.getDescription() + ", quantity=" + this.getQuantity() + ", depth=" + depth + ", diameter=" + diameter + '}';
     }
     
              

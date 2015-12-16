@@ -1,6 +1,7 @@
 package byui.cit260.hogwartsschool.view;
 
 import byui.cit260.hogwartsschool.control.GameControl;
+import byui.cit260.hogwartsschool.exceptions.GameControlException;
 import hogwartsschool.HogwartsSchool;
 
 /**
@@ -17,9 +18,8 @@ public class MainMenuView extends View {
             + "\nG - Get Saved Game"
             + "\nH - Get Help"
             + "\nS - Save Game" 
-            +"\nTemporary menus for testing: P-Potions F-Flying A-Astronomy C-Charms O-Herbology T-Transfiguration"
             + "\nE - Exit"
-            + "\n-----------------------------------------");
+            + "\n------------------------------------------------");
     }
 
     @Override
@@ -47,23 +47,6 @@ public class MainMenuView extends View {
             case 'S': 
                 this.saveGame();
                 break;
-                
-                //TEMPORARY FOR TESTING MUST FIX!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            case 'P':
-                this.tempPotions();
-                break;
-            case 'A':
-                this.tempAstronomy();
-                break;
-            case 'F':
-                this.tempFlying();
-                break;
-            case 'C':
-                this.tempCharms();
-                break;
-            case 'O':
-                this.tempHerbology();
-                break;
             case 'E':
                 return true;
             default:
@@ -75,7 +58,14 @@ public class MainMenuView extends View {
 
     private void startNewGame() {
         
-        GameControl.createNewGame(HogwartsSchool.getPlayer());
+        try {
+            GameControl.createNewGame(HogwartsSchool.getPlayer());
+        } catch (GameControlException ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        }
+        
+        GreatHallView greatHall = new GreatHallView();
+        greatHall.display();
         
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();
@@ -89,13 +79,13 @@ public class MainMenuView extends View {
         
         try{
             GameControl.getSavedGame(filePath);
+            GameMenuView gameMenu = new GameMenuView();
+            gameMenu.display();
             
-        }catch(Exception ex){
+        }catch(GameControlException ex){
             ErrorView.display("MainMenuView", ex.getMessage());
         }
         
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display();
     }
 
      private void getHelp() {
@@ -114,44 +104,5 @@ public class MainMenuView extends View {
              ErrorView.display("MainMenuView", ex.getMessage());
          }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    private void tempPotions() {
-        PotionsMenuView potionsMenu = new PotionsMenuView();
-        potionsMenu.display();
-    }
-
-    private void tempAstronomy() {
-       AstronomyMenuView astronomyMenu = new AstronomyMenuView();
-       astronomyMenu.display();
-    }
-
-    private void tempFlying() {
-       FlyingMenuView flying = new FlyingMenuView();
-       flying.display();
-    }
-
-    private void tempCharms() {
-         CharmMenuView charm = new CharmMenuView();
-         charm.display();
-    }
-    
-    private void tempHerbology() {
-         HerbologyView herbology = new HerbologyView();
-         herbology.display();
-    }
-    
-    private void tempTransfiguration() {
-        TransfigurationView transfiguration = new TransfigurationView();
-        transfiguration.display();
-    }
+   
 }

@@ -9,38 +9,34 @@ import java.io.Serializable;
 
 /**
  *
- * @author User
+ * @author lmcqueen and johnson
  */
 public enum Merchandise implements Serializable{
    
-    Wand("A wand", 11),
-    HornedSlugs("A potion ingredient", 3),
-    PorcupineQuills("A potion ingredient", 1),
-    PungousOnions("A potion ingredient", 1),
-    SnakeFangs("Potion ingredient", 1),
-    FlobberwormMucus("Potion ingredient", 2),
-    GingerRoot("Potion ingredient", 1),
-    Feather("A potion ingredient", 1),
-    Goblet("A goblet for transfiguration practice", 1),
-    Cauldron("A cauldron", 10),
-    Telescope("For looking at the stars in astronomy", 4);
+    Wand("A wand to do your spells", 11),
+    Newts("A potion ingredient", 3),
+    Spiders("A potion ingredient", 2),
+    Feather("An object for levitation", 1),
+    Match("A regular match", 1),
+    Cauldron("A cauldron for making potions", 10),
+    Telescope("For looking at the stars in astronomy", 4),
+    TeaCup("A cup for looking at predictions", 3);
    
     private final String description;
-    private final double Price;
+    private final int Price;
 
-    private Merchandise(String description, double Price) {
+    private Merchandise(String description, int Price) {
        
         this.description = description;
         this.Price = Price;
-        
-        
+     
     }
 
     public String getDescription() {
         return description;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return Price;
     }
     

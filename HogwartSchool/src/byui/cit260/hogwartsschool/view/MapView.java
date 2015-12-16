@@ -18,11 +18,17 @@ import hogwartsschool.HogwartsSchool;
 public class MapView extends View{
     
     public MapView() {
-        super("\n Map menu: U - Move up one space"
-                + "\n D - Move down one space"
-                + "\n R - Move Right one space"
-                + "\n L - Move Left one space"
-                + "\n E - Exit to game menu");
+        super("\n------------------------------------------------ "
+                + "\n|                   Map menu:                   | "
+                + "\n------------------------------------------------"
+                + "\nW - Move up one space"
+                + "\nS - Move down one space"
+                + "\nA - Move Right one space"
+                + "\nD - Move Left one space"
+                + "\nV - View Map Legend"
+                + "\nE - Exit to game menu"
+                + "\n------------------------------------------------");
+        
     }
    
     @Override
@@ -54,17 +60,20 @@ public class MapView extends View{
         char selection = value.charAt(0);
         
         switch (selection) {
-            case 'U': 
+            case 'W': 
                 this.moveUp();
                 break;
-            case 'D':
+            case 'S':
                 this.moveDown();
                 break;
-            case 'L':
+            case 'A':
                 this.moveLeft();
                 break;
-            case 'R':
+            case 'D':
                 this.moveRight();
+                break;
+            case 'V':
+                this.viewLegend();
                 break;
             case 'E':
                 return true;
@@ -89,9 +98,6 @@ public class MapView extends View{
         int rowCount = map.getRowCount();
         int columnCount = map.getColumnCount();
         
-        this.console.println("View Map");
-        this.console.println("Legend: \nHalways = **** \nLocation that has not been visited = ??  \nVisited Locations = First 2 characters of "
-                + "location name  \nGreat Hall = XX");
         Location location;
         this.console.println("\n\n  1    2    3    4    5");
         for(int i = 0; i < rowCount; i++){
@@ -121,7 +127,12 @@ public class MapView extends View{
         
         try {
             MapControl.movePlayer(currentLocation.getRow() + 1, currentLocation.getColumn());
-            this.console.println("Your character has moved to a " + HogwartsSchool.getPlayer().getLocation().getScene().getSceneType());
+            if(HogwartsSchool.getPlayer().getLocation().getScene().getSceneType().equals("classroom")){
+                this.console.println("Your character has moved to the " + HogwartsSchool.getPlayer().getLocation().getScene().getCourse().getDescription() + " classroom");
+            }
+            else if(HogwartsSchool.getPlayer().getLocation().getScene().getSceneType().equals("activity")){
+                this.console.println("Explore this area to see where you are.");
+            }
         } catch (MapControlException ex) {
             ErrorView.display(this.getClass().getName(), ex.getMessage());
         }
@@ -133,7 +144,12 @@ public class MapView extends View{
         
         try {
             MapControl.movePlayer(currentLocation.getRow(), currentLocation.getColumn() - 1);
-            this.console.println("Your character has moved to a " + HogwartsSchool.getPlayer().getLocation().getScene().getSceneType());
+            if(HogwartsSchool.getPlayer().getLocation().getScene().getSceneType().equals("classroom")){
+                this.console.println("Your character has moved to the " + HogwartsSchool.getPlayer().getLocation().getScene().getCourse().getDescription() + " classroom");
+            }
+            else if(HogwartsSchool.getPlayer().getLocation().getScene().getSceneType().equals("activity")){
+                this.console.println("Explore this area to see where you are.");
+            }        
         } catch (MapControlException ex) {
             ErrorView.display(this.getClass().getName(), ex.getMessage());
         }
@@ -145,7 +161,12 @@ public class MapView extends View{
         
         try {
             MapControl.movePlayer(currentLocation.getRow(), currentLocation.getColumn() + 1);
-            this.console.println("Your character has moved to a " + HogwartsSchool.getPlayer().getLocation().getScene().getSceneType());
+            if(HogwartsSchool.getPlayer().getLocation().getScene().getSceneType().equals("classroom")){
+                this.console.println("Your character has moved to the " + HogwartsSchool.getPlayer().getLocation().getScene().getCourse().getDescription() + " classroom");
+            }
+            else if(HogwartsSchool.getPlayer().getLocation().getScene().getSceneType().equals("activity")){
+                this.console.println("Explore this area to see where you are.");
+            }
         } catch (MapControlException ex) {
             ErrorView.display(this.getClass().getName(), ex.getMessage());
         }
@@ -157,14 +178,26 @@ public class MapView extends View{
         
         try {
             MapControl.movePlayer(currentLocation.getRow() - 1, currentLocation.getColumn());
-            this.console.println("Your character has moved to a " + HogwartsSchool.getPlayer().getLocation().getScene().getSceneType());
+            if(HogwartsSchool.getPlayer().getLocation().getScene().getSceneType().equals("classroom")){
+                this.console.println("Your character has moved to the " + HogwartsSchool.getPlayer().getLocation().getScene().getCourse().getDescription() + " classroom");
+            }
+            else if(HogwartsSchool.getPlayer().getLocation().getScene().getSceneType().equals("activity")){
+                this.console.println("Explore this area to see where you are.");
+            }
         } catch (MapControlException ex) {
             ErrorView.display(this.getClass().getName(), ex.getMessage());
         }
     }
 
-    
-    
-    
+    private void viewLegend() {
+        this.console.println("\n------------------------------------------------"
+                + "\nView Map"
+                + "\n------------------------------------------------");
+        this.console.println("Legend: "
+                + "\nHalways = **** "
+                + "\nLocation that has not been visited = ??  "
+                + "\nVisited Locations = Two character of the location name"
+                + "\nGreat Hall = XX"); 
+    }
   
 }

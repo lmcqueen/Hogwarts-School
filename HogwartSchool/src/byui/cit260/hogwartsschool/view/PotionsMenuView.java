@@ -5,38 +5,46 @@
  */
 package byui.cit260.hogwartsschool.view;
 
+import byui.cit260.hogwartsschool.control.HouseControl;
+import byui.cit260.hogwartsschool.control.InventoryControl;
+import byui.cit260.hogwartsschool.exceptions.HouseControlException;
+import byui.cit260.hogwartsschool.exceptions.InventoryControlException;
+import java.util.ArrayList;
+
 /**
  *
  * @author lmcqueen
  */
 public class PotionsMenuView extends View {
-    
-     public PotionsMenuView() {
-         super("\n------------------------------------------------"
-        + "\n|               Potions Class Menu             |"
-        + "\n------------------------------------------------"
-        + "\nI - Instructions" 
-        + "\nS - Add spiders" 
-        + "\nN - Add newts" 
-        + "\nW - Add water" 
-        + "\nM - Mix" 
-        + "\nF - Finish"
-        + "\n-----------------------------------------");
-         }
-  
-    @Override 
+
+    ArrayList<String> selections = new ArrayList<>();
+
+    public PotionsMenuView() {
+        super("\n------------------------------------------------"
+                + "\n|               Potions Class Menu             |"
+                + "\n------------------------------------------------"
+                + "\nI - Instructions"
+                + "\nS - Add spiders"
+                + "\nN - Add newts"
+                + "\nW - Add water"
+                + "\nM - Mix"
+                + "\nQ - Quit"
+                + "\n-----------------------------------------");
+    }
+
+    @Override
     public boolean doAction(Object obj) {
-        
+
         String value = (String) obj;
         value = value.toUpperCase();
-        if(value.length() > 1){
+        if (value.length() > 1) {
             ErrorView.display(this.getClass().getName(), "\n *** Invalid Selection. Enter only a single character. ***\n");
             return false;
         }
-        
+
         char selection = value.charAt(0);
         //SWITCH selection
-        switch(selection){
+        switch (selection) {
             //“I”: Display Instructions
             case 'I':
                 this.displayInstructions();
@@ -50,43 +58,72 @@ public class PotionsMenuView extends View {
                 this.addNewts();
                 break;
             //“W”: Add water to potion
-              case 'W':
+            case 'W':
                 this.addWater();
-                break;  
+                break;
             //"M": Mix potion
             case 'M':
-                 this.mix();
-                 break;
+                this.mix();
+                break;
             //“F”: return 
-            case 'F':
+            case 'Q':
                 return true;
             //OTHERWISE: DISPLAY “Invalid selection” 
             default:
                 ErrorView.display(this.getClass().getName(), "\n*** Invalid selection. Try again. ***");
-                break;  
+                break;
         }
-        
+
         return false;
     }
-    
-     private void displayInstructions() {
-        this.console.println("Stub function for diplaying instructions.");
-     }
+
+    private void displayInstructions() {
+        this.console.println("\n--------------------------------------------------"
+                + "To create the potion first add the spiders, newts, "
+                + "\nfollowed by spiders again. Add water after that. "
+                + "\nPut in any size for your cauldron's diameter and"
+                + "\ndepth. When you finish adding these ingredients,"
+                + "\nmix them all together."
+                + "\n--------------------------------------------------");
+    }
 
     private void addSpider() {
-        this.console.println("Stub function for addSpider.");
+        this.console.println("You added spiders to your potion.");
+        selections.add("spiders");
     }
 
     private void addNewts() {
-        this.console.println("Stub function for addNewts.");
-     }
-    
+        this.console.println("You added newts to your potion.");
+        selections.add("newts");
+    }
+
     private void addWater() {
         PotionsView potionsView = new PotionsView();
         potionsView.display();
+        selections.add("water");
     }
 
     private void mix() {
-       this.console.println("Stub function for mixing the potion.");
+        if (selections.size() == 4) {
+            if (selections.get(0).equals("spiders") && selections.get(1).equals("newts") && selections.get(2).equals("spiders") && selections.get(3).equals("water")) {
+                this.console.println("Congratulations! You correctly made the potion to cure boils."
+                        + "\nYou have earned 10 galleons and 12 points for your house.");
+                try {
+                    InventoryControl.addGalleons(10);
+
+                    HouseControl.addPoints(12);
+
+                } catch (InventoryControlException | HouseControlException ex) {
+                    ErrorView.display(this.getClass().getName(), ex.getMessage());
+                }
+            } else {
+                this.console.println("You tested your potion and it created boils instead of cured them. Try again.");
+            }
+        } 
+        else {
+            this.console.println("You tested your potion and it exploded. Maybe it will work next time. Try again.");
+        }
+
+        selections = new ArrayList<>();
     }
 }

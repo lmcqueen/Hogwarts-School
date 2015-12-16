@@ -6,25 +6,30 @@
 package byui.cit260.hogwartsschool.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
  *
  * @author lmcqueen
  */
-public class Notebook implements Serializable{
+public class Notes implements Serializable{
     
-    private String notes;
+    private ArrayList<String> notes;
 
-    public Notebook() {
+    public Notes() {
     }
-
-    public String getNotes() {
+    
+    public ArrayList<String> getNotes() {
         return notes;
     }
 
-    public void setNotes(String notes) {
+    public void setNotes(ArrayList<String> notes) {
         this.notes = notes;
+    }
+    
+    public void addNote(String note){
+        this.notes.add(note);
     }
 
     @Override
@@ -42,13 +47,12 @@ public class Notebook implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Notebook other = (Notebook) obj;
+        final Notes other = (Notes) obj;
         if (!Objects.equals(this.notes, other.notes)) {
             return false;
         }
         return true;
     }
-
     
     @Override
     public String toString() {

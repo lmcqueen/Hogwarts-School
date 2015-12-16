@@ -20,6 +20,8 @@ public class Game implements Serializable{
     private InventoryItem[] inventory; 
     private Character[] characters;
     private Course[] courses;
+    private Notes[] notes;
+    private boolean finished;
     
     public Game(){
     }
@@ -72,6 +74,22 @@ public class Game implements Serializable{
         this.courses = courses;
     }
 
+    public Notes[] getNotes() {
+        return notes;
+    }
+
+    public void setNotes(Notes[] notes) {
+        this.notes = notes;
+    }
+
+    public boolean isFinished() {
+        return finished;
+    }
+
+    public void setFinished(boolean finished) {
+        this.finished = finished;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;

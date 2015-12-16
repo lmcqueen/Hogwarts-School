@@ -15,22 +15,19 @@ public class InventoryItem implements Serializable{
     
     public enum Items {
         wand,
-        hornedSlug,
-        porcupineQuills, 
-        pungousOnions, 
-        snakeFangs, 
-        flobberwormMucus, 
-        gingerRoot, 
+        newts,
+        spiders,
         feather,
-        goblet,
+        match,
         cauldron,
-        telescope
+        telescope,
+        teacup,
+        galleons;
     }
     
     //class instance variables
     private String name;
     private String description;
-    private String itemType;
     private int quantity;
 
     public InventoryItem() {
@@ -52,14 +49,6 @@ public class InventoryItem implements Serializable{
         this.description = description;
     }
 
-    public String getItemType() {
-        return itemType;
-    }
-
-    public void setItemType(String itemType) {
-        this.itemType = itemType;
-    }
-
     public int getQuantity() {
         return quantity;
     }
@@ -73,14 +62,13 @@ public class InventoryItem implements Serializable{
         int hash = 5;
         hash = 29 * hash + Objects.hashCode(this.name);
         hash = 29 * hash + Objects.hashCode(this.description);
-        hash = 29 * hash + Objects.hashCode(this.itemType);
         hash = 29 * hash + this.quantity;
         return hash;
     }
 
     @Override
     public String toString() {
-        return "InventoryItem{" + "name=" + name + ", description=" + description + ", itemType=" + itemType + ", quantity=" + quantity + '}';
+        return "InventoryItem{" + "name=" + name + ", description=" + description + ", quantity=" + quantity + '}';
     }
 
     @Override
@@ -98,15 +86,12 @@ public class InventoryItem implements Serializable{
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
-        if (!Objects.equals(this.itemType, other.itemType)) {
-            return false;
-        }
         if (this.quantity != other.quantity) {
             return false;
         }
         return true;
     }
-
+    
     
 }
 

@@ -46,10 +46,10 @@ public class InventoryPrintView extends View {
              InventoryItem[] inventory = GameControl.getSortedInventoryList();
         
         InventoryPrintView.inventoryPrintFile.println("\nList of Inventory Items");
-        InventoryPrintView.inventoryPrintFile.printf("%20s\t%20s\t%20s\t%20s\t\n", "Name","Item Type","Quantity","Description");
+        InventoryPrintView.inventoryPrintFile.printf("%20s\t%20s\t%20s\t\n", "Name","Quantity","Description");
         InventoryPrintView.inventoryPrintFile.println("---------------------------------------------------------------------------------------------------");
         for (InventoryItem inventoryItem : inventory){
-           InventoryPrintView.inventoryPrintFile.printf("%20s\t%20s\t%20s\t%20s\t\n",inventoryItem.getName(),inventoryItem.getItemType(),
+           InventoryPrintView.inventoryPrintFile.printf("%20s\t%20s\t%20s\t%20s\t\n",inventoryItem.getName(),inventoryItem.getName(),
              inventoryItem.getQuantity(),inventoryItem.getDescription());
             
             }

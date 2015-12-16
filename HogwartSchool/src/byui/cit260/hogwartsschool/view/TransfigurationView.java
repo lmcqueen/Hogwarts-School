@@ -19,6 +19,7 @@ public class TransfigurationView extends View {
         + "\nW – Wave wand"
         + "\nC - Incantation"
         + "\nF - Finish"
+        + "\nQ - Quit"
         + "\n-----------------------------------------");
     }
 
@@ -45,6 +46,9 @@ public class TransfigurationView extends View {
                 this.displayIncantation();
                 break;
             case 'F':
+                this.displayFinish();
+                break;
+            case 'Q':
                 return true;
             default:
                 this.console.println("\n*** Invalid selection. Try again. ***");
@@ -55,20 +59,25 @@ public class TransfigurationView extends View {
    }
 
     private void displayInstructions() {
-        this.console.println("This is a charm that transform one thing into an entirely different thing");
+        this.console.println("To turn a match into a niddle, you need to wave a wand two times and doThis is a charm that transform one thing into an entirely different thing");
     }
 
     private void displayWaveWand () {
         this.console.println("Used this burton to wave a wand ");
-        //FlyingView myFlyingView = new FlyingView();
-         //myFlyingView.display();
+        
     }
 
     private void displayIncantation () {
         this.console.println("Used this burtton for incantation ");}
-        String identify = this.getInput();
-        //HerbologyView myHerbologyView = new HerbologyView();
-        //myHerbologyView.display();
+        
+        
+    private void displayFinish() {
+        // will have an arraylist that will collect
+        // check the arraylist, make sure they are of the same sixe. If not, made an error
+        // check if the user type the things in the right order
+            // do whatever message if they get right or wrong
+                // a code to reset the arraylist at the very end of everything
+    }
         
 
         

@@ -65,12 +65,12 @@ public class HerbologyView extends View {
     }
 
     private void displayIdentify() {
-        this.console.println("Type in what you observe here. ");}
+        this.console.println("Type in what you observe here. ");
         String identify = this.getInput();
-       // if (identify.equals(Puffapod)) {
-            //this.console.println("You are right, proceed with the game");
-            //return false;
-        
+        if (identify.equals("Puffapod")) {
+            this.console.println("You are right, proceed with the game");
+            
+        }
         
        //if the value is equall to puffapod, 
             // then call funtion of Leah control
@@ -78,9 +78,8 @@ public class HerbologyView extends View {
             // display an error message
        //
         
-        
-
-                }   
+    }       
+ }   
 
 
     

@@ -14,85 +14,84 @@ import java.io.PrintWriter;
  *
  * @author lmcqueen
  */
-public class MapPrintView extends View{
+public class MapPrintView extends View {
 
     private static PrintWriter mapPrintFile = null;
     static PrintWriter inventoryPrintFile;
-    
+
     public MapPrintView() {
         super("Please enter where you would like to save your map print: \n");
     }
 
-    @Override 
-    public void display(){
+    @Override
+    public void display() {
         this.console.println(this.getPromptMessage());
         String filePath = this.getInput();
-        
-        if(this.doAction(filePath)){
+
+        if (this.doAction(filePath)) {
             this.console.println("You have successfully printed the map to " + filePath);
-        }
-        else{
+        } else {
             this.console.println("Unable to print map");
         }
-         
+
     }
-    
+
     @Override
     public boolean doAction(Object obj) {
-        
+
         String filePath = (String) obj;
-        
-        try{
+
+        try {
             MapPrintView.mapPrintFile = new PrintWriter(filePath);
-            
+
             Map map = HogwartsSchool.getCurrentGame().getMap();
-            if(map == null){
+            if (map == null) {
                 ErrorView.display(this.getClass().getName(), "Map did not exist");
                 return false;
             }
-            
+
             Location[][] locations = map.getLocations();
-            if(locations == null){
+            if (locations == null) {
                 ErrorView.display(this.getClass().getName(), "Locations had a null value");
                 return false;
             }
             int rowCount = map.getRowCount();
             int columnCount = map.getColumnCount();
-        
-            MapPrintView.mapPrintFile.println("View Map");
-            MapPrintView.mapPrintFile.println("Legend: \nHalways = **** \nLocation that has not been visited = ??  \nVisited Locations = First 2 characters of "
-                + "location name  \nGreat Hall = XX");
+
+            Location currentLocation = HogwartsSchool.getPlayer().getLocation();
             Location location;
             MapPrintView.mapPrintFile.println("\n\n  1    2    3    4    5");
-            for(int i = 0; i < rowCount; i++){
+            for (int i = 0; i < rowCount; i++) {
                 MapPrintView.mapPrintFile.print(i + 1);
                 MapPrintView.mapPrintFile.println("========================");
-                for(int j = 0; j < columnCount; j++){
+                for (int j = 0; j < columnCount; j++) {
                     MapPrintView.mapPrintFile.print("|");
                     location = locations[i][j];
-                    MapPrintView.mapPrintFile.print(location.getScene().getMapSymbol());
+                    if (location.equals(currentLocation)) {
+                        MapPrintView.mapPrintFile.print("HERE");
+                    } else if (location.getScene().isVisited()) {
+                        MapPrintView.mapPrintFile.print(location.getScene().getMapSymbol());
+                    } else {
+                        MapPrintView.mapPrintFile.print(" ?? ");
+                    }
                 }
                 MapPrintView.mapPrintFile.println("|");
             }
             MapPrintView.mapPrintFile.println("========================");
-        }catch(Throwable te){
-             ErrorView.display(this.getClass().getName(), te.getMessage()); 
-        }finally{
-           
-            if(MapPrintView.mapPrintFile != null){
+        } catch (Throwable te) {
+            ErrorView.display(this.getClass().getName(), te.getMessage());
+        } finally {
+
+            if (MapPrintView.mapPrintFile != null) {
                 MapPrintView.mapPrintFile.close();
-                return true; 
-            }
-            else{
-                ErrorView.display(this.getClass().getName(),"Could not close file");
+                return true;
+            } else {
+                ErrorView.display(this.getClass().getName(), "Could not close file");
                 return false;
             }
-              
+
         }
-        
+
     }
-    
-   
-    
-    
+
 }

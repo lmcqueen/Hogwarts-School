@@ -13,6 +13,7 @@ import java.util.Arrays;
  */
 public class GreatHall extends Scene{
     
+    private String[] sortingQuestions;
     private String[] testQuestions;
 
     public GreatHall() {
@@ -24,6 +25,14 @@ public class GreatHall extends Scene{
 
     public void setTestQuestions(String[] testQuestions) {
         this.testQuestions = testQuestions;
+    }
+
+    public String[] getSortingQuestions() {
+        return sortingQuestions;
+    }
+
+    public void setSortingQuestions(String[] sortingQuestions) {
+        this.sortingQuestions = sortingQuestions;
     }
 
     @Override

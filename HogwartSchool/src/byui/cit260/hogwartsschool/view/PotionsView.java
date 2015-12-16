@@ -75,7 +75,7 @@ public class PotionsView extends View {
             double calculate = SceneControl.gallonsCauldronHolds(calculation[0], calculation[1]);
         
             //DISPLAY result
-            this.console.println("Your cauldron will hold " + calculate + " gallons of water");
+            this.console.println("You added " + calculate + " gallons of water");
         } catch (SceneControlException me){
             ErrorView.display(this.getClass().getName(), me.getMessage());
             return false;

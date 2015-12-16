@@ -49,6 +49,7 @@ public class Scene implements Serializable {
     private boolean blocked;
     private boolean visited;
     private Course course;
+    private InventoryItem[] itemsNeeded;
 
     public Scene() {
     }
@@ -107,6 +108,14 @@ public class Scene implements Serializable {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public InventoryItem[] getItemsNeeded() {
+        return itemsNeeded;
+    }
+
+    public void setItemsNeeded(InventoryItem[] itemsNeeded) {
+        this.itemsNeeded = itemsNeeded;
     }
 
     @Override

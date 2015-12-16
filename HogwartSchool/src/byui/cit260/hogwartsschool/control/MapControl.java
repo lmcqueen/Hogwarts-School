@@ -8,11 +8,11 @@ package byui.cit260.hogwartsschool.control;
 import byui.cit260.hogwartsschool.exceptions.MapControlException;
 import byui.cit260.hogwartsschool.model.Course;
 import byui.cit260.hogwartsschool.model.GreatHall;
+import byui.cit260.hogwartsschool.model.InventoryItem;
 import byui.cit260.hogwartsschool.model.Location;
 import byui.cit260.hogwartsschool.model.Map;
 import byui.cit260.hogwartsschool.model.Scene;
 import hogwartsschool.HogwartsSchool;
-import java.awt.Point;
 /**
  *
  * @author User
@@ -134,7 +134,7 @@ public class MapControl {
         MapControl.scenes[Scene.SceneNames.hallwayGinny.ordinal()] = hallwayGinny;
         
         Scene hallwayDumbledore = new Scene();
-        hallwayDumbledore.setDescription("Ginny Weasley is in this hallway. Would you like to speak with her? Enter Y for yes N for no.");
+        hallwayDumbledore.setDescription("Dumbledore is in this hallway. Would you like to speak with him? Enter Y for yes N for no.");
         hallwayDumbledore.setMapSymbol("****");
         hallwayDumbledore.setCharacter(byui.cit260.hogwartsschool.model.Character.Dumbledore);
         hallwayDumbledore.setSceneType("hallway");
@@ -142,26 +142,6 @@ public class MapControl {
         hallwayDumbledore.setVisited(true);
         hallwayDumbledore.setCourse(null);
         MapControl.scenes[Scene.SceneNames.hallwayDumbledore.ordinal()] = hallwayDumbledore;
-        
-        Scene potions = new Scene();
-        potions.setDescription("Potions classroom");
-        potions.setCharacter(byui.cit260.hogwartsschool.model.Character.Snape);
-        potions.setBlocked(false);
-        potions.setVisited(false);
-        potions.setSceneType("classroom");
-        potions.setMapSymbol(" PO ");
-        potions.setCourse(Course.Potions);
-        MapControl.scenes[Scene.SceneNames.potions.ordinal()] = potions;
-        
-        Scene charms = new Scene();
-        charms.setDescription("Charms classroom");
-        charms.setBlocked(true);
-        charms.setVisited(false);
-        charms.setMapSymbol(" CH ");
-        charms.setCharacter(byui.cit260.hogwartsschool.model.Character.Flitwick);
-        charms.setCourse(Course.Charms);
-        charms.setSceneType("classroom");
-        MapControl.scenes[Scene.SceneNames.charms.ordinal()] = charms;
         
         Scene ancientRune = new Scene();
         ancientRune.setDescription("Ancient Runes Classroom");
@@ -182,36 +162,6 @@ public class MapControl {
         defense.setCourse(Course.Defense);
         defense.setSceneType("classroom");
         MapControl.scenes[Scene.SceneNames.defense.ordinal()] = defense;
-        
-        Scene astronomy = new Scene();
-        astronomy.setDescription("Astronomy Classroom");
-        astronomy.setBlocked(true);
-        astronomy.setVisited(false);
-        astronomy.setMapSymbol(" AS ");
-        astronomy.setCharacter(byui.cit260.hogwartsschool.model.Character.Sinistra);
-        astronomy.setCourse(Course.Astronomy);
-        astronomy.setSceneType("classroom");
-        MapControl.scenes[Scene.SceneNames.astronomy.ordinal()] = astronomy;
-        
-        Scene transfiguration = new Scene();
-        transfiguration.setDescription("Transfiguration Classroom");
-        transfiguration.setBlocked(false);
-        transfiguration.setVisited(false);
-        transfiguration.setMapSymbol(" TR ");
-        transfiguration.setCharacter(byui.cit260.hogwartsschool.model.Character.McGonagall);
-        transfiguration.setCourse(Course.Transfiguration);
-        transfiguration.setSceneType("classroom");
-        MapControl.scenes[Scene.SceneNames.transfiguration.ordinal()] = transfiguration;
-        
-        Scene divination = new Scene();
-        divination.setDescription("Divination Classroom");
-        divination.setBlocked(false);
-        divination.setVisited(false);
-        divination.setMapSymbol(" DI ");
-        divination.setCharacter(byui.cit260.hogwartsschool.model.Character.Trelany);
-        divination.setCourse(Course.Divination);
-        divination.setSceneType("classroom");
-        MapControl.scenes[Scene.SceneNames.divination.ordinal()] = divination;
         
         Scene herbology = new Scene();
         herbology.setDescription("Herbology Classroom");
@@ -244,7 +194,7 @@ public class MapControl {
         MapControl.scenes[Scene.SceneNames.care.ordinal()] = care;
         
         Scene quidditch = new Scene();
-        quidditch.setDescription("Oliver Wood, captain of the Hogwarts quidditch team is here. Do you want to speak with him? Enter Y for yes N for no.");
+        quidditch.setDescription("Quidditch is a wizarding sport played on broom sticks. There's a game starting right now!");
         quidditch.setVisited(false);
         quidditch.setBlocked(false);
         quidditch.setCharacter(byui.cit260.hogwartsschool.model.Character.Wood);
@@ -263,10 +213,103 @@ public class MapControl {
         bathroom.setMapSymbol(" BA ");
         MapControl.scenes[Scene.SceneNames.bathroom.ordinal()] = bathroom;
         
-	GreatHall greatHall = new GreatHall();
+        
+        //classrooms that require items to enter
+        
+        InventoryItem itemHolder = new InventoryItem();
+        itemHolder.setName("Telescope");
+        itemHolder.setQuantity(1);
+        InventoryItem[] astronomyNeeded = {itemHolder};
+        
+        itemHolder = new InventoryItem();
+        itemHolder.setName("Match");
+        itemHolder.setQuantity(1);
+        InventoryItem[] transfigNeeded = {itemHolder};
+        
+        itemHolder = new InventoryItem();
+        itemHolder.setName("Tea Cup");
+        itemHolder.setQuantity(1);
+        InventoryItem[] divinationNeeded = {itemHolder};
+        
+        itemHolder = new InventoryItem();
+        itemHolder.setName("Feather");
+        itemHolder.setQuantity(1);
+        InventoryItem[] charmsNeeded = {itemHolder};
+        
+        itemHolder = new InventoryItem();
+        itemHolder.setName("Cauldron");
+        itemHolder.setQuantity(1);
+        InventoryItem[] potionsNeeded = new InventoryItem[3];
+        potionsNeeded[0] = itemHolder;
+        itemHolder = new InventoryItem();
+        itemHolder.setName("Spiders");
+        itemHolder.setQuantity(2);
+        potionsNeeded[1] = itemHolder;
+        itemHolder = new InventoryItem();
+        itemHolder.setName("Newts");
+        itemHolder.setQuantity(1);
+        potionsNeeded[2] = itemHolder;
+        
+        
+        Scene astronomy = new Scene();
+        astronomy.setDescription("Astronomy Classroom");
+        astronomy.setBlocked(true);
+        astronomy.setVisited(false);
+        astronomy.setMapSymbol(" AS ");
+        astronomy.setCharacter(byui.cit260.hogwartsschool.model.Character.Sinistra);
+        astronomy.setCourse(Course.Astronomy);
+        astronomy.setSceneType("classroom");
+        astronomy.setItemsNeeded(astronomyNeeded);
+        MapControl.scenes[Scene.SceneNames.astronomy.ordinal()] = astronomy;
+        
+        Scene transfiguration = new Scene();
+        transfiguration.setDescription("Transfiguration Classroom");
+        transfiguration.setBlocked(true);
+        transfiguration.setVisited(false);
+        transfiguration.setMapSymbol(" TR ");
+        transfiguration.setCharacter(byui.cit260.hogwartsschool.model.Character.McGonagall);
+        transfiguration.setCourse(Course.Transfiguration);
+        transfiguration.setSceneType("classroom");
+        transfiguration.setItemsNeeded(transfigNeeded);
+        MapControl.scenes[Scene.SceneNames.transfiguration.ordinal()] = transfiguration;
+        
+        Scene divination = new Scene();
+        divination.setDescription("Divination Classroom");
+        divination.setBlocked(true);
+        divination.setVisited(false);
+        divination.setMapSymbol(" DI ");
+        divination.setCharacter(byui.cit260.hogwartsschool.model.Character.Trelany);
+        divination.setCourse(Course.Divination);
+        divination.setSceneType("classroom");
+        divination.setItemsNeeded(divinationNeeded);
+        MapControl.scenes[Scene.SceneNames.divination.ordinal()] = divination;
+        
+        Scene potions = new Scene();
+        potions.setDescription("Potions classroom");
+        potions.setCharacter(byui.cit260.hogwartsschool.model.Character.Snape);
+        potions.setBlocked(true);
+        potions.setVisited(false);
+        potions.setSceneType("classroom");
+        potions.setMapSymbol(" PO ");
+        potions.setCourse(Course.Potions);
+        potions.setItemsNeeded(potionsNeeded);
+        MapControl.scenes[Scene.SceneNames.potions.ordinal()] = potions;
+        
+        Scene charms = new Scene();
+        charms.setDescription("Charms classroom");
+        charms.setBlocked(true);
+        charms.setVisited(false);
+        charms.setMapSymbol(" CH ");
+        charms.setCharacter(byui.cit260.hogwartsschool.model.Character.Flitwick);
+        charms.setCourse(Course.Charms);
+        charms.setSceneType("classroom");
+        charms.setItemsNeeded(charmsNeeded);
+        MapControl.scenes[Scene.SceneNames.charms.ordinal()] = charms;
+        
+	GreatHall greatHall = GreatHallControl.initializeGreatHall();
         greatHall.setDescription("The Great Hall, center of all Hogwarts");
-        greatHall.setBlocked(true);
-        greatHall.setVisited(false);
+        greatHall.setBlocked(false);
+        greatHall.setVisited(true);
         greatHall.setCharacter(null);
         greatHall.setCourse(null);
         greatHall.setSceneType("greathall");
@@ -286,12 +329,12 @@ public class MapControl {
         locations[0][4].setScene(scenes[Scene.SceneNames.charms.ordinal()]);
         locations[1][0].setScene(scenes[Scene.SceneNames.bathroom.ordinal()]);
         locations[1][1].setScene(scenes[Scene.SceneNames.hallwayDumbledore.ordinal()]);
-        locations[1][2].setScene(scenes[Scene.SceneNames.greatHall.ordinal()]);
+        locations[2][2].setScene(scenes[Scene.SceneNames.greatHall.ordinal()]);
         locations[1][3].setScene(scenes[Scene.SceneNames.hallwayFredandGeorge.ordinal()]);
         locations[1][4].setScene(scenes[Scene.SceneNames.herbology.ordinal()]);
         locations[2][0].setScene(scenes[Scene.SceneNames.care.ordinal()]);
         locations[2][1].setScene(scenes[Scene.SceneNames.hallwayGinny.ordinal()]);
-        locations[2][2].setScene(scenes[Scene.SceneNames.astronomy.ordinal()]);
+        locations[1][2].setScene(scenes[Scene.SceneNames.astronomy.ordinal()]);
         locations[2][3].setScene(scenes[Scene.SceneNames.hallwayHermione.ordinal()]);
         locations[2][4].setScene(scenes[Scene.SceneNames.divination.ordinal()]);
         locations[3][0].setScene(scenes[Scene.SceneNames.hallwayNeville.ordinal()]);
@@ -331,9 +374,58 @@ public class MapControl {
         }
         else{
             getLocation = map.getLocations()[destRow][destCol];
-            HogwartsSchool.getCurrentGame().getPlayer().setLocation(getLocation);
+            if(getLocation.getScene().isBlocked() == true){
+                if(MapControl.isLocationBlocked(getLocation) == false){
+                    String itemNeeded = MapControl.getItemsNeeded(getLocation);
+                    throw new MapControlException("This classroom is currently blocked. You need the following items to enter:" + itemNeeded);
+                }
+                else{
+                    HogwartsSchool.getCurrentGame().getPlayer().setLocation(getLocation);
+                    HogwartsSchool.getCurrentGame().getPlayer().getLocation().getScene().setVisited(true);
+                }
+            }
+            else{
+                HogwartsSchool.getCurrentGame().getPlayer().setLocation(getLocation);
+                HogwartsSchool.getCurrentGame().getPlayer().getLocation().getScene().setVisited(true);
+            }
         }
-     
+    }
+    
+    private static boolean isLocationBlocked(Location location) throws MapControlException{
+        try{
+        InventoryItem[] needed = location.getScene().getItemsNeeded();
+        InventoryItem[] obtained = HogwartsSchool.getCurrentGame().getInventory();
+        
+        for(InventoryItem need : needed){
+            for(InventoryItem obtain : obtained){
+                if(need.getName().equals(obtain.getName())){
+                    if(need.getQuantity() > obtain.getQuantity()){
+                        return false;
+                    }
+                }
+            }
+        }
+        
+        return true;
+        }catch(Exception ex){
+            throw new MapControlException(ex.getMessage());
+        }
+    }
+
+    private static String getItemsNeeded(Location location) throws MapControlException {
+        StringBuilder itemsNeeded = new StringBuilder();
+        
+        try{
+        InventoryItem[] items = location.getScene().getItemsNeeded();
+        for(InventoryItem item : items){
+            itemsNeeded.append("\nYou need " + item.getQuantity()+ " " + item.getName() + "(s)");
+        }
+        
+
+        return itemsNeeded.toString();
+        }catch(Exception ex){
+            throw new MapControlException(ex.getMessage());
+        }
     }
         
 }

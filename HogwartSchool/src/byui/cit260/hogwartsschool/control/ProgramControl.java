@@ -11,15 +11,13 @@ import hogwartsschool.HogwartsSchool;
 
 /**
  *
- * @author User
+ * @author lmcqueen
  */
 public class ProgramControl {
     
-    public ProgramControl(){
-    }
-    
     public static Player createPlayer(String playerName)throws ProgramControlException { 
         
+        try{
         if(playerName == null){
             throw new ProgramControlException("The player name is invalid. "
                     + "input a valid name.");
@@ -31,6 +29,10 @@ public class ProgramControl {
         HogwartsSchool.setPlayer(player);
         
         return player;
+        }catch(Exception ex){
+            throw new ProgramControlException(ex.getMessage());
+        }
+        
     }
     
 }
